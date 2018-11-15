@@ -16,10 +16,12 @@
     background-color: #ffe200;
     color: #363636;
 }
-
-#contenido {
-    text-align: left;
+body {
+    background-color: rgb(248, 249, 250);
 }
-nav{
+nav {
     background-color: rgba(248, 249, 250, 0.9);
+}
+.contenido{
+    width: 1200px;
 }
