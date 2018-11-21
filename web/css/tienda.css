@@ -1,0 +1,54 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Nov 18, 2018, 8:05:57 PM
+    Author     : MD
+*/
+
+body,
+html {
+    height: 100%;
+}
+.bg {
+    /* The image used */
+    background-image: url("../images/background.jpg");
+    /* Full height */
+    height: 100%;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#logo {
+    font-family: 'Abel', sans-serif;
+    color: black;
+}
+* {
+    font-family: 'Abel', sans-serif;
+    
+}
+#slogan {
+    font-size: 13px;
+}
+#sesion {
+    background-color: #f4da14;
+    color: black;
+}
+#sesion:hover {
+    background-color: #ffe200;
+    color: #363636;
+}
+
+#contenido {
+    text-align: left;
+}
+nav {
+    background-color: rgba(248, 249, 250, 0.9);
+}
+div{
+    color: white;
+}
+
