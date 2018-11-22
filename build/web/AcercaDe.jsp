@@ -91,7 +91,7 @@
                 </div>
                 <div class="col-lg-4">
                     <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-                    <h2>Héctor</h2>
+                    <h2>Héctor Fernando Diaz Rosales</h2>
                     <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur numquam magnam molestias temporibus, eligendi alias veniam necessitatibus architecto voluptate iusto rerum animi dicta officia illo perferendis tenetur distinctio. Est, veritatis.</p>
 
                 </div>

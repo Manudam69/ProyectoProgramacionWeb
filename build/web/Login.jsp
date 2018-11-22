@@ -26,20 +26,25 @@
         </style>
     </head>
     <body class="text-center">
-        <form class="form-signin mx-auto p-5 mt-5" style="width: 400px;">
+        <form class="form-signin mx-auto p-5 mt-5" style="width: 400px;" action="checklogin.jsp">
             <a href="./index.jsp"><img class="mb-4" src="images/logo.png" alt="" width="72" height="72"></a>
             <h1 class="h3 mb-3 font-weight-normal">Iniciar sesión</h1>
             <label for="inputUser" class="sr-only">Usuario</label>
-            <input type="text" id="inputUser" class="form-control mb-1" placeholder="Usuario" required autofocus>
+            <input type="text" id="inputUser" class="form-control mb-1" placeholder="Usuario" name="usr" required autofocus>
 
             <label for="inputPassword" class="sr-only">Password</label>
-            <input type="password" id="inputPassword" class="form-control mb-2" placeholder="Contraseña" required>
+            <input type="password" id="inputPassword" class="form-control mb-2" placeholder="Contraseña" name="pass" required>
             <div class="checkbox mb-3">
                 <label>
                     <input type="checkbox" value="remember-me"> Recuérdame.
                 </label>
             </div>
             <button class="btn btn-lg btn-primary btn-block" type="submit">Iniciar sesión</button>
+            <%
+                    if (request.getParameter("error") != null) {
+                        out.println(request.getParameter("error"));
+                    }
+                %>
             <p class="mt-2">¿Eres un cliente nuevo? <a href="./Registro.jsp">Empieza aquí.</a></p>
         </form>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
