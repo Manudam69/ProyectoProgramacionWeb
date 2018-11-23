@@ -17,6 +17,7 @@
     CryptWithMD5 obj = new CryptWithMD5();
     String query = "select * from farolito.usuarios";
     objConn.Consult(query);
+    boolean fail = true;
 %>
 <html>
     <head>
@@ -43,16 +44,17 @@
         %>
         <jsp:forward page="index.jsp"/>
         <%
-            break;
+                    break;
 
-        } else {
-        %>
+                } else {
+                    fail=false;
+                }
+            }
+            if(fail==false){
+        %>  
         <jsp:forward page="Login.jsp">
             <jsp:param name="error" value="Usuario y/o clave incorrectos.<br>Vuelve a intentarlo."/>
         </jsp:forward>
-        <%
-                }
-            }
-        %>  
+        <%}%>
     </body>
 </html>
