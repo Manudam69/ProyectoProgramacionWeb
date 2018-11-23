@@ -92,9 +92,25 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                            <a class=\"nav-link\" href=\"./Ayuda.jsp\">Ayuda</a>\n");
       out.write("                        </li>\n");
       out.write("                    </ul>\n");
-      out.write("                    <form class=\"form-inline my-2 my-lg-0\" action=\"Login.jsp\">\n");
+      out.write("                    ");
+
+                        if (session.getAttribute("usuario") == null) {
+                    
+      out.write("\n");
+      out.write("                    <form class=\"form-inline my-2 my-lg-0\" action=\"Login.jsp\">                       \n");
       out.write("                        <button class=\"btn btn  my-2 my-sm-0\" type=\"submit\" id=\"sesion\">Iniciar Sesión</button>\n");
       out.write("                    </form>\n");
+      out.write("                    ");
+
+                    } else {
+                    
+      out.write("\n");
+      out.write("                    <form class=\"form-inline my-2 my-lg-0\" action=\"Cerrarsesion.jsp\">                       \n");
+      out.write("                        <button class=\"btn btn  my-2 my-sm-0\" type=\"submit\" id=\"sesion\">Cerrar Sesión</button>\n");
+      out.write("                    </form>\n");
+      out.write("                    ");
+}
+      out.write("\n");
       out.write("                </div>\n");
       out.write("            </nav>\n");
       out.write("        </header>\n");

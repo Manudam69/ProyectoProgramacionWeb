@@ -32,22 +32,27 @@
                 pass = request.getParameter("pass");
             }
             pass = obj.cryptWithMD5(pass);
-            out.println("UsuarioPar: "+usuario);
-            
-            
             objConn.rs.beforeFirst();
-            while(objConn.rs.next()){
-                usuarioBD=objConn.rs.getString(2);
-                passBD=objConn.rs.getString(3);
-                
-                if(usuario.equals(usuarioBD)){
-                    
-                out.println("Coincide");
-                break;
-                }else{
-                out.println("Nelson Mandela"+ usuarioBD);
+            while (objConn.rs.next()) {
+                usuarioBD = objConn.rs.getString(2);
+                passBD = objConn.rs.getString(3);
+
+                if (usuario.equals(usuarioBD) && pass.equals(passBD)) {
+                    HttpSession sesionOk = request.getSession();
+                    sesionOk.setAttribute("usuario", usuario);
+        %>
+        <jsp:forward page="index.jsp"/>
+        <%
+            break;
+
+        } else {
+        %>
+        <jsp:forward page="Login.jsp">
+            <jsp:param name="error" value="Usuario y/o clave incorrectos.<br>Vuelve a intentarlo."/>
+        </jsp:forward>
+        <%
                 }
             }
-    %>  
+        %>  
     </body>
 </html>

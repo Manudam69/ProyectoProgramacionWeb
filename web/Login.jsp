@@ -26,7 +26,7 @@
         </style>
     </head>
     <body class="text-center">
-        <form class="form-signin mx-auto p-5 mt-5" style="width: 400px;" action="checklogin.jsp">
+        <form class="form-signin mx-auto p-5 mt-5" style="width: 400px;" action="checklogin.jsp" method="post">
             <a href="./index.jsp"><img class="mb-4" src="images/logo.png" alt="" width="72" height="72"></a>
             <h1 class="h3 mb-3 font-weight-normal">Iniciar sesión</h1>
             <label for="inputUser" class="sr-only">Usuario</label>
@@ -40,11 +40,13 @@
                 </label>
             </div>
             <button class="btn btn-lg btn-primary btn-block" type="submit">Iniciar sesión</button>
+            <div style="color:red">
             <%
                     if (request.getParameter("error") != null) {
                         out.println(request.getParameter("error"));
                     }
-                %>
+            %>
+            </div>
             <p class="mt-2">¿Eres un cliente nuevo? <a href="./Registro.jsp">Empieza aquí.</a></p>
         </form>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

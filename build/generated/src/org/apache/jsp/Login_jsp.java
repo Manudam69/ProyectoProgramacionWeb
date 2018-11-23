@@ -79,13 +79,15 @@ public final class Login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                </label>\n");
       out.write("            </div>\n");
       out.write("            <button class=\"btn btn-lg btn-primary btn-block\" type=\"submit\">Iniciar sesión</button>\n");
+      out.write("            <div style=\"color:red\">\n");
       out.write("            ");
 
                     if (request.getParameter("error") != null) {
                         out.println(request.getParameter("error"));
                     }
-                
+            
       out.write("\n");
+      out.write("            </div>\n");
       out.write("            <p class=\"mt-2\">¿Eres un cliente nuevo? <a href=\"./Registro.jsp\">Empieza aquí.</a></p>\n");
       out.write("        </form>\n");
       out.write("        <script src=\"https://code.jquery.com/jquery-3.3.1.slim.min.js\" integrity=\"sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo\" crossorigin=\"anonymous\"></script>\n");
