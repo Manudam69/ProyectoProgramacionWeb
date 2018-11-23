@@ -70,7 +70,7 @@
             </nav>
         </header>
 
-        <div class="bd-example mt-5 mb-1 pt-5">
+        <div class="bd-example mt-5 mb-0 pt-5">
             <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
                     <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>

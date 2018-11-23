@@ -83,8 +83,13 @@
                     <textarea type="text" class="form-control" name="message" rows="10" data-form-field="Message" id="message-form1-2w"></textarea>
                 </div>
 
-                <button class="btn btn-lg btn-primary btn-block mb-0" type="submit">Enviar</button>
-                <p class="mb-0 text-left" style="font-size: 13px;">* Obligatorio</p>
+                <div class="row text-right">
+                    <div class="col-md-9"></div>
+                    <div class="col-md-3">
+                        <button class="btn btn-lg btn-primary btn-block mb-0 w-100 " type="submit">Enviar</button>
+                        <p class="mb-0 text-left mt-1" style="font-size: 13px;">* Obligatorio</p>
+                    </div>
+                </div>
             </form>
         </div>
 

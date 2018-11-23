@@ -63,12 +63,13 @@
 
         <div class="container">
             <h4 class="text-center font-italic font-weight-bold mt-5">El farolito nuestra tienda en linea.</h4>
-            <p class="text-justify">
-                <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt, numquam libero nemo hic eligendi voluptatum animi ipsa. Dicta similique eveniet alias tenetur ipsum dolore iusto fugit, deleniti est qui, obcaecati.</span>
-                <span>Non perspiciatis asperiores corporis quidem fugiat voluptatibus voluptates esse dolores, doloremque porro sit. Enim similique modi quae, officia at hic blanditiis cumque obcaecati ipsum magnam unde rem laboriosam minus dolorum.</span>
-                <span>Ducimus eum, omnis vel, voluptate rerum amet explicabo nihil odio iure aperiam maiores modi id, repellat deserunt ipsa eveniet ullam est dignissimos saepe accusamus, culpa voluptatum minus ratione similique. Nulla!</span>
-                <span>Culpa expedita cupiditate fugit officiis commodi tenetur totam magni id suscipit eaque veniam laudantium, quibusdam hic saepe corporis iste doloremque exercitationem! Aperiam nostrum nihil autem qui voluptas officiis vel ab.</span>
-                <span>Deleniti nostrum architecto commodi mollitia odit culpa adipisci laborum, delectus, iure ducimus, eaque vitae nesciunt repudiandae veritatis. Repellat ipsam voluptatum, doloribus. Necessitatibus ullam quia, quas, libero ut vero porro tenetur!</span>
+            <p class="text-justify lead">
+                “El farolito” es una tienda de línea blanca y electrodomésticos la cual realiza ventas al mayoreo y menudeo a sus clientes. Los productos que ofrecen van desde lavadoras, secadoras, refrigeradores, hasta computadoras, celulares, impresoras etc. Debido al éxito en la tienda y el buen servicio que ofrecen, se han realizado varias sucursales a lo largo del país.
+                En una sucursal se tienen productos de exhibición, los cuales el cliente puede observar e incluso interactuar con ellos para poder observar espacio (en caso de productos de línea blanca) o rendimiento (en caso de productos tecnológicos). Cuando un cliente toma la decisión de comprar uno de los productos es atendido en mostrador, aquí se le informa sobre el precio final del producto una vez que sean aplicados los descuentos correspondientes (ya sea por promoción o por ser “cliente frecuente”) además de la toma de decisión del pago el cual puede ser a crédito o de contado. El cliente una vez que su producto ha sido entregado puede solicitar una factura.
+                Si el cliente lo desea su producto puede ser enviado a su domicilio mediante un servicio de envíos que maneja la tienda, el cual toma los productos que estén en almacén y dependiendo del tamaño o cantidad de productos que se quieran enviar a un determinado domicilio se elige un vehículo en especial, los cuales pueden ser camionetas o camiones.
+                El negocio maneja un sistema de garantías en caso de fallos/defectos de fábrica la cual tiene una vigencia de hasta 4 años en todos los productos, las devoluciones por parte del cliente solo pueden ser aplicadas en caso de que el producto presente una falla que afecte a su funcionamiento, o incluso en defectos estéticos al momento de ser entregado en su domicilio (por ejemplo, rayones en la pintura al momento de transportarlo, abolladuras por golpes en el transporte, etc.) en conjunto el negocio maneja un servicio de reparaciones en caso de que el cliente detecte una falla en alguno de los productos que adquirió. En ambos casos (reparación/aplicar garantía) un técnico acude al domicilio del cliente para inspeccionar el producto y en caso de ser necesario aplicar garantía o realizar la reparación correspondiente.
+                El cliente puede solicitar una factura de su pedido una vez que este ha sido entregado a su domicilio.
+                Cada sucursal tiene un almacén de productos, en el cual se tienen guardados los productos que son entregados a los clientes. En caso de que se tengan pocos productos en almacén, estos son removidos de exhibición hasta que se vuelva a tener suficiente cantidad en stock. Cuando se quiere resurtir el stock de un producto se hace un nuevo pedido a un proveedor, en el cual se le especifica la cantidad de productos que se desean adquirir. El proveedor realiza la entrega directamente al almacén y se emite una factura de los productos vendidos, un técnico realiza una revisión rápida a los productos para evaluar su condición y en caso necesario realizar una devolución al proveedor del producto defectuoso. No se tiene planeado el manejo de crédito a proveedores.
             </p>
 
         </div>
@@ -111,7 +112,7 @@
                 </div>
             </div>
         </div>
-        
+
         <footer class="footer shadow-lg pb-2 mt-3">
             <hr>
             <div class="row container-fluid mt-0">

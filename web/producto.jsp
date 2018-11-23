@@ -11,7 +11,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Tienda</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-        <link rel="stylesheet" href="css/index.css"/>
+        <link rel="stylesheet" href="css/producto.css"/>
         <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Saira" rel="stylesheet">
         <link rel="icon" type="image/png" href="images/logo.png">
@@ -35,7 +35,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="./Vision.jsp">Visión</a>
                         </li>
-                        <li class="nav-item dropdown">
+                        <li class="nav-item dropdown active">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Tienda</a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="./LineaBlanca.jsp">Linea blanca</a>
@@ -60,15 +60,16 @@
         </header>
 
         <div class="container">
-            
+
             <div class="row">
-                
-                <div class="col-lg-6 mt-2"> 
-                    
-                    <img src="images/prueba.jpg" class="img-fluid mt-5 pt-5" alt="Responsive image" id="producto">
+                <div class="col-lg-6 mt-5 pt-5">
+                    <figure class="zoom mt-3" onmousemove="zoom(event)" style="background-image: url(images/prueba.jpg)">
+                        <img src="images/prueba.jpg" class="img-fluid" alt="Responsive image"/>
+                    </figure>                    
+                    <!--<img src="images/prueba.jpg" class="img-fluid mt-5 pt-5" alt="Responsive image" id="producto">-->
                 </div>
-                
-                <div class="col-lg-6 mt-5 pt-5 p-3">
+
+                <div class="col-lg-6 mt-5 pt-5">
                     <br>
                     <p class="h2 text-left">NOMBRE DEL PRODUCTO</p>
                     <p class="lead mt-3">Precio: $1500 MXN</p>
@@ -89,20 +90,20 @@
                     </form>
 
                     <ul class="mt-5">     
-                        <h3 class="lead">Especificaciones</h3>
+                        <p class="h4">Especificaciones</p>
+
+                        <li class="text-justify lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</li>
+                        <li class="text-justify lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</li>
+                        <li class="text-justify lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</li>
+                        <li class="text-justify lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</li>
                         
-                        <li class="text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</li>
-                        <li class="text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</li>
-                        <li class="text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</li>
-                        <li class="text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</li>
                     </ul>
-
-
                 </div>
             </div>
+            <hr>
             <div class="row">
-                <div class="col-lg-12 mt-3">
-                    <p class="h3">DESCRIPCION DEL PRODUCTO</p>
+                <div class="col-lg-12 mt-3 p-3">
+                    <p class="h3">DESCRIPCIÓN DEL PRODUCTO</p>
                     <p class="lead text-justify">
                         <span>
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
@@ -115,14 +116,13 @@
                             Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, 
                             turpis et commodo pharetra, est eros bibendum elit, nec luctus magna felis sollicitudin mauris. 
                             Integer in mauris eu nibh euismod gravida. Duis ac tellus et risus vulputate vehicula. 
-                            Donec lobortis risus a elit. Etiam tempor. Ut ullamcorper, ligula eu tempor congue, eros est euismod turpis, 
+                            Donec lobortis risus a elit. Etiam tempor. Ut ullamcorper, ligula eu tempor congue, eros est euismod turpis. 
 
                         </span>
                     </p>
                 </div>
             </div>
         </div>
-
 
         <footer class="footer shadow-lg pb-2 mt-5">
             <hr>
@@ -139,7 +139,7 @@
                 </div>
             </div>
         </footer>
-
+        <script src="js/producto.js"></script>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>   
