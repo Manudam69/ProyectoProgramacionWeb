@@ -62,16 +62,16 @@
         <div class="container">
 
             <div class="row">
-                <div class="col-lg-6 mt-5 pt-5">
-                    <figure class="zoom mt-3" onmousemove="zoom(event)" style="background-image: url(images/prueba.jpg)">
+                <div class="col-lg-6 mt-5 pt-5 px-5">
+                    <figure class="zoom mt-3 img-fluid" onmousemove="zoom(event)" style="background-image: url(images/prueba.jpg)">
                         <img src="images/prueba.jpg" class="img-fluid" alt="Responsive image"/>
                     </figure>                    
                     <!--<img src="images/prueba.jpg" class="img-fluid mt-5 pt-5" alt="Responsive image" id="producto">-->
                 </div>
-
+      
                 <div class="col-lg-6 mt-5 pt-5">
-                    <br>
-                    <p class="h2 text-left">NOMBRE DEL PRODUCTO</p>
+                   
+                    <p class="h2 text-left mt-3">NOMBRE DEL PRODUCTO</p>
                     <p class="lead mt-3">Precio: $1500 MXN</p>
                     <form class="form-signin mx-auto mt-2">
                         <label for="cantidad" class="lead ">Cantidad: </label>
@@ -85,13 +85,12 @@
                             <option value="5">5</option>
                         </select>
                         <br>
-                        <div class="mt-5 pt-5"></div>
-                        <button class="btn btn-lg btn-primary btn-block mb-0 w-75" type="submit">Agregar al carrito</button>
+                        
+                        <button class="btn btn-lg btn-primary btn-block mb-0 w-75 mt-5" type="submit">Agregar al carrito</button>
                     </form>
 
                     <ul class="mt-5">     
                         <p class="h4">Especificaciones</p>
-
                         <li class="text-justify lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</li>
                         <li class="text-justify lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</li>
                         <li class="text-justify lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</li>

@@ -30,7 +30,7 @@ public class MySqlConn {
             Class.forName("com.mysql.jdbc.Driver");
             String connectionUrl
                     = "jdbc:mysql://localhost/farolito?"
-                    + "user=root&password=hola";
+                    + "user=root&password=1234";
             // conexion con la bd
             conn = DriverManager.getConnection(connectionUrl);
         } catch (SQLException e) {
@@ -103,7 +103,7 @@ public class MySqlConn {
         Connection connection = null;
         try {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306", "root", "hola");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306", "root", "1234");
             Statement statement = connection.createStatement();
             String query = "create data base if not exists empresa";
             statement.executeUpdate(query);
@@ -118,7 +118,7 @@ public class MySqlConn {
         Connection connection = null;
         try {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/farolito", "root", "hola");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/farolito", "root", "1234");
             Statement statement = connection.createStatement();
             String query = "create table if not exists empleado (nombre varchar(40),edad integer, area_Trabajo varchar(40), sueldo integer);";
             statement.executeUpdate(query);
@@ -130,7 +130,7 @@ public class MySqlConn {
     public void RetriveData(){
         Connection connection =null;
         try{
-            connection= DriverManager.getConnection("jdbc:mysql://localhost:3306/farolito", "root", "hola");
+            connection= DriverManager.getConnection("jdbc:mysql://localhost:3306/farolito", "root", "1234");
             Statement statement = connection.createStatement();
             String query="select * from farolito.productos p;";
             statement.execute(query);
