@@ -59,19 +59,19 @@
             </nav>
         </header>
 
-        <div class="container">
+        <div class="container mt-5 pt-5">
 
-            <div class="row">
-                <div class="col-lg-6 mt-5 pt-5 px-5">
-                    <figure class="zoom mt-3 img-fluid" onmousemove="zoom(event)" style="background-image: url(images/prueba.jpg)">
+            <div class="row mt-3">
+                <div class="col-lg-6 px-5">
+                    <figure class="zoom img-fluid" onmousemove="zoom(event)" style="background-image: url(images/prueba.jpg)">
                         <img src="images/prueba.jpg" class="img-fluid" alt="Responsive image"/>
                     </figure>                    
                     <!--<img src="images/prueba.jpg" class="img-fluid mt-5 pt-5" alt="Responsive image" id="producto">-->
                 </div>
       
-                <div class="col-lg-6 mt-5 pt-5">
+                <div class="col-lg-6 mt-2">
                    
-                    <p class="h2 text-left mt-3">NOMBRE DEL PRODUCTO</p>
+                    <p class="h2 text-left mt-1">NOMBRE DEL PRODUCTO</p>
                     <p class="lead mt-3">Precio: $1500 MXN</p>
                     <form class="form-signin mx-auto mt-2">
                         <label for="cantidad" class="lead ">Cantidad: </label>
