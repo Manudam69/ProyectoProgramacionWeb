@@ -65,7 +65,7 @@ public final class Login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        </style>\n");
       out.write("    </head>\n");
       out.write("    <body class=\"text-center\">\n");
-      out.write("        <form class=\"form-signin mx-auto p-5 mt-5\" style=\"width: 400px;\" action=\"checklogin.jsp\">\n");
+      out.write("        <form class=\"form-signin mx-auto p-5 mt-5\" style=\"width: 400px;\" action=\"checklogin.jsp\" method=\"post\">\n");
       out.write("            <a href=\"./index.jsp\"><img class=\"mb-4\" src=\"images/logo.png\" alt=\"\" width=\"72\" height=\"72\"></a>\n");
       out.write("            <h1 class=\"h3 mb-3 font-weight-normal\">Iniciar sesión</h1>\n");
       out.write("            <label for=\"inputUser\" class=\"sr-only\">Usuario</label>\n");
@@ -77,9 +77,10 @@ public final class Login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                <label>\n");
       out.write("                    <input type=\"checkbox\" value=\"remember-me\"> Recuérdame.\n");
       out.write("                </label>\n");
+      out.write("                <p>¿Olvidaste tu contraseña? <a href=\"./Registro.jsp\">click aquí.</a></p>\n");
       out.write("            </div>\n");
       out.write("            <button class=\"btn btn-lg btn-primary btn-block\" type=\"submit\">Iniciar sesión</button>\n");
-      out.write("            <div style=\"color:red\">\n");
+      out.write("            <div  style=\"color:red;\">\n");
       out.write("            ");
 
                     if (request.getParameter("error") != null) {
