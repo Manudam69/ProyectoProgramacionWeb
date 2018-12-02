@@ -54,9 +54,21 @@
                             <a class="nav-link" href="./Ayuda.jsp">Ayuda</a>
                         </li>
                     </ul>
-                    <form class="form-inline my-2 my-lg-0" action="Login.jsp">
+                    <%
+                        if (session.getAttribute("usuario") == null) {
+                    %>
+                    <form class="form-inline my-2 my-lg-0" action="Login.jsp">                       
                         <button class="btn btn  my-2 my-sm-0" type="submit" id="sesion">Iniciar Sesión</button>
                     </form>
+                    <%
+                    } else {
+                    %>
+                    <a href="./carrito.jsp"><img src="images/carrito.png" class="img-fluid mb-3 mr-3" alt="Algo pasa" width="50"></a>
+                    <form class="form-inline my-2 my-lg-0" action="Cerrarsesion.jsp">                       
+                        <button class="btn btn  my-2 my-sm-0" type="submit" id="sesion">Cerrar Sesión</button>
+                    </form>
+                    
+                    <%}%>
                 </div>
             </nav>
         </header>
@@ -73,10 +85,10 @@
                     <div id="collapseTwo" class="collapse bg-light" role="tabpanel" aria-labelledby="headingTwo">
                         <div class="card-body text-muted">
                             <div class="list-group">
-                                <a href="https://www.google.com/" class="list-group-item list-group-item-action" target="producto">Computadoras de escritorio</a>
-                                <a href="" class="list-group-item list-group-item-action" target="producto">Laptops</a>
-                                <a href="" class="list-group-item list-group-item-action" target="producto">Celulares</a>
-                                <a href="" class="list-group-item list-group-item-action" target="producto">Producto 4</a>
+                                <a href="#" class="list-group-item list-group-item-action">Computadoras de escritorio</a>
+                                <a href="#" class="list-group-item list-group-item-action">Laptops</a>
+                                <a href="#" class="list-group-item list-group-item-action">Celulares</a>
+                                <a href="#" class="list-group-item list-group-item-action">Producto 4</a>
                             </div>
                         </div>
                     </div>
@@ -84,10 +96,6 @@
             </div>
 
         </div>
-        
-        
-
-
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>

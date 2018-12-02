@@ -53,10 +53,21 @@
                             <a class="nav-link" href="./Ayuda.jsp">Ayuda</a>
                         </li>
                     </ul>
-                    <form class="form-inline my-2 my-lg-0" action="Login.jsp">
+                    <%
+                        if (session.getAttribute("usuario") == null) {
+                    %>
+                    <form class="form-inline my-2 my-lg-0" action="Login.jsp">                       
                         <button class="btn btn  my-2 my-sm-0" type="submit" id="sesion">Iniciar Sesión</button>
-
                     </form>
+                    <%
+                    } else {
+                    %>
+                    <a href="./carrito.jsp"><img src="images/carrito.png" class="img-fluid mb-3 mr-3" alt="Algo pasa" width="50"></a>
+                    <form class="form-inline my-2 my-lg-0" action="Cerrarsesion.jsp">                       
+                        <button class="btn btn  my-2 my-sm-0" type="submit" id="sesion">Cerrar Sesión</button>
+                    </form>
+                    
+                    <%}%>
                 </div>
             </nav>
         </header>

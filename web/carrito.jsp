@@ -36,7 +36,7 @@
                             <a class="nav-link" href="./Vision.jsp">Visión</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Tienda</a>
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Tienda </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="./LineaBlanca.jsp">Linea blanca</a>
                                 <a class="dropdown-item" href="./Electronicos.jsp">Electrónicos</a>
@@ -52,11 +52,56 @@
                             <a class="nav-link" href="./Ayuda.jsp">Ayuda</a>
                         </li>
                     </ul>
-                    <form class="form-inline my-2 my-lg-0" action="Login.jsp">
+                    <%
+                        if (session.getAttribute("usuario") == null) {
+                    %>
+                    <form class="form-inline my-2 my-lg-0" action="Login.jsp">                       
                         <button class="btn btn  my-2 my-sm-0" type="submit" id="sesion">Iniciar Sesión</button>
                     </form>
+                    <%
+                    } else {
+                    %>
+                    <a href="./carrito.jsp"><img src="images/carrito.png" class="img-fluid mb-3 mr-3" alt="Algo pasa" width="50"></a>
+                    <form class="form-inline my-2 my-lg-0" action="Cerrarsesion.jsp">                       
+                        <button class="btn btn  my-2 my-sm-0" type="submit" id="sesion">Cerrar Sesión</button>
+                    </form>
+
+                    <%}%>
                 </div>
             </nav>
         </header>
+
+        <form action="./CheckOut.jsp">
+            <div class="container mt-5 pt-5">
+                <div class="text-center">
+                    <img src="images/carrito.png" class="img-fluid mb-3 mr-3 text-center" alt="Algo pasa" width="50">
+                    <p class="h1 ">CARRITO DE COMPRA</p>
+                </div>
+                <div class="media mt-5">
+                    <img class="d-flex mr-3" src="images/prueba.jpg" alt="Generic placeholder image" width="10%">
+                    <div class="media-body lead">
+                        <p class="h3 mt-0">Descripción</p>    
+                        La descripcion va aqui.
+                    </div>
+                </div>
+                <div class="text-right">
+                    <button type="button" class="btn btn-danger">Eliminar del carrito</button>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-12 text-right"><p class="lead">Cantidad de productos: 1</p></div>
+                    <div class="col-md-12 text-right"><p class="lead">Subtotal: $ 7500 MXN</p></div>
+                    <div class="col-md-12 text-right"><button type="submit" class="btn btn-success">Proceder al pago</button></div>              
+                </div>    
+            </div>
+
+        </form>
+
+
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     </body>
+
 </html>

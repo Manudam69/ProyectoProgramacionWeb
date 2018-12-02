@@ -51,9 +51,21 @@
                             <a class="nav-link" href="./Ayuda.jsp">Ayuda</a>
                         </li>
                     </ul>
-                    <form class="form-inline my-2 my-lg-0" action="Login.jsp">
+                    <%
+                        if (session.getAttribute("usuario") == null) {
+                    %>
+                    <form class="form-inline my-2 my-lg-0" action="Login.jsp">                       
                         <button class="btn btn  my-2 my-sm-0" type="submit" id="sesion">Iniciar Sesión</button>
                     </form>
+                    <%
+                    } else {
+                    %>
+                    <a href="./carrito.jsp"><img src="images/carrito.png" class="img-fluid mb-3 mr-3" alt="Algo pasa" width="50"></a>
+                    <form class="form-inline my-2 my-lg-0" action="Cerrarsesion.jsp">                       
+                        <button class="btn btn  my-2 my-sm-0" type="submit" id="sesion">Cerrar Sesión</button>
+                    </form>
+                    
+                    <%}%>
                 </div>
             </nav>
         </header>
@@ -80,7 +92,7 @@
                 <div class="col-lg-4">
                     <img class="rounded-circle" src="images/Manuel_Alonso.png" alt="Generic placeholder image" width="140" height="140">
                     <h2>Manuel David Alonso Muñoz</h2>
-                    <p class="text-justify">Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
+                    <p class="text-justify"></p>
 
                 </div>
 
