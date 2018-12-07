@@ -4,6 +4,9 @@
     Author     : MD
 --%>
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="clases.Producto"%>
+<%@page import="clases.ProductoCarrito"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -14,6 +17,8 @@
         <link rel="stylesheet" href="css/index.css">
         <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Saira" rel="stylesheet">
+        <jsp:useBean id="objConn" class="mySql.MySqlConn"/>
+        <script src="./js/AjaxFunciones.js"></script> 
         <link rel="icon" type="image/png" href="images/logo.png">
     </head>
     <body>
@@ -72,25 +77,119 @@
         </header>
 
         <form action="./CheckOut.jsp">
-            <div class="container mt-5 pt-5">
+            <div class="container mt-5 pt-5" id="TablaAct">
                 <div class="text-center">
                     <img src="images/carrito.png" class="img-fluid mb-3 mr-3 text-center" alt="Algo pasa" width="50">
                     <p class="h1 ">CARRITO DE COMPRA</p>
                 </div>
+
+                <%
+                    HttpSession sesion = request.getSession(true);
+
+                    ArrayList<ProductoCarrito> lista_c = (ArrayList<ProductoCarrito>) request.getSession().getAttribute("listacom");
+
+                    //Variables para mostrar el carrito
+                    int subtotalAPagar = 0;
+                    int cantidadP = 0;
+                    int precio_p = 0, existencias = 0, id_P = 0;
+                    String nombre_P = "", descrip = "";
+                    Boolean agregado = false;
+
+                    //Variables para las coincidencias
+                    Boolean prod_enc = false;
+                    int cantidad_p = 0;
+
+                    String id_pRec = request.getParameter("id_producto");
+
+                    if (id_pRec != null) {
+                        int id_p = Integer.parseInt(id_pRec);
+
+                        String cantidad_pRec = request.getParameter("cantidad");
+                        cantidad_p = Integer.parseInt(cantidad_pRec);
+                        request.setAttribute("cantidad", "0");
+
+                        //SQL Query para recuperar los valores del producto de la BD
+                        String query = "select * from farolito.productos where id_p = '" + id_pRec + "'";
+                        objConn.Consult(query);
+
+                        precio_p = objConn.rs.getInt(2);
+                        //Si se cambia a float el precio sería cambiar a objConn.rs.getFloat(2)
+                        //Tambien se tendría que redondear con math.round(subtotal a pagar)
+                        existencias = objConn.rs.getInt(3);
+                        nombre_P = objConn.rs.getString(4);
+                        descrip = objConn.rs.getString(5);
+
+                        Producto p = new Producto(id_p, precio_p, existencias, nombre_P, descrip);
+
+                        //Añadir mas cantidad a productos
+                        for (int j = 0; j < lista_c.size(); j++) {
+                            ProductoCarrito aux = lista_c.get(j); //Lo que se va a comparar si esta 
+                            Producto Norm = aux.getP();
+                            if (id_p == Norm.getId()) {
+                                int cAux = aux.getCantidad() + cantidad_p;
+                                aux.setCantidad(cAux);
+                                lista_c.add(j, aux);
+                                lista_c.remove(j);
+                                prod_enc = true;
+                                break;
+                            }
+                        }
+
+                        if (prod_enc == false) {
+                            lista_c.add(new ProductoCarrito(p, cantidad_p));
+                        }
+                        session.setAttribute("listacom", lista_c); //Variable de session para la lista de compras
+                        response.sendRedirect("carrito.jsp");  //Variable que redirige al carrito.jsp pero sin los valores de la cantidad
+                    }
+
+                %>  
+
+
+                <%                    if (lista_c.size() > 0) {
+                        for (int i = 0; i < lista_c.size(); i++) {
+                            ProductoCarrito aux = lista_c.get(i);
+                            Producto Norm = aux.getP();
+
+                            id_P = Norm.getId();
+                            nombre_P = Norm.getNombre();
+                            precio_p = Norm.getPrecio();
+                            descrip = Norm.getDescrip();
+                            cantidad_p = lista_c.get(i).getCantidad();
+
+                            int cuenta = cantidad_p * precio_p;
+                            subtotalAPagar += cuenta;
+
+                %>
                 <div class="media mt-5">
-                    <img class="d-flex mr-3" src="images/prueba.jpg" alt="Generic placeholder image" width="10%">
+                    <img class="d-flex mr-3" src="imagen.jsp?id=<%=id_P%>" alt="Generic placeholder image" width="10%">
                     <div class="media-body lead">
-                        <p class="h3 mt-0">Descripción</p>    
-                        La descripcion va aqui.
+                        <p class="h3 mt-0"><%=nombre_P%></p>    
+                        Precio Unitario: $<%=precio_p%>
+                        <br>
+                        Descripcion: <%=descrip%>
+                        <br>
+                        Cantidad: <%=cantidad_p%>
                     </div>
                 </div>
                 <div class="text-right">
-                    <button type="button" class="btn btn-danger">Eliminar del carrito</button>
+                    <button type="button" class="btn btn-danger" onclick="eliminarProd(<%=id_P%>);">Eliminar del carrito</button>
                 </div>
+
+                <%     }
+                    }
+
+                    //Cantidad de productos en el carrito
+                    int cantCar = 0;
+                    for (int i = 0; i < lista_c.size(); i++) {
+                        cantCar += lista_c.get(i).getCantidad();
+                    }
+
+                %>  
                 <hr>
+                <br>
                 <div class="row">
-                    <div class="col-md-12 text-right"><p class="lead">Cantidad de productos: 1</p></div>
-                    <div class="col-md-12 text-right"><p class="lead">Subtotal: $ 7500 MXN</p></div>
+                    <div class="col-md-12 text-right"><p class="lead">Cantidad de productos: <%=cantCar%> </p></div>
+                    <div class="col-md-12 text-right"><p class="lead">Subtotal: $ <%=Math.round(subtotalAPagar * 100) / 100%> MXN</p></div>
                     <div class="col-md-12 text-right"><button type="submit" class="btn btn-success">Proceder al pago</button></div>              
                 </div>    
             </div>

@@ -105,9 +105,11 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
                     } else {
                     
       out.write("\n");
+      out.write("                    <a href=\"./carrito.jsp\"><img src=\"images/carrito.png\" class=\"img-fluid mb-3 mr-3\" alt=\"Algo pasa\" width=\"50\"></a>\n");
       out.write("                    <form class=\"form-inline my-2 my-lg-0\" action=\"Cerrarsesion.jsp\">                       \n");
       out.write("                        <button class=\"btn btn  my-2 my-sm-0\" type=\"submit\" id=\"sesion\">Cerrar Sesión</button>\n");
       out.write("                    </form>\n");
+      out.write("                    \n");
       out.write("                    ");
 }
       out.write("\n");
@@ -115,7 +117,7 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            </nav>\n");
       out.write("        </header>\n");
       out.write("\n");
-      out.write("        <div class=\"bd-example mt-5 mb-1 pt-5\">\n");
+      out.write("        <div class=\"bd-example mt-5 mb-0 pt-5\">\n");
       out.write("            <div id=\"carouselExampleCaptions\" class=\"carousel slide\" data-ride=\"carousel\">\n");
       out.write("                <ol class=\"carousel-indicators\">\n");
       out.write("                    <li data-target=\"#carouselExampleCaptions\" data-slide-to=\"0\" class=\"active\"></li>\n");

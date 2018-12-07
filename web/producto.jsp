@@ -4,6 +4,9 @@
     Author     : MD
 --%>
 
+<%@page import="clases.Producto"%>
+<%@page import="clases.ProductoCarrito"%>
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -61,6 +64,7 @@
                     <%
                     } else {
                     %>
+                    
                     <a href="./carrito.jsp"><img src="images/carrito.png" class="img-fluid mb-3 mr-3" alt="Algo pasa" width="50"></a>
                     <form class="form-inline my-2 my-lg-0" action="Cerrarsesion.jsp">                       
                         <button class="btn btn  my-2 my-sm-0" type="submit" id="sesion">Cerrar Sesión</button>
@@ -73,22 +77,44 @@
 
         <div class="container mt-5 pt-5">
 
+         <%
+           ArrayList<ProductoCarrito> lista_c = (ArrayList<ProductoCarrito>) request.getSession().getAttribute("listacom");
+           ArrayList<Producto> lista_p = (ArrayList<Producto>) request.getSession().getAttribute("listap");
+           
+          String valorP = (String) request.getParameter("id_producto");
+          int id_P = Integer.parseInt(valorP);
+          
+          String nombre="", descrip="";
+          int precio=0;
+          int existenciaAct=0;
+             
+          for (int i = 0; i < lista_p.size(); i++) {
+             if(id_P  == lista_p.get(i).getId()){
+                 nombre = lista_p.get(i).getNombre();
+                 descrip = lista_p.get(i).getDescrip();
+                 precio = lista_p.get(i).getPrecio();
+                 existenciaAct = lista_p.get(i).getExistencia();
+                 lista_p = null;
+                 break;
+              }
+           }
+
+         %>             
             <div class="row mt-3">
                 <div class="col-lg-6 px-5">
-                    <figure class="zoom img-fluid" onmousemove="zoom(event)" style="background-image: url(images/prueba.jpg)">
-                        <img src="images/prueba.jpg" class="img-fluid" alt="Responsive image"/>
+                    <figure class="zoom img-fluid" onmousemove="zoom(event)" style="background-image: url(imagen.jsp?id=<%=id_P%>)">
+                        <img src="imagen.jsp?id=<%=id_P%>" class="img-fluid" alt="Responsive image"/>
                     </figure>                    
                     <!--<img src="images/prueba.jpg" class="img-fluid mt-5 pt-5" alt="Responsive image" id="producto">-->
                 </div>
       
                 <div class="col-lg-6 mt-2">
                    
-                    <p class="h2 text-left mt-1">NOMBRE DEL PRODUCTO</p>
-                    <p class="lead mt-3">Precio: $1500 MXN</p>
-                    <form class="form-signin mx-auto mt-2">
+                    <p class="h2 text-left mt-1"><%=nombre%></p>
+                    <p class="lead mt-3">Precio: $<%=precio%> MXN</p>
+                    <form class="form-signin mx-auto mt-2" action="carrito.jsp" method="get">
                         <label for="cantidad" class="lead ">Cantidad: </label>
                         <select class="custom-select w-25 mb-1 " name="cantidad"> 
-
                             <option value="0">Elegir...</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -96,6 +122,7 @@
                             <option value="4">4</option>
                             <option value="5">5</option>
                         </select>
+                        <input type="hidden" name="id_producto" value="<%=id_P%>">  <!--Manda el id del producto escondido --> 
                         <br>
                         
                         <button class="btn btn-lg btn-primary btn-block mb-0 w-75 mt-5" type="submit">Agregar al carrito</button>
@@ -117,18 +144,7 @@
                     <p class="h3">DESCRIPCIÓN DEL PRODUCTO</p>
                     <p class="lead text-justify">
                         <span>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
-                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </span>
-                        <span>
-                            Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, 
-                            turpis et commodo pharetra, est eros bibendum elit, nec luctus magna felis sollicitudin mauris. 
-                            Integer in mauris eu nibh euismod gravida. Duis ac tellus et risus vulputate vehicula. 
-                            Donec lobortis risus a elit. Etiam tempor. Ut ullamcorper, ligula eu tempor congue, eros est euismod turpis. 
-
+                           <%=descrip%>
                         </span>
                     </p>
                 </div>
