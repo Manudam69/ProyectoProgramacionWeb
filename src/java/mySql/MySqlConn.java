@@ -21,7 +21,7 @@ public class MySqlConn {
     public Statement stmt = null;
     public ResultSet rs = null;
     public Connection conn = null;
-    public PreparedStatement psmt=null;
+    public PreparedStatement psmt = null;
 
     public MySqlConn() {
         //Conectar con mysql...
@@ -50,6 +50,23 @@ public class MySqlConn {
                 rs = stmt.getResultSet(); //obtiene los resultados
                 //se coloca sobre el primer registro
                 rs.first();
+            }
+        } catch (SQLException ex) {
+            System.out.println("SQLException: " + ex.getMessage());
+            System.out.println("SQLState: " + ex.getSQLState());
+            System.out.println("Error: " + ex.getErrorCode());
+        }
+    }
+
+    public void Consultar() {
+        String query = "SELECT * FROM farolito.productos p;";
+        try {
+            stmt = conn.createStatement();
+            rs = stmt.executeQuery(query); //envia una consulta devuelve un objeto ResultSet para su implementacion
+            if (rs != null) {
+                rs.first();
+                rs = stmt.getResultSet(); //obtiene los resultados
+                //se coloca sobre el primer registro
             }
         } catch (SQLException ex) {
             System.out.println("SQLException: " + ex.getMessage());
@@ -99,61 +116,35 @@ public class MySqlConn {
         rs = null;
     }
 
-    public void CrearDB(boolean b) {
+    public void RetriveData() {
         Connection connection = null;
         try {
-            Class.forName("com.mysql.jdbc.Driver").newInstance();
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306", "root", "1234");
-            Statement statement = connection.createStatement();
-            String query = "create data base if not exists empresa";
-            statement.executeUpdate(query);
-            b=true;
-
-        } catch (Exception e) {
-            b=false;
-        }
-    }
-
-    public void CrearTabla(boolean b) {
-        Connection connection = null;
-        try {
-            Class.forName("com.mysql.jdbc.Driver").newInstance();
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/farolito", "root", "1234");
             Statement statement = connection.createStatement();
-            String query = "create table if not exists empleado (nombre varchar(40),edad integer, area_Trabajo varchar(40), sueldo integer);";
-            statement.executeUpdate(query);
-           b=true;
-        } catch (Exception e) {
-           b=false;
-        }
-    }
-    public void RetriveData(){
-        Connection connection =null;
-        try{
-            connection= DriverManager.getConnection("jdbc:mysql://localhost:3306/farolito", "root", "1234");
-            Statement statement = connection.createStatement();
-            String query="select * from farolito.productos p;";
+            String query = "select * from farolito.productos p;";
             statement.execute(query);
-        }catch(Exception e){       
+        } catch (Exception e) {
+        }
+
     }
-        
-    }
-    public void add(int id,int precio, int exsist, String nombre, String desc, FileInputStream fis, File file)throws SQLException{
-        psmt= conn.prepareStatement("insert into productos (idProductos, precio, existencias,nombre,descripcion,image)"+"values(?,?,?,?,?,?)");
+
+    public void add(int id, int precio, int exsist, String nombre, String desc, FileInputStream fis, File file, String tipo) throws SQLException {
+        psmt = conn.prepareStatement("insert into productos (id_p, precio, existencias,nombre,descripcion,image,tipo)" + "values(?,?,?,?,?,?,?)");
         psmt.setInt(1, id);
         psmt.setInt(2, precio);
         psmt.setInt(3, exsist);
         psmt.setString(4, nombre);
         psmt.setString(5, desc);
-        psmt.setBinaryStream(6, (InputStream) fis, (int)(file.length()));
+        psmt.setBinaryStream(6, (InputStream) fis, (int) (file.length()));
+        psmt.setString(7, tipo);
         psmt.executeUpdate();
         conn.close();
         psmt.close();
     }
-    
-    public void addUsr(int id, String usr, String pass, String mail, String nomb, int preg, String res) throws SQLException{
-        String query= "insert into usuarios(id, Usuario, Contra, Correo, Nombre, Pregunta, Respuesta)"+"values(?,?,?,?,?,?,?)";
-        psmt=conn.prepareStatement(query);
+
+    public void addUsr(int id, String usr, String pass, String mail, String nomb, int preg, String res) throws SQLException {
+        String query = "insert into usuarios(id, Usuario, Contra, Correo, Nombre, Pregunta, Respuesta)" + "values(?,?,?,?,?,?,?)";
+        psmt = conn.prepareStatement(query);
         psmt.setInt(1, id);
         psmt.setString(2, usr);
         psmt.setString(3, pass);
@@ -161,6 +152,20 @@ public class MySqlConn {
         psmt.setString(5, nomb);
         psmt.setInt(6, preg);
         psmt.setString(7, res);
+        psmt.executeUpdate();
+        conn.close();
+        psmt.close();
+    }
+
+    public void Cambios(String n,int precio, int exsist, String nombre, String desc, FileInputStream fis, File file, String tipo) throws SQLException {
+        String query = "UPDATE productos SET precio=?, existencias=?, nombre=?, descripcion=?, image=?, tipo=?" + "WHERE nombre ='" + n + "';";
+        psmt = conn.prepareStatement(query);
+        psmt.setInt(1, precio);
+        psmt.setInt(2, exsist);
+        psmt.setString(3, nombre);
+        psmt.setString(4, desc);
+        psmt.setBinaryStream(5, (InputStream) fis, (int) (file.length()));
+        psmt.setString(6, tipo);
         psmt.executeUpdate();
         conn.close();
         psmt.close();

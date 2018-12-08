@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<jsp:useBean id="objConn" class="mySql.MySqlConn"/>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -67,37 +68,57 @@
                     <form class="form-inline my-2 my-lg-0" action="Cerrarsesion.jsp">                       
                         <button class="btn btn  my-2 my-sm-0" type="submit" id="sesion">Cerrar Sesión</button>
                     </form>
-                    
+
                     <%}%>
                 </div>
             </nav>
         </header>
-        
+        <%
+            String query = "select * from farolito.productos";
+            objConn.Consult(query);
+            int id = 0, precio = 0, existencias = 0;
+            String nombre = "", descrip = "", tipo = "";
+            objConn.rs.beforeFirst();
+
+        %>
         <div class="mt-5 mb-5 row container-fluid"></div>
         <div class="bg mt-0 mb-0">
             <div id="accordion" role="tablist">
-
+                
                 <div class="card" style="border-radius: 0px; border: transparent 1px solid;">
                     <div class="card-header" role="tab" id="headingTwo">
                         <h5 class="mb-0">
                             <a class="collapsed text-muted" data-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">PRODUCTOS</a>
                         </h5>
                     </div>
+
                     <div id="collapseTwo" class="collapse bg-light" role="tabpanel" aria-labelledby="headingTwo">
                         <div class="card-body text-muted">
+                          
                             <div class="list-group">
-                                <a href="#!" class="list-group-item list-group-item-action">Producto 1</a>
-                                <a href="#!" class="list-group-item list-group-item-action">Producto 2</a>
-                                <a href="#!" class="list-group-item list-group-item-action">Producto 3</a>
-                                <a href="#!" class="list-group-item list-group-item-action">Producto 4</a>
+                                <%                                    
+                                    while (objConn.rs.next()) {
+                                        id = objConn.rs.getInt(1);
+                                        precio = objConn.rs.getInt(2);
+                                        existencias = objConn.rs.getInt(3);
+                                        nombre = objConn.rs.getString(4);
+                                        descrip = objConn.rs.getString(5);
+                                        tipo = objConn.rs.getString(7);
+                                        if (tipo.equals("Linea Blanca")) {
+                                %>
+                                <a href="#!" class="list-group-item list-group-item-action"><img src="imagen.jsp?id=<%=id%>" alt="<%=nombre%>.jpg"></a>
+                                <%
+                                        }
+                                    }
+                                %>
                             </div>
-
-
                         </div>
                     </div>
                 </div>
+                    jkdshfkjsdhfkjsd        
             </div> 
         </div>
+                            
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>

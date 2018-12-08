@@ -37,9 +37,8 @@
                 /*Se va actualizar la lista */
             }
             int id_p = 0, precio_p = 0, existencias = 0;
-            String nombre_p = "", imagen_p = "", descrip = "";
+            String nombre_p = "", descrip = "", tipo="";
             int numP = 0;
-            String desc_p = "";
             //SQL Query para recuperar los valores de una tabla
             String query = "select * from farolito.productos";
             objConn.Consult(query);
@@ -67,6 +66,7 @@
                             existencias = objConn.rs.getInt(3);
                             nombre_p = objConn.rs.getString(4);
                             descrip = objConn.rs.getString(5);
+                            tipo=objConn.rs.getString(7);
                             numeroProd = Integer.toString(numP);
                             numP++;
                             aux = new Producto(id_p, precio_p, existencias, nombre_p, descrip);

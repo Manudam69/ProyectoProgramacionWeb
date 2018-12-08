@@ -33,7 +33,7 @@
     </head>
     <body class="text-center">
         <div class="container">
-            <form class="form-signin mx-auto p-5 mt-5" onsubmit="return validarPassword(this)" method="get" action="usrDB.jsp">
+            <form class="form-signin mx-auto p-5 mt-5" onsubmit="return validarPassword(this)" method="post" action="usrDB.jsp">
                 <a href="./index.jsp"><img class="mb-4" src="images/logo.png" alt="" width="72" height="72"></a>
                 <h1 class="h3 mb-3 font-weight-normal">Crear cuenta</h1>
                 <input type="number" name="id" placeholder="<%=i+1%>" value="<%=i+1%>" min="<%=i + 1%>" max="<%=i + 1%>" hidden>
