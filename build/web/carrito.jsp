@@ -164,11 +164,9 @@
                     <img class="d-flex mr-3" src="imagen.jsp?id=<%=id_P%>" alt="Generic placeholder image" width="10%">
                     <div class="media-body lead">
                         <p class="h3 mt-0"><%=nombre_P%></p>    
-                        Precio Unitario: $<%=precio_p%>
-                        <br>
-                        Descripcion: <%=descrip%>
-                        <br>
-                        Cantidad: <%=cantidad_p%>
+                        <p>Precio Unitario: $<%=precio_p%></p>                    
+                        <p><%=descrip%></p>                       
+                        <p>Cantidad: <%=cantidad_p%></p>
                     </div>
                 </div>
                 <div class="text-right">
@@ -176,7 +174,12 @@
                 </div>
 
                 <%     }
-                    }
+                } else {
+                %>
+                <p class="h2 text-center mt-5 pt-5">TU CARRITO ESTA VACÍO</p>
+                <p class="lead text-center mb-5"><a href="./productos.jsp">Comprar ahora.</a></p>
+
+                <%}
 
                     //Cantidad de productos en el carrito
                     int cantCar = 0;
@@ -187,11 +190,13 @@
                 %>  
                 <hr>
                 <br>
-                <div class="row">
+                 <%if (lista_c.size() > 0) {%>
+                <div class="row mb-5">
                     <div class="col-md-12 text-right"><p class="lead">Cantidad de productos: <%=cantCar%> </p></div>
                     <div class="col-md-12 text-right"><p class="lead">Subtotal: $ <%=Math.round(subtotalAPagar * 100) / 100%> MXN</p></div>
                     <div class="col-md-12 text-right"><button type="submit" class="btn btn-success">Proceder al pago</button></div>              
-                </div>    
+                </div>   
+                    <%}%>
             </div>
 
         </form>
