@@ -24,6 +24,14 @@
             }
 
         </style>
+        <script>
+            function f(){
+                var cont = 0;
+                cont = cont+1;
+                 document.getElementById("hola").innerHTML = cont;
+            }
+            
+        </script>
     </head>
     <body class="text-center">
         <form class="form-signin mx-auto p-5 mt-5" style="width: 400px;" action="checklogin.jsp" method="post">
@@ -41,9 +49,9 @@
               
                 
             </div>
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Iniciar sesión</button>
+            <button class="btn btn-lg btn-primary btn-block" type="submit" onclick="f()">Iniciar sesión</button>
             
-            <div  style="color:red;">
+            <div  style="color:red;" id="hola">
             <%
                     if (request.getParameter("error") != null) {
                         out.println(request.getParameter("error"));
