@@ -77,9 +77,11 @@ public final class Login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                <label>\n");
       out.write("                    <input type=\"checkbox\" value=\"remember-me\"> Recuérdame.\n");
       out.write("                </label>\n");
-      out.write("                <p>¿Olvidaste tu contraseña? <a href=\"./Registro.jsp\">click aquí.</a></p>\n");
+      out.write("              \n");
+      out.write("                \n");
       out.write("            </div>\n");
       out.write("            <button class=\"btn btn-lg btn-primary btn-block\" type=\"submit\">Iniciar sesión</button>\n");
+      out.write("            \n");
       out.write("            <div  style=\"color:red;\">\n");
       out.write("            ");
 
@@ -89,7 +91,9 @@ public final class Login_jsp extends org.apache.jasper.runtime.HttpJspBase
             
       out.write("\n");
       out.write("            </div>\n");
-      out.write("            <p class=\"mt-2\">¿Eres un cliente nuevo? <a href=\"./Registro.jsp\">Empieza aquí.</a></p>\n");
+      out.write("            <p class=\"mt-2\">¿Eres un cliente nuevo? <a href=\"./Registro.jsp\">Empieza aquí.</a><br>\n");
+      out.write("            <a href=\"./Recuperacion.jsp\">¿Olvidaste tu contraseña?</a> \n");
+      out.write("            </p>\n");
       out.write("        </form>\n");
       out.write("        <script src=\"https://code.jquery.com/jquery-3.3.1.slim.min.js\" integrity=\"sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo\" crossorigin=\"anonymous\"></script>\n");
       out.write("        <script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js\" integrity=\"sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49\" crossorigin=\"anonymous\"></script>\n");

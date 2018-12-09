@@ -76,7 +76,7 @@
             </nav>
         </header>
 
-        <form action="./CheckOut.jsp">
+       <form action="./Address.jsp" method="get">
             <div class="container mt-5 pt-5" id="TablaAct">
                 <div class="text-center">
                     <img src="images/carrito.png" class="img-fluid mb-3 mr-3 text-center" alt="Algo pasa" width="50">
@@ -87,7 +87,8 @@
                     HttpSession sesion = request.getSession(true);
 
                     ArrayList<ProductoCarrito> lista_c = (ArrayList<ProductoCarrito>) request.getSession().getAttribute("listacom");
-
+                    
+                    if(lista_c != null){
                     //Variables para mostrar el carrito
                     int subtotalAPagar = 0;
                     int cantidadP = 0;
@@ -98,7 +99,7 @@
                     //Variables para las coincidencias
                     Boolean prod_enc = false;
                     int cantidad_p = 0;
-
+                
                     String id_pRec = request.getParameter("id_producto");
 
                     if (id_pRec != null) {
@@ -196,7 +197,11 @@
                     <div class="col-md-12 text-right"><p class="lead">Subtotal: $ <%=Math.round(subtotalAPagar * 100) / 100%> MXN</p></div>
                     <div class="col-md-12 text-right"><button type="submit" class="btn btn-success">Proceder al pago</button></div>              
                 </div>   
-                    <%}%>
+                    <%}
+                    } else{ %>
+                     <p class="h2 text-center mt-5 pt-5">TU CARRITO ESTA VACÍO</p>
+                     <p class="lead text-center mb-5"><a href="./productos.jsp">Comprar ahora.</a></p>
+                  <%} %>
             </div>
 
         </form>
