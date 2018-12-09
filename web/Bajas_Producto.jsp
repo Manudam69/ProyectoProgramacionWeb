@@ -37,7 +37,7 @@
         obj.Consultar();
             obj.rs.beforeFirst();//para tomar el primer registro
             while (obj.rs.next()) {
-                nombre = obj.rs.getString(4);
+                nombre = obj.rs.getString(1);
                 lista.add(nombre);
             }
         %>
@@ -48,7 +48,7 @@
                 <a href="./index.jsp"><img class="mb-4" src="images/logo.png" alt="" width="72" height="72"></a>
                 <br>
 
-                <label for="producto" class="">Producto a borrar</label>
+                <label for="producto" class="">ID del producto a borrar</label>
                 <select class="custom-select d-block w-100 mb-5" name="producto">
                     <%for (int i = 0; i < lista.size(); i++) {
                             out.println("<option value=" + lista.get(i) + ">" + lista.get(i) + "</option>");
