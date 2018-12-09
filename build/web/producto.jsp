@@ -18,6 +18,7 @@
         <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Saira" rel="stylesheet">
         <link rel="icon" type="image/png" href="images/logo.png">
+        <script src="./js/producto.js"></script> 
     </head>
     <body>
         <header class="pb-2">
@@ -114,8 +115,8 @@
                     <p class="lead mt-3">Precio: $<%=precio%> MXN</p>
                     <form class="form-signin mx-auto mt-2" action="carrito.jsp" method="get">
                         <label for="cantidad" class="lead ">Cantidad: </label>
-                        <select class="custom-select w-25 mb-1 " name="cantidad"> 
-                            <option value="0">Elegir...</option>
+                        <select class="custom-select w-25 mb-1" name="cantidad"> 
+                            
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
