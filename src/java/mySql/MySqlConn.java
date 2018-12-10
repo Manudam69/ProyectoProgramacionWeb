@@ -158,7 +158,8 @@ public class MySqlConn {
     }
 
     public void Cambios(String n, int precio, int exsist, String nombre, String desc, FileInputStream fis, File file, String tipo) throws SQLException {
-        String query = "UPDATE productos SET precio=?, existencias=?, nombre=?, descripcion=?, image=?, tipo=?" + "WHERE nombre ='" + n + "';";
+        String query = "UPDATE productos SET precio=?, existencias=?, nombre=?, descripcion=?, image=?, tipo=?" + "WHERE id_p ='" + n + "';";
+       // String query = "UPDATE productos SET precio = ? , existencias=?, nombre=?, descripcion=?" + "WHERE name ='" + user + "';";
         psmt = conn.prepareStatement(query);
         psmt.setInt(1, precio);
         psmt.setInt(2, exsist);
@@ -171,6 +172,14 @@ public class MySqlConn {
         psmt.close();
     }
 
+    public void Bajas(String producto) throws SQLException {
+        String query = "delete from productos where id_p ='" + producto + "';";
+        psmt = conn.prepareStatement(query);
+        psmt.executeUpdate();
+        conn.close();
+        psmt.close();
+
+    }
     public void InvalidaPass(String usr) throws SQLException {
         String query = "UPDATE farolito.usuarios SET Contra=?" + "WHERE Usuario ='" + usr + "';";
         String temp ="827ccbeea8a706c4c34a16891f84e7b";//Esto es 12345 encriptado =)

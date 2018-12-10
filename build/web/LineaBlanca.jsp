@@ -145,7 +145,7 @@
                                 lista_p.add(aux);
                     %>
                     <tr>
-                        <td style="width: 15%"><button style="background-color: transparent; border: solid transparent 1px;" name="producto" value="<%=id%>">Enviar</button><img src="imagen.jsp?id=<%=id%>" alt="<%=nombre%>.jpg" class="imagen"></td>
+                        <td style="width: 15%"><button style="background-color: transparent; border: solid transparent 1px;" name="producto" value="<%=id%>"><img src="imagen.jsp?id=<%=id%>" alt="<%=nombre%>.jpg" class="imagen"></button></td>
                         <td style="width: 5%"><%=nombre%></td>
                         <td style="width: 50%"><%=descrip%></td>
                         <td align="center" style="width: 10%">$ <%=precio%></td>
