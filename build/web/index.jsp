@@ -60,14 +60,23 @@
                         <button class="btn btn  my-2 my-sm-0" type="submit" id="sesion">Iniciar Sesión</button>
                     </form>
                     <%
-                    } else {
+                    } else if (session.getAttribute("admin").equals("true")){
                     %>
                     <a href="./carrito.jsp"><img src="images/carrito.png" class="img-fluid mb-3 mr-3" alt="Algo pasa" width="50"></a>
                     <form class="form-inline my-2 my-lg-0" action="Cerrarsesion.jsp">                       
                         <button class="btn btn  my-2 my-sm-0" type="submit" id="sesion">Cerrar Sesión</button>
                     </form>
-                    
-                    <%}%>
+                    <div>
+                        <a class="nav-link" href="#">ABC Productos</a>
+                        <a class="nav-link" href="#">Graficas</a>
+                    </div>
+                    <%} else {
+                    %>
+                    <a href="./carrito.jsp"><img src="images/carrito.png" class="img-fluid mb-3 mr-3" alt="Algo pasa" width="50"></a>
+                    <form class="form-inline my-2 my-lg-0" action="Cerrarsesion.jsp">                       
+                        <button class="btn btn  my-2 my-sm-0" type="submit" id="sesion">Cerrar Sesión</button>
+
+                        <%}%>
                 </div>
             </nav>
         </header>

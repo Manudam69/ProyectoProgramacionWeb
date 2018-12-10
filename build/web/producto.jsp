@@ -82,7 +82,7 @@
            ArrayList<ProductoCarrito> lista_c = (ArrayList<ProductoCarrito>) request.getSession().getAttribute("listacom");
            ArrayList<Producto> lista_p = (ArrayList<Producto>) request.getSession().getAttribute("listap");
            
-          String valorP = (String) request.getParameter("id_producto");
+          String valorP = (String) request.getParameter("producto");
           int id_P = Integer.parseInt(valorP);
           
           String nombre="", descrip="";

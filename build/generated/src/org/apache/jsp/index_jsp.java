@@ -103,11 +103,15 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                    ");
 
                     } else {
+
                     
       out.write("\n");
       out.write("                    <a href=\"./carrito.jsp\"><img src=\"images/carrito.png\" class=\"img-fluid mb-3 mr-3\" alt=\"Algo pasa\" width=\"50\"></a>\n");
       out.write("                    <form class=\"form-inline my-2 my-lg-0\" action=\"Cerrarsesion.jsp\">                       \n");
       out.write("                        <button class=\"btn btn  my-2 my-sm-0\" type=\"submit\" id=\"sesion\">Cerrar Sesión</button>\n");
+      out.write("                        <p>");
+      out.print(session.getAttribute("admin"));
+      out.write("</p>\n");
       out.write("                    </form>\n");
       out.write("                    \n");
       out.write("                    ");

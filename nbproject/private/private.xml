@@ -3,10 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Jafet/Desktop/sql1/ProyectoPrograWeb/ProyectoProgramacionWeb/src/java/mySql/MySqlConn.java</file>
-            <file>file:/C:/Users/Jafet/Desktop/sql1/ProyectoPrograWeb/ProyectoProgramacionWeb/web/Login.jsp</file>
-            <file>file:/C:/Users/Jafet/Desktop/sql1/ProyectoPrograWeb/ProyectoProgramacionWeb/web/invalida.jsp</file>
-            <file>file:/C:/Users/Jafet/Desktop/sql1/ProyectoPrograWeb/ProyectoProgramacionWeb/web/checklogin.jsp</file>
+            <file>file:/C:/Users/Ramiro/Desktop/ProyectoProgramacionWeb/src/java/clases/CryptWithMD5.java</file>
+            <file>file:/C:/Users/Ramiro/Desktop/ProyectoProgramacionWeb/web/Registro.jsp</file>
+            <file>file:/C:/Users/Ramiro/Desktop/ProyectoProgramacionWeb/web/Login.jsp</file>
+            <file>file:/C:/Users/Ramiro/Desktop/ProyectoProgramacionWeb/web/LineaBlanca.jsp</file>
+            <file>file:/C:/Users/Ramiro/Desktop/ProyectoProgramacionWeb/web/checklogin.jsp</file>
+            <file>file:/C:/Users/Ramiro/Desktop/ProyectoProgramacionWeb/src/java/mySql/MySqlConn.java</file>
         </group>
     </open-files>
 </project-private>

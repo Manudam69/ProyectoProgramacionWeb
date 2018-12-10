@@ -173,7 +173,7 @@ public class MySqlConn {
 
     public void InvalidaPass(String usr) throws SQLException {
         String query = "UPDATE farolito.usuarios SET Contra=?" + "WHERE Usuario ='" + usr + "';";
-        String temp ="12345";
+        String temp ="827ccbeea8a706c4c34a16891f84e7b";//Esto es 12345 encriptado =)
         psmt = conn.prepareStatement(query);
         psmt.setString(1, temp);
         

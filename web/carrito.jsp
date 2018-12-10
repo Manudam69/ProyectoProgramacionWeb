@@ -22,6 +22,13 @@
         <link rel="icon" type="image/png" href="images/logo.png">
     </head>
     <body>
+        <%
+            if (session.getAttribute("usuario") == null) {
+        %>
+        <jsp:forward page="Login.jsp">
+            <jsp:param name="error" value="Necesitas estar con una sesion activa para comprar"/>
+        </jsp:forward>
+        <%}%>
         <header class="pb-2">
             <nav class="navbar navbar-expand-lg navbar-light fixed-top">
                 <a class="navbar-brand" href="./index.jsp" id="logo">
@@ -60,14 +67,14 @@
                     <%
                         if (session.getAttribute("usuario") == null) {
                     %>
-                    <form class="form-inline my-2 my-lg-0" action="Login.jsp">                       
+                    <form class="form-inline my-2 my-lg-0" action="Login.jsp" method="post">                       
                         <button class="btn btn  my-2 my-sm-0" type="submit" id="sesion">Iniciar Sesión</button>
                     </form>
                     <%
                     } else {
                     %>
                     <a href="./carrito.jsp"><img src="images/carrito.png" class="img-fluid mb-3 mr-3" alt="Algo pasa" width="50"></a>
-                    <form class="form-inline my-2 my-lg-0" action="Cerrarsesion.jsp">                       
+                    <form class="form-inline my-2 my-lg-0" action="Cerrarsesion.jsp" method="post">                       
                         <button class="btn btn  my-2 my-sm-0" type="submit" id="sesion">Cerrar Sesión</button>
                     </form>
 
@@ -178,7 +185,7 @@
                 } else {
                 %>
                 <p class="h2 text-center mt-5 pt-5">TU CARRITO ESTA VACÍO</p>
-                <p class="lead text-center mb-5"><a href="./productos.jsp">Comprar ahora.</a></p>
+                <p class="lead text-center mb-5"><a href="./index.jsp">Comprar ahora.</a></p>
 
                 <%}
 
@@ -191,7 +198,7 @@
                 %>  
                 <hr>
                 <br>
-                 <%if (lista_c.size() > 0) {%>
+                <%if (lista_c.size() > 0) {%>
                 <div class="row mb-5">
                     <div class="col-md-12 text-right"><p class="lead">Cantidad de productos: <%=cantCar%> </p></div>
                     <div class="col-md-12 text-right"><p class="lead">Subtotal: $ <%=Math.round(subtotalAPagar * 100) / 100%> MXN</p></div>
