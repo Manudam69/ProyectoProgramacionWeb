@@ -157,7 +157,7 @@ public class MySqlConn {
         psmt.close();
     }
 
-    public void Cambios(String n,int precio, int exsist, String nombre, String desc, FileInputStream fis, File file, String tipo) throws SQLException {
+    public void Cambios(String n, int precio, int exsist, String nombre, String desc, FileInputStream fis, File file, String tipo) throws SQLException {
         String query = "UPDATE productos SET precio=?, existencias=?, nombre=?, descripcion=?, image=?, tipo=?" + "WHERE nombre ='" + n + "';";
         psmt = conn.prepareStatement(query);
         psmt.setInt(1, precio);
@@ -166,6 +166,17 @@ public class MySqlConn {
         psmt.setString(4, desc);
         psmt.setBinaryStream(5, (InputStream) fis, (int) (file.length()));
         psmt.setString(6, tipo);
+        psmt.executeUpdate();
+        conn.close();
+        psmt.close();
+    }
+
+    public void InvalidaPass(String usr) throws SQLException {
+        String query = "UPDATE farolito.usuarios SET Contra=?" + "WHERE Usuario ='" + usr + "';";
+        String temp ="12345";
+        psmt = conn.prepareStatement(query);
+        psmt.setString(1, temp);
+        
         psmt.executeUpdate();
         conn.close();
         psmt.close();
