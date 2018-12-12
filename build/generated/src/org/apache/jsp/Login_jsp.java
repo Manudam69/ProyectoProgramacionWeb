@@ -7,7 +7,6 @@ import javax.servlet.jsp.*;
 public final class Login_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
-  int cont = 0;
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
 
   private static java.util.List<String> _jspx_dependants;
@@ -46,7 +45,6 @@ public final class Login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("\n");
       out.write("<!DOCTYPE html>\n");
-      out.write("\n");
       out.write("<html lang=\"es\">\n");
       out.write("\n");
       out.write("    <head>\n");
@@ -67,25 +65,7 @@ public final class Login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        </style>\n");
       out.write("    </head>\n");
       out.write("    <body class=\"text-center\">\n");
-      out.write("        ");
-
-            String cad = "";
-            if (cont == 2) {
-
-                out.print("Hola :V" + cont);
-                cad = "invalida.jsp";
-                out.print("<br> cad " + cad);
-            } else {
-                cad = "checklogin.jsp";
-                out.print("<br> cad " + cad);
-            }
-
-        
-      out.write("\n");
-      out.write("\n");
-      out.write("        <form class=\"form-signin mx-auto p-5 mt-5\" style=\"width: 400px;\" action=\"");
-      out.print(cad);
-      out.write("\" method=\"post\">\n");
+      out.write("        <form class=\"form-signin mx-auto p-5 mt-5\" style=\"width: 400px;\" action=\"checklogin.jsp\" method=\"post\">\n");
       out.write("            <a href=\"./index.jsp\"><img class=\"mb-4\" src=\"images/logo.png\" alt=\"\" width=\"72\" height=\"72\"></a>\n");
       out.write("            <h1 class=\"h3 mb-3 font-weight-normal\">Iniciar sesión</h1>\n");
       out.write("            <label for=\"inputUser\" class=\"sr-only\">Usuario</label>\n");
@@ -104,24 +84,25 @@ public final class Login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("            <div  style=\"color:red;\">\n");
       out.write("                ");
-
-
+                    
                     if (request.getParameter("error") != null) {
-                        cont++;
-                        out.println(request.getParameter("error"));
-                        String usre = request.getParameter("usr");
-                        out.println("<br> la cagaste" + cont + "<br> tu" + usre);
-                    } else {
-                        cad = "checklogin.jsp";
-                        cont = 0;
+                        out.println(request.getParameter("error")); 
                     }
-
-                    if (cont > 3) {
-                        cont = 0;
-
-                        response.sendRedirect("invalida.jsp");
+                    if (request.getParameter("cnt") != null) {
+                        out.println(request.getParameter("cnt"));
                     }
+                    if (Integer.parseInt(request.getParameter("cnt")) >= 3) {
+                
+      out.write("\n");
+      out.write("                ");
+      if (true) {
+        _jspx_page_context.forward("invalida.jsp");
+        return;
+      }
+      out.write("\n");
+      out.write("                ");
 
+                    }
 
                 
       out.write("\n");

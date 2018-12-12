@@ -13,17 +13,11 @@
     </head>
     <body>
         <%
-
             String query = "select * from farolito.usuarios";
             objConn.Consult(query);
-
             String usre = request.getParameter("usr");
-            out.println("<br> tu " + usre);
-            
-           objConn.InvalidaPass(usre);
-            
- 
-            
+            out.println("<br> tu " + usre);         
+           objConn.InvalidaPass(usre);    
         %>
         <h1>Hemos tenido que invalidar tu contraseña</h1>
         <p>Por favor ingresa tu correo para enviar las instrucciones de como puedes recuperar tu contraseña</p>

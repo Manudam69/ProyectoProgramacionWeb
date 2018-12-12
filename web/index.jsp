@@ -190,8 +190,7 @@
                 }
                numAccesos = contadorVista;  
             %>
-           
-            <h2><%=(++numAccesos)%></h2>
+            <%numAccesos++;%>
              <h2><%="La pagina fue visitada " + (contadorVista) + " veces"%></h2>
             <%
                 objConn.Contador(numAccesos);

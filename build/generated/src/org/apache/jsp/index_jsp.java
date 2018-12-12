@@ -243,27 +243,21 @@ int numAccesos = 0;
                 objConn.Consult(query);
                 objConn.rs.beforeFirst();
                 int contadorVista= 0;
-                
                 while(objConn.rs.next()){
                     contadorVista = objConn.rs.getInt(2);
                 }
-                
-               numAccesos = contadorVista; 
-               
+               numAccesos = contadorVista;  
             
       out.write("\n");
-      out.write("           \n");
-      out.write("            <h2>");
-      out.print((++numAccesos));
-      out.write("</h2>\n");
+      out.write("            ");
+numAccesos++;
+      out.write("\n");
       out.write("             <h2>");
       out.print("La pagina fue visitada " + (contadorVista) + " veces");
       out.write("</h2>\n");
       out.write("            ");
 
-                
                 objConn.Contador(numAccesos);
-
             
       out.write("\n");
       out.write("\n");
