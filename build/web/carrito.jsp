@@ -83,7 +83,7 @@
             </nav>
         </header>
 
-       <form action="./Address.jsp" method="get">
+        <form action="./pruebasProd.jsp" method="get">
             <div class="container mt-5 pt-5" id="TablaAct">
                 <div class="text-center">
                     <img src="images/carrito.png" class="img-fluid mb-3 mr-3 text-center" alt="Algo pasa" width="50">
@@ -94,66 +94,67 @@
                     HttpSession sesion = request.getSession(true);
 
                     ArrayList<ProductoCarrito> lista_c = (ArrayList<ProductoCarrito>) request.getSession().getAttribute("listacom");
-                    
-                    if(lista_c != null){
-                    //Variables para mostrar el carrito
-                    int subtotalAPagar = 0;
-                    int cantidadP = 0;
-                    int precio_p = 0, existencias = 0, id_P = 0;
-                    String nombre_P = "", descrip = "";
-                    Boolean agregado = false;
 
-                    //Variables para las coincidencias
-                    Boolean prod_enc = false;
-                    int cantidad_p = 0;
-                
-                    String id_pRec = request.getParameter("id_producto");
+                    if (lista_c != null) {
+                        //Variables para mostrar el carrito
+                        int subtotalAPagar = 0;
+                        int cantidadP = 0;
+                        int precio_p = 0, existencias = 0, id_P = 0;
+                        String nombre_P = "", descrip = "";
+                        Boolean agregado = false;
 
-                    if (id_pRec != null) {
-                        int id_p = Integer.parseInt(id_pRec);
+                        //Variables para las coincidencias
+                        Boolean prod_enc = false;
+                        int cantidad_p = 0;
 
-                        String cantidad_pRec = request.getParameter("cantidad");
-                        cantidad_p = Integer.parseInt(cantidad_pRec);
-                        request.setAttribute("cantidad", "0");
+                        String id_pRec = request.getParameter("id_producto");
 
-                        //SQL Query para recuperar los valores del producto de la BD
-                        String query = "select * from farolito.productos where id_p = '" + id_pRec + "'";
-                        objConn.Consult(query);
+                        if (id_pRec != null) {
+                            int id_p = Integer.parseInt(id_pRec);
 
-                        precio_p = objConn.rs.getInt(2);
+                            String cantidad_pRec = request.getParameter("cantidad");
+                            cantidad_p = Integer.parseInt(cantidad_pRec);
+                            request.setAttribute("cantidad", "0");
+
+                            //SQL Query para recuperar los valores del producto de la BD
+                            String query = "select * from farolito.productos where id_p = '" + id_pRec + "'";
+                            objConn.Consult(query);
+
+                            precio_p = objConn.rs.getInt(2);
                         //Si se cambia a float el precio sería cambiar a objConn.rs.getFloat(2)
-                        //Tambien se tendría que redondear con math.round(subtotal a pagar)
-                        existencias = objConn.rs.getInt(3);
-                        nombre_P = objConn.rs.getString(4);
-                        descrip = objConn.rs.getString(5);
+                            //Tambien se tendría que redondear con math.round(subtotal a pagar)
+                            existencias = objConn.rs.getInt(3);
+                            nombre_P = objConn.rs.getString(4);
+                            descrip = objConn.rs.getString(5);
 
-                        Producto p = new Producto(id_p, precio_p, existencias, nombre_P, descrip);
+                            Producto p = new Producto(id_p, precio_p, existencias, nombre_P, descrip);
 
-                        //Añadir mas cantidad a productos
-                        for (int j = 0; j < lista_c.size(); j++) {
-                            ProductoCarrito aux = lista_c.get(j); //Lo que se va a comparar si esta 
-                            Producto Norm = aux.getP();
-                            if (id_p == Norm.getId()) {
-                                int cAux = aux.getCantidad() + cantidad_p;
-                                aux.setCantidad(cAux);
-                                lista_c.add(j, aux);
-                                lista_c.remove(j);
-                                prod_enc = true;
-                                break;
+                            //Añadir mas cantidad a productos
+                            for (int j = 0; j < lista_c.size(); j++) {
+                                ProductoCarrito aux = lista_c.get(j); //Lo que se va a comparar si esta 
+                                Producto Norm = aux.getP();
+                                if (id_p == Norm.getId()) {
+                                    int cAux = aux.getCantidad() + cantidad_p;
+                                    aux.setCantidad(cAux);
+                                    lista_c.add(j, aux);
+                                    lista_c.remove(j);
+                                    prod_enc = true;
+                                    break;
+                                }
                             }
-                        }
 
-                        if (prod_enc == false) {
-                            lista_c.add(new ProductoCarrito(p, cantidad_p));
+                            if (prod_enc == false) {
+                                lista_c.add(new ProductoCarrito(p, cantidad_p));
+                            }
+                            session.setAttribute("listacom", lista_c); //Variable de session para la lista de compras
+                            response.sendRedirect("carrito.jsp");  //Variable que redirige al carrito.jsp pero sin los valores de la cantidad
                         }
-                        session.setAttribute("listacom", lista_c); //Variable de session para la lista de compras
-                        response.sendRedirect("carrito.jsp");  //Variable que redirige al carrito.jsp pero sin los valores de la cantidad
-                    }
 
                 %>  
 
 
-                <%                    if (lista_c.size() > 0) {
+                <%                    
+                        if (lista_c.size() > 0) {
                         for (int i = 0; i < lista_c.size(); i++) {
                             ProductoCarrito aux = lista_c.get(i);
                             Producto Norm = aux.getP();
@@ -204,11 +205,11 @@
                     <div class="col-md-12 text-right"><p class="lead">Subtotal: $ <%=Math.round(subtotalAPagar * 100) / 100%> MXN</p></div>
                     <div class="col-md-12 text-right"><button type="submit" class="btn btn-success">Proceder al pago</button></div>              
                 </div>   
-                    <%}
-                    } else{ %>
-                     <p class="h2 text-center mt-5 pt-5">TU CARRITO ESTA VACÍO</p>
-                     <p class="lead text-center mb-5"><a href="./productos.jsp">Comprar ahora.</a></p>
-                  <%} %>
+                <%}
+                    } else { %>
+                <p class="h2 text-center mt-5 pt-5">TU CARRITO ESTA VACÍO</p>
+                <p class="lead text-center mb-5"><a href="./productos.jsp">Comprar ahora.</a></p>
+                <%}%>
             </div>
 
         </form>
