@@ -7,6 +7,7 @@ import javax.servlet.jsp.*;
 public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
+int numAccesos = 0;
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
 
   private static java.util.List<String> _jspx_dependants;
@@ -44,6 +45,17 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("\n");
       out.write("\n");
+      mySql.MySqlConn objConn = null;
+      synchronized (_jspx_page_context) {
+        objConn = (mySql.MySqlConn) _jspx_page_context.getAttribute("objConn", PageContext.PAGE_SCOPE);
+        if (objConn == null){
+          objConn = new mySql.MySqlConn();
+          _jspx_page_context.setAttribute("objConn", objConn, PageContext.PAGE_SCOPE);
+        }
+      }
+      out.write('\n');
+      out.write(' ');
+      out.write("\n");
       out.write("<!DOCTYPE html>\n");
       out.write("<html>\n");
       out.write("    <head>\n");
@@ -57,6 +69,7 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    </head>\n");
       out.write("\n");
       out.write("    <body>\n");
+      out.write("        \n");
       out.write("        <header class=\"pb-2\">\n");
       out.write("            <nav class=\"navbar navbar-expand-lg navbar-light fixed-top\">\n");
       out.write("                <a class=\"navbar-brand\" href=\"./index.jsp\" id=\"logo\">\n");
@@ -102,19 +115,26 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                    </form>\n");
       out.write("                    ");
 
-                    } else {
-
+                    } else if (session.getAttribute("admin").equals("true")) {
                     
       out.write("\n");
       out.write("                    <a href=\"./carrito.jsp\"><img src=\"images/carrito.png\" class=\"img-fluid mb-3 mr-3\" alt=\"Algo pasa\" width=\"50\"></a>\n");
       out.write("                    <form class=\"form-inline my-2 my-lg-0\" action=\"Cerrarsesion.jsp\">                       \n");
       out.write("                        <button class=\"btn btn  my-2 my-sm-0\" type=\"submit\" id=\"sesion\">Cerrar Sesión</button>\n");
-      out.write("                        <p>");
-      out.print(session.getAttribute("admin"));
-      out.write("</p>\n");
       out.write("                    </form>\n");
-      out.write("                    \n");
+      out.write("                    <div>\n");
+      out.write("                        <a class=\"nav-link\" href=\"#\">ABC Productos</a>\n");
+      out.write("                        <a class=\"nav-link\" href=\"#\">Graficas</a>\n");
+      out.write("                    </div>\n");
       out.write("                    ");
+} else {
+                    
+      out.write("\n");
+      out.write("                    <a href=\"./carrito.jsp\"><img src=\"images/carrito.png\" class=\"img-fluid mb-3 mr-3\" alt=\"Algo pasa\" width=\"50\"></a>\n");
+      out.write("                    <form class=\"form-inline my-2 my-lg-0\" action=\"Cerrarsesion.jsp\">                       \n");
+      out.write("                        <button class=\"btn btn  my-2 my-sm-0\" type=\"submit\" id=\"sesion\">Cerrar Sesión</button>\n");
+      out.write("\n");
+      out.write("                        ");
 }
       out.write("\n");
       out.write("                </div>\n");
@@ -217,6 +237,37 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        </div>\n");
       out.write("\n");
       out.write("        <footer class=\"footer shadow-lg pb-2 mt-5\">\n");
+      out.write("            ");
+
+            String query = "select * from farolito.visitas";
+                objConn.Consult(query);
+                objConn.rs.beforeFirst();
+                int contadorVista= 0;
+                
+                while(objConn.rs.next()){
+                    contadorVista = objConn.rs.getInt(2);
+                }
+                
+               numAccesos = contadorVista; 
+               
+            
+      out.write("\n");
+      out.write("           \n");
+      out.write("            <h2>");
+      out.print((++numAccesos));
+      out.write("</h2>\n");
+      out.write("             <h2>");
+      out.print("La pagina fue visitada " + (contadorVista) + " veces");
+      out.write("</h2>\n");
+      out.write("            ");
+
+                
+                objConn.Contador(numAccesos);
+
+            
+      out.write("\n");
+      out.write("\n");
+      out.write("            \n");
       out.write("            <hr>\n");
       out.write("            <div class=\"row container-fluid mt-0\">\n");
       out.write("                <div class=\"col-md-3 text-center\">\n");

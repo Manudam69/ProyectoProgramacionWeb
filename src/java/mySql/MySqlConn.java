@@ -159,7 +159,7 @@ public class MySqlConn {
 
     public void Cambios(String n, int precio, int exsist, String nombre, String desc, FileInputStream fis, File file, String tipo) throws SQLException {
         String query = "UPDATE productos SET precio=?, existencias=?, nombre=?, descripcion=?, image=?, tipo=?" + "WHERE id_p ='" + n + "';";
-       // String query = "UPDATE productos SET precio = ? , existencias=?, nombre=?, descripcion=?" + "WHERE name ='" + user + "';";
+        // String query = "UPDATE productos SET precio = ? , existencias=?, nombre=?, descripcion=?" + "WHERE name ='" + user + "';";
         psmt = conn.prepareStatement(query);
         psmt.setInt(1, precio);
         psmt.setInt(2, exsist);
@@ -180,12 +180,24 @@ public class MySqlConn {
         psmt.close();
 
     }
+
     public void InvalidaPass(String usr) throws SQLException {
         String query = "UPDATE farolito.usuarios SET Contra=?" + "WHERE Usuario ='" + usr + "';";
-        String temp ="827ccbeea8a706c4c34a16891f84e7b";//Esto es 12345 encriptado =)
+        String temp = "827ccbeea8a706c4c34a16891f84e7b";//Esto es 12345 encriptado =)
         psmt = conn.prepareStatement(query);
         psmt.setString(1, temp);
-        
+
+        psmt.executeUpdate();
+        conn.close();
+        psmt.close();
+    }
+
+    public void Contador(int contador) throws SQLException {
+       
+        //String query = "UPDATE farolito.visitas SET contador=2" + "WHERE idcontador ='" + usr+ "';";
+        String query1 = "update farolito.visitas set contador=?"+" where id=1;";
+        psmt = conn.prepareStatement(query1);
+        psmt.setInt(1, contador);
         psmt.executeUpdate();
         conn.close();
         psmt.close();

@@ -29,19 +29,19 @@
     <body class="text-center">
         <%
             String cad = "";
-        if(cont == 2){
-            
-            out.print("Hola :V"+cont);
-            cad="invalida.jsp";
-            out.print("<br> cad "+cad);
-        }else{
-            cad="checklogin.jsp";
-            out.print("<br> cad "+cad);
-        }
-            
+            if (cont == 2) {
+
+                out.print("Hola :V" + cont);
+                cad = "invalida.jsp";
+                out.print("<br> cad " + cad);
+            } else {
+                cad = "checklogin.jsp";
+                out.print("<br> cad " + cad);
+            }
+
         %>
-        
-        <form class="form-signin mx-auto p-5 mt-5" style="width: 400px;" action="<%=cad%>" method="post>
+
+        <form class="form-signin mx-auto p-5 mt-5" style="width: 400px;" action="<%=cad%>" method="post">
             <a href="./index.jsp"><img class="mb-4" src="images/logo.png" alt="" width="72" height="72"></a>
             <h1 class="h3 mb-3 font-weight-normal">Iniciar sesión</h1>
             <label for="inputUser" class="sr-only">Usuario</label>
@@ -53,35 +53,35 @@
                 <label>
                     <input type="checkbox" value="remember-me"> Recuérdame.
                 </label>
-              
-                
+
+
             </div>
             <button class="btn btn-lg btn-primary btn-block" type="submit">Iniciar sesión</button>
-            
+
             <div  style="color:red;">
-            <%
-              
+                <%
+
                     if (request.getParameter("error") != null) {
                         cont++;
                         out.println(request.getParameter("error"));
-                         String usre = request.getParameter("usr");
-                        out.println("<br> la cagaste"+cont +"<br> tu" +usre);
-                    }else{
-                        cad="checklogin.jsp";
+                        String usre = request.getParameter("usr");
+                        out.println("<br> la cagaste" + cont + "<br> tu" + usre);
+                    } else {
+                        cad = "checklogin.jsp";
                         cont = 0;
                     }
-                    
-                    if(cont > 3){
+
+                    if (cont > 3) {
                         cont = 0;
-                       
+
                         response.sendRedirect("invalida.jsp");
                     }
-                    
-                    
-            %>
+
+
+                %>
             </div>
             <p class="mt-2">¿Eres un cliente nuevo? <a href="./Registro.jsp">Empieza aquí.</a><br>
-            <a href="./Recuperacion.jsp">¿Olvidaste tu contraseña?</a> 
+                <a href="./Recuperacion.jsp">¿Olvidaste tu contraseña?</a> 
             </p>
         </form>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

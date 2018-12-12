@@ -5,6 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<jsp:useBean id="objConn" class="mySql.MySqlConn"/>
+ <%!int numAccesos = 0;%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -18,6 +20,7 @@
     </head>
 
     <body>
+        
         <header class="pb-2">
             <nav class="navbar navbar-expand-lg navbar-light fixed-top">
                 <a class="navbar-brand" href="./index.jsp" id="logo">
@@ -60,7 +63,7 @@
                         <button class="btn btn  my-2 my-sm-0" type="submit" id="sesion">Iniciar Sesión</button>
                     </form>
                     <%
-                    } else if (session.getAttribute("admin").equals("true")){
+                    } else if (session.getAttribute("admin").equals("true")) {
                     %>
                     <a href="./carrito.jsp"><img src="images/carrito.png" class="img-fluid mb-3 mr-3" alt="Algo pasa" width="50"></a>
                     <form class="form-inline my-2 my-lg-0" action="Cerrarsesion.jsp">                       
@@ -177,6 +180,24 @@
         </div>
 
         <footer class="footer shadow-lg pb-2 mt-5">
+            <%
+            String query = "select * from farolito.visitas";
+                objConn.Consult(query);
+                objConn.rs.beforeFirst();
+                int contadorVista= 0;
+                while(objConn.rs.next()){
+                    contadorVista = objConn.rs.getInt(2);
+                }
+               numAccesos = contadorVista;  
+            %>
+           
+            <h2><%=(++numAccesos)%></h2>
+             <h2><%="La pagina fue visitada " + (contadorVista) + " veces"%></h2>
+            <%
+                objConn.Contador(numAccesos);
+            %>
+
+            
             <hr>
             <div class="row container-fluid mt-0">
                 <div class="col-md-3 text-center">
