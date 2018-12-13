@@ -202,12 +202,17 @@
                 <div class="row mb-5">
                     <div class="col-md-12 text-right"><p class="lead">Cantidad de productos: <%=cantCar%> </p></div>
                     <div class="col-md-12 text-right"><p class="lead">Subtotal: $ <%=Math.round(subtotalAPagar * 100) / 100%> MXN</p></div>
+                    <% 
+                        String subtotal = Integer.toString(subtotalAPagar);
+                        request.getSession().setAttribute("subtotal",subtotal);
+                     %> <!--Variable de sesion para el subtotal -->
                     <div class="col-md-12 text-right"><button type="submit" class="btn btn-success">Proceder al pago</button></div>              
                 </div>   
                     <%}
                     } else{ %>
                      <p class="h2 text-center mt-5 pt-5">TU CARRITO ESTA VACÍO</p>
-                     <p class="lead text-center mb-5"><a href="./productos.jsp">Comprar ahora.</a></p>
+                     <!--Regresa a la pagina anterior -->
+                     <p class="lead text-center mb-5"><a href="./index.jsp">Comprar ahora.</a></p>
                   <%} %>
             </div>
 

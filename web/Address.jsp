@@ -126,14 +126,14 @@
                     <form  action="./CheckOut.jsp" method="get" class="needs-validation">
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label for="firstName">Nombres</label>
+                                <label for="firstName">Nombre(s)*</label>
                                 <input type="text" class="form-control" id="firstName" placeholder="" name="Nombres" required>
                                 <div class="invalid-feedback">
                                     Valid first name is required.
                                 </div>
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="lastName">Apellidos</label>
+                                <label for="lastName">Apellidos*</label>
                                 <input type="text" class="form-control" id="lastName" placeholder="" name="Apellidos" required>
                                 <div class="invalid-feedback">
                                     Valid last name is required.
@@ -142,7 +142,7 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="username">Usuario</label>
+                            <label for="username">Usuario*</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">@</span>
@@ -163,7 +163,7 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="address">Dirección</label>
+                            <label for="address">Dirección*</label>
                             <input type="text" class="form-control" name="direccion1" id="address" required>
                             <div class="invalid-feedback">
                                 Please enter your shipping address.
@@ -177,18 +177,18 @@
 
                         <div class="row">
                             <div class="col-md-5 mb-3">
-                                <label for="country">País</label>
+                                <label for="country">País*</label>
                                 <select class="custom-select d-block w-100" id="country" name="pais" onchange="selectEstado();" required>
                                     <option value="x">Elegir...</option>
-                                    <option value="a">México</option>
-                                    <option value="b">Estados Unidos</option>
+                                    <option value="MX">México</option>
+                                    <option value="USA">Estados Unidos</option>
                                 </select>
                                 <div class="invalid-feedback">
                                     Please select a valid country.
                                 </div>
                             </div>
                             <div class="col-md-4 mb-3" id="PaisOut">
-                                <label for="state">Estado</label>
+                                <label for="state">Estado*</label>
                                 <select class="custom-select d-block w-100" id="state" name="estado" required>
                                     <option value="0">Elegir...</option>
                                 </select>
@@ -199,7 +199,7 @@
 
 
                             <div class="col-md-3 mb-3">
-                                <label for="zip">Codigo postal</label>
+                                <label for="zip">Codigo postal*</label>
                                 <input type="text" class="form-control" id="zip" name="CP" placeholder="" required>
                                 <div class="invalid-feedback">
                                     Zip code required.
@@ -207,14 +207,16 @@
                             </div>
                         </div>
                         <hr class="mb-4">
+                         <h4 class="mb-3">ENVIO</h4>
                         <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="same-address">
-                            <label class="custom-control-label" for="same-address">Shipping address is the same as my billing address</label>
+                            <input type="checkbox" class="custom-control-input" id="same-address" name="envio">
+                            <label class="custom-control-label" for="same-address">Standard (3-5 días habiles)</label>
                         </div>
                         <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="save-info">
-                            <label class="custom-control-label" for="save-info">Save this information for next time</label>
+                            <input type="checkbox" class="custom-control-input" id="save-info" name="envio">
+                            <label class="custom-control-label" for="save-info">Express (1-2 días habiles)</label>
                         </div>
+                         
                         <hr class="mb-4">
 
                         <h4 class="mb-3">Pago</h4>
@@ -235,7 +237,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label for="cc-name">Nombre en la tarjeta</label>
+                                <label for="cc-name">Nombre en la tarjeta*</label>
                                 <input type="text" class="form-control" id="cc-name" name="TarjetaNom" placeholder="" required>
                                 <small class="text-muted">Nombre completo mostrado en la tarjeta</small>
                                 <div class="invalid-feedback">
@@ -243,7 +245,7 @@
                                 </div>
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="cc-number">Numero de la tarjeta de credito</label>
+                                <label for="cc-number">Numero de la tarjeta de credito*</label>
                                 <input type="text" class="form-control" id="cc-number" name="TarjetaNum" placeholder="" minlength="16" maxlength="16" required>
                                 <div class="invalid-feedback">
                                     Credit card number is required
@@ -252,14 +254,14 @@
                         </div>
                         <div class="row">
                             <div class="col-md-3 mb-3">
-                                <label for="cc-expiration">Expiración</label>
+                                <label for="cc-expiration">Expiración*</label>
                                 <input type="text" class="form-control" id="cc-expiration" name="Exp" placeholder="08/20" required>
                                 <div class="invalid-feedback">
                                     Expiration date required
                                 </div>
                             </div>
                             <div class="col-md-3 mb-3">
-                                <label for="cc-cvv">CVV</label>
+                                <label for="cc-cvv">CVV*</label>
                                 <input type="text" class="form-control" id="cc-cvv" name="CVV" placeholder="314" pattern="[0-9]{3}" required>
                                 <div class="invalid-feedback">
                                     Security code required

@@ -15,7 +15,7 @@
         <%
             String idPais = request.getParameter("idPais");
 
-            if (idPais != null && idPais.equals("a")) {
+            if (idPais != null && idPais.equals("MX")) {
         %> 
         <div class="col-md-14" id="PaisOut">
             <label for="state">Estado</label>
@@ -29,12 +29,12 @@
                 Please provide a valid state.
             </div>
         </div>
-        <%} else if ( idPais != null && idPais.equals("b")) {%>
+        <%} else if ( idPais != null && idPais.equals("USA")) {%>
         <div class="col-md-14" id="PaisOut">
             <label for="state">Estado</label>
             <select class="custom-select d-block w-100" id="state" name="estado" onchange="selectGasto();" required>
                 <option value="x">Elegir...</option>
-                <option value="CALI">California</option>
+                <option value="CA">California</option>
                 <option value="NY">New York</option>
                 <option value="TX">Texas</option>
             </select>

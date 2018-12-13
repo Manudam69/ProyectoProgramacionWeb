@@ -12,7 +12,7 @@
 <%@page import="clases.CryptWithMD5"%>
 <%@page import="java.util.ArrayList"%>
 <!DOCTYPE html>
-<%!int conta = 0;%>
+<% int conta = 0;%>
 <%
     String usuario = "";
     String pass = "";

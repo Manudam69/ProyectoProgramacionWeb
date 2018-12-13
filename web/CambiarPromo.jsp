@@ -18,6 +18,10 @@
             float TotalAPagar = Float.parseFloat(request.getParameter("Total"));
             String codigo = request.getParameter("Codigo");
             
+            //Lista final de precios de envio, impuesto y total
+             ArrayList<Float> PreciosF = (ArrayList<Float>) request.getSession().getAttribute("lista_precios");
+             
+             
            //Variables de descuento
                         float porDesc = 0;
                         ArrayList<Promos> descuentos = new ArrayList<Promos>();
@@ -54,6 +58,10 @@
                             porDesc = porDesc / 100;
                             TotalAPagar = TotalAPagar - (TotalAPagar * porDesc);
                             TotalAPagar = Math.round(TotalAPagar);
+                            
+                            //El total con descuento 
+                            PreciosF.remove(2);
+                            PreciosF.add(2, TotalAPagar);
                         %>
             <li class="list-group-item d-flex justify-content-between">
                 <span>Total NUEVO (MXN)</span>

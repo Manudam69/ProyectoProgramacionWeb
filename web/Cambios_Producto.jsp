@@ -111,7 +111,11 @@
                     nuevoarch = request.getParameter("file");
                     path += "\\..\\..\\imagenes\\"+ nuevoarch;
 
+<<<<<<< Updated upstream
                     File image = new File(path);
+=======
+                    File image = new File("C:/Users/Rick/Pictures/" + nuevoarch);
+>>>>>>> Stashed changes
                     fis = new FileInputStream(image);
                     out.println("<br>1->" + n_nombre);
                     out.println("<br>2->" + n_descripcion);

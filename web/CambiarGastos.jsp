@@ -21,7 +21,16 @@
             HttpSession sesion = request.getSession(true);
 
             ArrayList<ProductoCarrito> lista_c = (ArrayList<ProductoCarrito>) request.getSession().getAttribute("listacom");
-
+             
+            //Creacion e instanciacion de la lista que contiene el total, impuesto y gastos de envio
+            ArrayList<Float> PreciosF = (ArrayList<Float>) request.getSession().getAttribute("lista_precios");
+            
+            if(PreciosF == null){
+                 PreciosF = new ArrayList<Float>();
+                 request.getSession().setAttribute("lista_precios", PreciosF);
+            }
+            
+            
             //Variables para mostrar el contenido del carrito
             float TotalAPagar = 0;
             int cantidadP = 0;
@@ -54,7 +63,7 @@
             } else if (estado.equals("GDL")) {
                 porImpuesto = 16;
                 porGasto = 70;
-            } else if (estado.equals("CALI")) {
+            } else if (estado.equals("CA")) {
                 porImpuesto = 11;
                 porGasto = 210;
             } else if (estado.equals("TX")) {
@@ -71,7 +80,22 @@
             TotalAPagar = TotalAPagar - (TotalAPagar * porDesc);
             porImpuesto = Math.round(TotalAPagar * porImpuesto);
             TotalAPagar = TotalAPagar + porImpuesto + porGasto;
-
+            
+            //Se añaden los precios finales
+          if(PreciosF.size()>0){
+              //Elimina lo que tenga el arraylist y pon los valores nuevos
+            PreciosF.clear();
+            PreciosF.add(porImpuesto); 
+            PreciosF.add(porGasto);
+            PreciosF.add(TotalAPagar);
+              
+          }else{
+            PreciosF.add(porImpuesto); 
+            PreciosF.add(porGasto);
+            PreciosF.add(TotalAPagar);
+          }
+            
+            
             if (porGasto == 0) {
         %>
         <div id="GastosT">
