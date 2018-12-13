@@ -13,8 +13,14 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Nota de pago</title>
+        <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Saira" rel="stylesheet">
+        <link rel="icon" type="image/png" href="images/logo.png">
+        <link rel="stylesheet" href="css/index.css">
+        
     </head>
     <body>
 
@@ -69,21 +75,38 @@
              */
 
         %>
+        
 
-        <div>
-            <h3>Gracias por tu compra: <%=usuario%> </h3>
-            <h4>Numero de pedido: <%=numPedido%> </h4>
+        <div class="container mt-5 pt-5 shadow mb-5">
+            <p class="text-center h3">
+                <a href="./index.jsp"><img src="images/logo.png" width="60" height="60" class="d-inline-block align-top mb-1"></a>
+                <br> <%=nombres%> <%=apellidos%>, gracias por comprar con nosotros.</p>
+            <p class="lead text-center">¡Esperamos verte nuevamente!</p>
 
+            <div class="row">
+                <div class="col-md-3 mt-5 lead">
+                    <p class="text-right">Pedido num. </p>
+                </div>
+                <div class="col-md-7 mt-5 lead">
+                    <p class="text-right"><%=numPedido%></p>
+                </div>
+            </div>
+            <hr>
+            <p class="lead text-center">DATOS DEL ENVÍO</p>
+            <div class="row">
+                <div class="col-md-12 mt-0 lead">
 
-            <h4>DATOS DEL ENVÍO</h4>
-            <p>Express (1-2 días habiles)</p>
-            <p>Direccion: <%=dir1%></p>
-            <p><%=estado%>,<%=pais%>.CP: <%=cp%>.</p> 
-            <p>Correo: <%=correoUs%> </p>
-            <br>
-
-            <h4>Resumen del pedido</h4>
-            <p>Productos comprados: </p>  
+                    <p class="text-center">
+                        Nombre: <%=nombres%> <%=apellidos%><br>
+                        Tipo de envío: Express (1-2 días habiles)
+                        <br> Dirección: <%=dir1%> <%=estado%>,<%=pais%>
+                        <br> Codigo postal: <%=cp%>
+                        <br> Correo electrónico: <%=correoUs%>
+                    </p>
+                </div>
+            </div>
+            <hr>
+            <p class="lead text-center">RESUMEN DEL PEDIDO</p>
             <%
                 for (int i = 0; i < lista_c.size(); i++) {
                     ProductoCarrito aux = lista_c.get(i);
@@ -96,38 +119,62 @@
                     int cantidad = lista_c.get(i).getCantidad();
 
             %>
-            <div class="media mt-5">
-                <img class="d-flex mr-3" src="imagen.jsp?id=<%=id%>" alt="Generic placeholder image" width="10%">
-                <div class="media-body lead">
-                    <p class="h3 mt-0"><%=nombre%></p>    
-                    <p>Precio Unitario: $<%=precio_p%></p>                    
-                    <p><%=descrip%></p>                       
-                    <p>Cantidad: <%=cantidad%></p>
+
+            <div class="row">
+                <div class="col-md-3 lead">
+                    <img src="imagen.jsp?id=<%=id%>" class="img-fluid w-50" alt="Responsive image">
+                </div>
+                <div class="col-md-7 lead">
+                    <p class="text-left">
+                        <%=nombre%><br>
+                        Precio Unitario: $<%=precio_p%><br>
+                        <%=descrip%><br>
+                        Cantidad: <%=cantidad%>
+                    </p>
                 </div>
             </div>
+            <%                            }
+            %> 
+            <hr>
+            <div class="row">
+                <div class="col-md-3 lead">
 
-            <%
-                }
-            %>   
+                </div>
+                <div class="col-md-7 lead">
+                    <p class="text-right">
+                        Subtotal: <%=subtotal%>
+                        <br> Envio: <%=PreciosF.get(1).toString()%>
+                        <br> Impuestos: <%=PreciosF.get(0).toString()%>
+                        <br> Total: <%=PreciosF.get(2).toString()%>
+                    </p>
+                </div>
+            </div>
+            <hr>
+            <p class="text-center"><a href="./index.jsp">Seguir comprando</a></p>
+            <p class="text-center text-muted">¿Necesitas asistencia? Contáctanos. Haremos todo lo posible para asegurarnos que disfrutes tu experiencia con nosotros. Llámanos: 123-456-7890
+                <br>Escríbenos un email: StoreFarolito@gmail.com</p>
             <br>
-            <p>Subtotal: <%=subtotal%></p>
-            <p>Envio: <%=PreciosF.get(1).toString()%></p> 
-            <p>Impuestos: <%=PreciosF.get(0).toString()%></p>
-            <p>Total: <%=PreciosF.get(2).toString()%></p><br> 
-
-            <a href="./index.jsp">Seguir Comprando.</a>
-
-            <pre>  
-              ¿Necesitas asistencia? Contáctanos. Haremos todo lo posible para asegurarnos que disfrutes tu experiencia con nosotros.
-              Llámanos: 123-456-7890
-              Escríbenos un email: StoreFarolito@gmail.com
-            </pre>
-
         </div>
 
+
+        <footer class="footer shadow-lg pb-2 mt-5">
+            <hr>
+            <div class="row container-fluid mt-0">
+                <div class="col-md-3 text-center">
+                    <img src="images/logo.png" width="60" height="60" class="mb-0 mp-0 mt-0">
+                </div>
+                <div class="col-md-6 text-center">
+                    <a href="https://github.com/Manudam69" target="_blank"><img src="images/github.png" width="35" height="35" class="mb-0 mp-0  mr-2 mt-2 text-right" style="filter: invert(100)"></a>
+                    <a href="https://twitter.com/farolitooficial?lang=es" target="_blank"><img src="images/twitter.png" width="35" height="35" class="mb-0 mp-0 mt-2 text-right" style="filter: invert(100)"></a>
+                </div>
+                <div class="col-md-3 text-center mt-3">
+                    <span class="text-muted">El farolito &copy; 2018. Todos los derechos reservados.</span>
+                </div>
+            </div>
+        </footer>
         <%
             //Envio del correo  
-        
+
 
         %>
 
@@ -145,6 +192,8 @@
 
         %>   
 
-
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     </body>
 </html>
