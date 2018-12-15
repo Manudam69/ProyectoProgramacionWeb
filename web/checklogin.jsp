@@ -48,6 +48,16 @@
             if (usuario.equals(usuarioBD) && pass.equals(passBD)) {
                 HttpSession sesionOk = request.getSession();
                 sesionOk.setAttribute("usuario", usuario);
+                
+                if ((request.getParameter("RecordarUsuario") != null)) {
+                /*Si se cumple la condicion, entonces el  checkbox esta habilitado y
+crea la cookie para almacenar el nombre de usuario*/
+                Cookie cookieUsuario = new Cookie("Usuario", usuario);
+                cookieUsuario.setPath("/");
+                cookieUsuario.setMaxAge(60 * 60 * 24);
+                response.addCookie(cookieUsuario);
+            }
+                
                 if (admin.equals("1")) {
                     sesionOk.setAttribute("admin", "true");
                 } else {

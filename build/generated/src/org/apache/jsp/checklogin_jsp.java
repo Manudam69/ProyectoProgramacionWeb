@@ -4,6 +4,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 import clases.CryptWithMD5;
+import java.util.ArrayList;
 
 public final class checklogin_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
@@ -46,6 +47,8 @@ public final class checklogin_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("\n");
       out.write("\n");
+      out.write("\n");
+      out.write("\n");
       mySql.MySqlConn objConn = null;
       synchronized (_jspx_page_context) {
         objConn = (mySql.MySqlConn) _jspx_page_context.getAttribute("objConn", PageContext.PAGE_SCOPE);
@@ -56,15 +59,21 @@ public final class checklogin_jsp extends org.apache.jasper.runtime.HttpJspBase
       }
       out.write("\n");
       out.write("\n");
+      out.write("\n");
       out.write("<!DOCTYPE html>\n");
+ int conta = 0;
+      out.write('\n');
 
     String usuario = "";
     String pass = "";
     String usuarioBD = "";
     String passBD = "";
+    String admin = "";
     CryptWithMD5 obj = new CryptWithMD5();
     String query = "select * from farolito.usuarios";
     objConn.Consult(query);
+    boolean contra = false;
+    boolean usr = false;
 
       out.write("\n");
       out.write("<html>\n");
@@ -72,35 +81,88 @@ public final class checklogin_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
       out.write("        <title>JSP Page</title>\n");
       out.write("    </head>\n");
-      out.write("    <body>\n");
-      out.write("        ");
+      out.write("    ");
 
-            if (request.getParameter("usr") != null) {
-                usuario = request.getParameter("usr");
-            }
-            if (request.getParameter("pass") != null) {
-                pass = request.getParameter("pass");
-            }
-            pass = obj.cryptWithMD5(pass);
-            out.println("UsuarioPar: "+usuario);
-            
-            
-            objConn.rs.beforeFirst();
-            while(objConn.rs.next()){
-                usuarioBD=objConn.rs.getString(2);
-                passBD=objConn.rs.getString(3);
+        if (request.getParameter("usr") != null) {
+            usuario = request.getParameter("usr");
+        }
+        if (request.getParameter("pass") != null) {
+            pass = request.getParameter("pass");
+        }
+        pass = obj.cryptWithMD5(pass);
+        objConn.rs.beforeFirst();
+
+        while (objConn.rs.next()) {
+            usuarioBD = objConn.rs.getString(2);
+            passBD = objConn.rs.getString(3);
+            admin = objConn.rs.getString(8);
+
+            if (usuario.equals(usuarioBD) && pass.equals(passBD)) {
+                HttpSession sesionOk = request.getSession();
+                sesionOk.setAttribute("usuario", usuario);
                 
-                if(usuario.equals("Ximena")){
-                    
-                out.println("Coincide");
-                break;
-                }else{
-                out.println("Nelson Mandela"+ usuarioBD);
-                }
+                if ((request.getParameter("RecordarUsuario") != null)) {
+                /*Si se cumple la condicion, entonces el  checkbox esta habilitado y
+crea la cookie para almacenar el nombre de usuario*/
+                Cookie cookieUsuario = new Cookie("Usuario", usuario);
+                cookieUsuario.setPath("/");
+                cookieUsuario.setMaxAge(60 * 60 * 24);
+                response.addCookie(cookieUsuario);
             }
+                
+                if (admin.equals("1")) {
+                    sesionOk.setAttribute("admin", "true");
+                } else {
+                    sesionOk.setAttribute("admin", "false");
+                }
     
-      out.write("  \n");
-      out.write("    </body>\n");
+      out.write("\n");
+      out.write("    ");
+      if (true) {
+        _jspx_page_context.forward("index.jsp");
+        return;
+      }
+      out.write("\n");
+      out.write("    ");
+
+                break;
+            } else if (usuario.equals(usuarioBD)) {
+                contra = false;
+                usr = true;
+                conta++;
+                break;
+            }
+        }
+        if (!contra && usr) {
+            if (conta > 3) {
+                conta = 0;
+            }
+            request.setAttribute("cnt", conta);
+    
+      out.write("   \n");
+      out.write("    ");
+      if (true) {
+        _jspx_page_context.forward("Login.jsp" + "?" + org.apache.jasper.runtime.JspRuntimeLibrary.URLEncode("error", request.getCharacterEncoding())+ "=" + org.apache.jasper.runtime.JspRuntimeLibrary.URLEncode("Contraseña incorrecta.<br>Vuelve a intentarlo.", request.getCharacterEncoding()) + "&" + org.apache.jasper.runtime.JspRuntimeLibrary.URLEncode("cnt", request.getCharacterEncoding())+ "=" + org.apache.jasper.runtime.JspRuntimeLibrary.URLEncode((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${cnt}", java.lang.String.class, (PageContext)_jspx_page_context, null), request.getCharacterEncoding()));
+        return;
+      }
+      out.write("\n");
+      out.write("    ");
+} else if (!contra && !usr) {
+    
+      out.write("\n");
+      out.write("    ");
+      if (true) {
+        _jspx_page_context.forward("Login.jsp" + "?" + org.apache.jasper.runtime.JspRuntimeLibrary.URLEncode("error", request.getCharacterEncoding())+ "=" + org.apache.jasper.runtime.JspRuntimeLibrary.URLEncode("Usuario no encontrado.<br>Vuelve a intentarlo.", request.getCharacterEncoding()));
+        return;
+      }
+      out.write("\n");
+      out.write("    ");
+
+        }
+
+    
+      out.write("\n");
+      out.write("\n");
       out.write("</html>\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){

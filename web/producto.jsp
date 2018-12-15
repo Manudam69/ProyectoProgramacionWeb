@@ -9,6 +9,22 @@
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%
+    String usuario1 = (String) session.getAttribute("usuario");//Usuario y Galleta
+    Cookie[] galleta = request.getCookies();
+    String Fondo = "";
+    String FondoLetra = "";
+%>
+<%
+    for (int i = 0; i < galleta.length; i++) {//Busca los colores que el usuario selecciono usando la sesion
+        if (galleta[i].getName().equals(usuario1 + "Fondo")) {
+            Fondo = galleta[i].getValue();
+        }
+        if (galleta[i].getName().equals(usuario1 + "Letra")) {
+            FondoLetra = galleta[i].getValue();
+        }
+    }
+%>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -19,6 +35,10 @@
         <link href="https://fonts.googleapis.com/css?family=Saira" rel="stylesheet">
         <link rel="icon" type="image/png" href="images/logo.png">
         <script src="./js/producto.js"></script> 
+        <style> 
+            body{ background-color:<%=Fondo%>;<%//Al recuperar los colores se ingresan en el style de la pagina%>
+                  color:<%=FondoLetra%>;}
+            </style>
     </head>
     <body>
         <header class="pb-2">
@@ -67,6 +87,10 @@
                     %>
                     
                     <a href="./carrito.jsp"><img src="images/carrito.png" class="img-fluid mb-3 mr-3" alt="Algo pasa" width="50"></a>
+                    <a href="./Nocturno.jsp"><img src="images/night_mode.png" class="img-fluid mb-3 mr-3" alt="Modo Nocturno" width="50"></a>
+                    <a href="./Normal.jsp"><img src="images/File_Alt.png" class="img-fluid mb-3 mr-3" alt="Modo Nocturno" width="50"></a>
+                    <a href="./Invierno.jsp"><img src="images/snowflake.png" class="img-fluid mb-3 mr-3" alt="Modo Nocturno" width="50"></a>
+                    
                     <form class="form-inline my-2 my-lg-0" action="Cerrarsesion.jsp">                       
                         <button class="btn btn  my-2 my-sm-0" type="submit" id="sesion">Cerrar Sesión</button>
                     </form>

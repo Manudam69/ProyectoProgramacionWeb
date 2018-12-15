@@ -1,6 +1,22 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%
+    String usuario1 = (String) session.getAttribute("usuario");//Usuario y Galleta
+    Cookie[] galleta = request.getCookies();
+    String Fondo = "";
+    String FondoLetra = "";
+%>
+<%
+    for (int i = 0; i < galleta.length; i++) {//Busca los colores que el usuario selecciono usando la sesion
+        if (galleta[i].getName().equals(usuario1 + "Fondo")) {
+            Fondo = galleta[i].getValue();
+        }
+        if (galleta[i].getName().equals(usuario1 + "Letra")) {
+            FondoLetra = galleta[i].getValue();
+        }
+    }
+%>
 
 <%
     String sala = (String) application.getAttribute("sala");
@@ -12,7 +28,9 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta http-equiv="refresh" content="20"/>
         <title>JSP Page</title>
-        <style type="text/css">
+        <style type="text/css">            
+            body{ background-color:<%=Fondo%>;<%//Al recuperar los colores se ingresan en el style de la pagina%>
+                  color:<%=FondoLetra%>;}            
             #sala {
                 margin: auto;
                 border: 1px solid #999;

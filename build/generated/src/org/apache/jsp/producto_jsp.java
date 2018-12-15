@@ -51,6 +51,24 @@ public final class producto_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("\n");
       out.write("<!DOCTYPE html>\n");
+
+    String usuario1 = (String) session.getAttribute("usuario");//Usuario y Galleta
+    Cookie[] galleta = request.getCookies();
+    String Fondo = "";
+    String FondoLetra = "";
+
+      out.write('\n');
+
+    for (int i = 0; i < galleta.length; i++) {//Busca los colores que el usuario selecciono usando la sesion
+        if (galleta[i].getName().equals(usuario1 + "Fondo")) {
+            Fondo = galleta[i].getValue();
+        }
+        if (galleta[i].getName().equals(usuario1 + "Letra")) {
+            FondoLetra = galleta[i].getValue();
+        }
+    }
+
+      out.write("\n");
       out.write("<html>\n");
       out.write("    <head>\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
@@ -60,6 +78,17 @@ public final class producto_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <link href=\"https://fonts.googleapis.com/css?family=Abel\" rel=\"stylesheet\">\n");
       out.write("        <link href=\"https://fonts.googleapis.com/css?family=Saira\" rel=\"stylesheet\">\n");
       out.write("        <link rel=\"icon\" type=\"image/png\" href=\"images/logo.png\">\n");
+      out.write("        <script src=\"./js/producto.js\"></script> \n");
+      out.write("        <style> \n");
+      out.write("            body{ background-color:");
+      out.print(Fondo);
+      out.write(';');
+//Al recuperar los colores se ingresan en el style de la pagina
+      out.write("\n");
+      out.write("                  color:");
+      out.print(FondoLetra);
+      out.write(";}\n");
+      out.write("            </style>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
       out.write("        <header class=\"pb-2\">\n");
@@ -112,6 +141,10 @@ public final class producto_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("                    \n");
       out.write("                    <a href=\"./carrito.jsp\"><img src=\"images/carrito.png\" class=\"img-fluid mb-3 mr-3\" alt=\"Algo pasa\" width=\"50\"></a>\n");
+      out.write("                    <a href=\"./Nocturno.jsp\"><img src=\"images/night_mode.png\" class=\"img-fluid mb-3 mr-3\" alt=\"Modo Nocturno\" width=\"50\"></a>\n");
+      out.write("                    <a href=\"./Normal.jsp\"><img src=\"images/File_Alt.png\" class=\"img-fluid mb-3 mr-3\" alt=\"Modo Nocturno\" width=\"50\"></a>\n");
+      out.write("                    <a href=\"./Invierno.jsp\"><img src=\"images/snowflake.png\" class=\"img-fluid mb-3 mr-3\" alt=\"Modo Nocturno\" width=\"50\"></a>\n");
+      out.write("                    \n");
       out.write("                    <form class=\"form-inline my-2 my-lg-0\" action=\"Cerrarsesion.jsp\">                       \n");
       out.write("                        <button class=\"btn btn  my-2 my-sm-0\" type=\"submit\" id=\"sesion\">Cerrar Sesión</button>\n");
       out.write("                    </form>\n");
@@ -130,7 +163,7 @@ public final class producto_jsp extends org.apache.jasper.runtime.HttpJspBase
            ArrayList<ProductoCarrito> lista_c = (ArrayList<ProductoCarrito>) request.getSession().getAttribute("listacom");
            ArrayList<Producto> lista_p = (ArrayList<Producto>) request.getSession().getAttribute("listap");
            
-          String valorP = (String) request.getParameter("id_producto");
+          String valorP = (String) request.getParameter("producto");
           int id_P = Integer.parseInt(valorP);
           
           String nombre="", descrip="";
@@ -145,14 +178,16 @@ public final class producto_jsp extends org.apache.jasper.runtime.HttpJspBase
                  existenciaAct = lista_p.get(i).getExistencia();
                  lista_p = null;
                  break;
-             }
+              }
            }
 
          
       out.write("             \n");
       out.write("            <div class=\"row mt-3\">\n");
       out.write("                <div class=\"col-lg-6 px-5\">\n");
-      out.write("                    <figure class=\"zoom img-fluid\" onmousemove=\"zoom(event)\" style=\"background-image: url(images/prueba.jpg)\">\n");
+      out.write("                    <figure class=\"zoom img-fluid\" onmousemove=\"zoom(event)\" style=\"background-image: url(imagen.jsp?id=");
+      out.print(id_P);
+      out.write(")\">\n");
       out.write("                        <img src=\"imagen.jsp?id=");
       out.print(id_P);
       out.write("\" class=\"img-fluid\" alt=\"Responsive image\"/>\n");
@@ -170,9 +205,8 @@ public final class producto_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write(" MXN</p>\n");
       out.write("                    <form class=\"form-signin mx-auto mt-2\" action=\"carrito.jsp\" method=\"get\">\n");
       out.write("                        <label for=\"cantidad\" class=\"lead \">Cantidad: </label>\n");
-      out.write("                        <select class=\"custom-select w-25 mb-1 \" name=\"cantidad\"> \n");
-      out.write("\n");
-      out.write("                            <option value=\"0\">Elegir...</option>\n");
+      out.write("                        <select class=\"custom-select w-25 mb-1\" name=\"cantidad\"> \n");
+      out.write("                            \n");
       out.write("                            <option value=\"1\">1</option>\n");
       out.write("                            <option value=\"2\">2</option>\n");
       out.write("                            <option value=\"3\">3</option>\n");
@@ -203,7 +237,7 @@ public final class producto_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                    <p class=\"h3\">DESCRIPCIÓN DEL PRODUCTO</p>\n");
       out.write("                    <p class=\"lead text-justify\">\n");
       out.write("                        <span>\n");
-      out.write("                            ");
+      out.write("                           ");
       out.print(descrip);
       out.write("\n");
       out.write("                        </span>\n");

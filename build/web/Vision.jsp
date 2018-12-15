@@ -6,6 +6,23 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%
+    String usuario1 = (String) session.getAttribute("usuario");//Usuario y Galleta
+    Cookie[] galleta = request.getCookies();
+    String Fondo = "";
+    String FondoLetra = "";
+%>
+<%
+    for (int i = 0; i < galleta.length; i++) {//Busca los colores que el usuario selecciono usando la sesion
+        if (galleta[i].getName().equals(usuario1 + "Fondo")) {
+            Fondo = galleta[i].getValue();
+        }
+        if (galleta[i].getName().equals(usuario1 + "Letra")) {
+            FondoLetra = galleta[i].getValue();
+        }
+
+    }
+%>
 <html lang="es">
 
     <head>
@@ -15,9 +32,17 @@
         <link rel="icon" type="image/png" href="images/logo.png">
         <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
         <link rel="stylesheet" href="css/index.css">
+        <style> 
+            #body{ background-color:<%=Fondo%>;<%//Al recuperar los colores se ingresan en el style de la pagina%>
+                  color:<%=FondoLetra%>;}
+            #contenido{
+                background-color:<%=Fondo%>;
+            }            
+            
+            </style>
     </head>
 
-    <body class="bg-light">
+    <body class="bg-light" id="body">
         <header class="pb-2">
             <nav class="navbar navbar-expand-lg navbar-light fixed-top">
                 <a class="navbar-brand" href="./index.jsp" id="logo">
@@ -63,6 +88,10 @@
                     } else {
                     %>
                     <a href="./carrito.jsp"><img src="images/carrito.png" class="img-fluid mb-3 mr-3" alt="Algo pasa" width="50"></a>
+                    <a href="./Nocturno.jsp"><img src="images/night_mode.png" class="img-fluid mb-3 mr-3" alt="Modo Nocturno" width="50"></a>
+                    <a href="./Normal.jsp"><img src="images/File_Alt.png" class="img-fluid mb-3 mr-3" alt="Modo Nocturno" width="50"></a>
+                    <a href="./Invierno.jsp"><img src="images/snowflake.png" class="img-fluid mb-3 mr-3" alt="Modo Nocturno" width="50"></a>
+                    
                     <form class="form-inline my-2 my-lg-0" action="Cerrarsesion.jsp">                       
                         <button class="btn btn  my-2 my-sm-0" type="submit" id="sesion">Cerrar Sesión</button>
                     </form>
@@ -72,9 +101,9 @@
             </nav>
         </header>
 
-        <img class="img-fluid mt-5 pt-5 mb-0" src="images/Vision.jpg" alt="Thumbnail image">
+                <img class="img-fluid mt-5 pt-5 mb-0" src="images/Vision.jpg" alt="Thumbnail image" id="img">
         <hr>
-        <div class="container mt-5">
+        <div class="container mt-5" id="contenido">
             <p class="h2">Nuestro objetivo</p>
             <p class="lead text-justify">
                 <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id praesentium cumque ad necessitatibus repudiandae, tempora itaque illo? Iusto fugit, optio dolor vero veritatis repellat,      velit neque sapiente, praesentium, quasi voluptatem.</span>

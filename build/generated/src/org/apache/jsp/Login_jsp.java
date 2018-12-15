@@ -45,6 +45,20 @@ public final class Login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("\n");
       out.write("<!DOCTYPE html>\n");
+
+    
+    Cookie[] galleta = request.getCookies();
+    String usuario = "";    
+
+      out.write('\n');
+
+    for (int i = 0; i < galleta.length; i++) {//Busca los colores que el usuario selecciono usando la sesion
+        if (galleta[i].getName().equals("Usuario")) {
+            usuario = galleta[i].getValue();
+        }        
+    }
+
+      out.write("\n");
       out.write("<html lang=\"es\">\n");
       out.write("\n");
       out.write("    <head>\n");
@@ -69,13 +83,15 @@ public final class Login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            <a href=\"./index.jsp\"><img class=\"mb-4\" src=\"images/logo.png\" alt=\"\" width=\"72\" height=\"72\"></a>\n");
       out.write("            <h1 class=\"h3 mb-3 font-weight-normal\">Iniciar sesión</h1>\n");
       out.write("            <label for=\"inputUser\" class=\"sr-only\">Usuario</label>\n");
-      out.write("            <input type=\"text\" id=\"inputUser\" class=\"form-control mb-1\" placeholder=\"Usuario\" name=\"usr\" required autofocus>\n");
+      out.write("            <input type=\"text\" id=\"inputUser\" class=\"form-control mb-1\" placeholder=\"Usuario\" value=\"");
+      out.print(usuario);
+      out.write("\" name=\"usr\" required autofocus>\n");
       out.write("\n");
       out.write("            <label for=\"inputPassword\" class=\"sr-only\">Password</label>\n");
       out.write("            <input type=\"password\" id=\"inputPassword\" class=\"form-control mb-2\" placeholder=\"Contraseña\" name=\"pass\" required>\n");
       out.write("            <div class=\"checkbox mb-3\">\n");
       out.write("                <label>\n");
-      out.write("                    <input type=\"checkbox\" value=\"remember-me\"> Recuérdame.\n");
+      out.write("                    <input type=\"checkbox\" value=\"remember-me\" name=\"RecordarUsuario\"> Recuérdame.\n");
       out.write("                </label>\n");
       out.write("\n");
       out.write("\n");
@@ -84,14 +100,15 @@ public final class Login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("            <div  style=\"color:red;\">\n");
       out.write("                ");
-                    
+
                     if (request.getParameter("error") != null) {
-                        out.println(request.getParameter("error")); 
+                        out.println(request.getParameter("error"));
                     }
                     if (request.getParameter("cnt") != null) {
                         out.println(request.getParameter("cnt"));
-                    }
-                    if (Integer.parseInt(request.getParameter("cnt")) >= 3) {
+                        int num = Integer.parseInt(request.getParameter("cnt"));
+
+                        if (num >= 3) {
                 
       out.write("\n");
       out.write("                ");
@@ -102,6 +119,7 @@ public final class Login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("                ");
 
+                        }
                     }
 
                 

@@ -1,11 +1,31 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%
+    String usuario1 = (String) session.getAttribute("usuario");//Usuario y Galleta
+    Cookie[] galleta = request.getCookies();
+    String Fondo = "";
+    String FondoLetra = "";
+%>
+<%
+    for (int i = 0; i < galleta.length; i++) {//Busca los colores que el usuario selecciono usando la sesion
+        if (galleta[i].getName().equals(usuario1 + "Fondo")) {
+            Fondo = galleta[i].getValue();
+        }
+        if (galleta[i].getName().equals(usuario1 + "Letra")) {
+            FondoLetra = galleta[i].getValue();
+        }
+    }
+%>
 <html>
     <head>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <style> 
+            body{ background-color:<%=Fondo%>;<%//Al recuperar los colores se ingresan en el style de la pagina%>
+                  color:<%=FondoLetra%>;}
+            </style>
     </head>
     <body>
         <h2>Bievenido al chat</h2>

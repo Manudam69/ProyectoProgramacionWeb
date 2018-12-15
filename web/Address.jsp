@@ -11,6 +11,23 @@
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%
+    String usuario = (String) session.getAttribute("usuario");//Usuario y Galleta
+    Cookie[] galleta = request.getCookies();
+    String Fondo = "";
+    String FondoLetra = "";
+%>
+<%
+    for (int i = 0; i < galleta.length; i++) {//Busca los colores que el usuario selecciono usando la sesion
+        if (galleta[i].getName().equals(usuario + "Fondo")) {
+            Fondo = galleta[i].getValue();
+        }
+        if (galleta[i].getName().equals(usuario + "Letra")) {
+            FondoLetra = galleta[i].getValue();
+        }
+
+    }
+%>
 <html lang="es">
 
     <head>
@@ -20,7 +37,9 @@
         <link rel="icon" type="image/png" href="images/logo.png">
         <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
         <script src="./js/AjaxFunciones.js"></script> 
-        <style>
+        <style>            
+            body{ background-color:<%=Fondo%>;<%//Al recuperar los colores se ingresan en el style de la pagina%>
+                  color:<%=FondoLetra%>;}            
             *{
                 font-family: 'Abel', sans-serif;
             }

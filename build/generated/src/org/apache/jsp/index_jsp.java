@@ -54,7 +54,25 @@ int numAccesos = 0;
         }
       }
       out.write('\n');
-      out.write(' ');
+      out.write('\n');
+
+    String usuario = (String) session.getAttribute("usuario");//Usuario y Galleta
+    Cookie[] galleta = request.getCookies();
+    String Fondo = "";
+    String FondoLetra = "";
+
+      out.write('\n');
+
+    for (int i = 0; i < galleta.length; i++) {//Busca los colores que el usuario selecciono usando la sesion
+        if (galleta[i].getName().equals(usuario + "Fondo")) {
+            Fondo = galleta[i].getValue();
+        }
+        if (galleta[i].getName().equals(usuario + "Letra")) {
+            FondoLetra = galleta[i].getValue();
+        }
+
+    }
+
       out.write("\n");
       out.write("<!DOCTYPE html>\n");
       out.write("<html>\n");
@@ -66,11 +84,21 @@ int numAccesos = 0;
       out.write("        <link href=\"https://fonts.googleapis.com/css?family=Abel\" rel=\"stylesheet\">\n");
       out.write("        <link href=\"https://fonts.googleapis.com/css?family=Saira\" rel=\"stylesheet\">\n");
       out.write("        <link rel=\"icon\" type=\"image/png\" href=\"images/logo.png\">\n");
-      out.write("    </head>\n");
+      out.write("        <style> \n");
+      out.write("            body{ background-color:");
+      out.print(Fondo);
+      out.write(';');
+//Al recuperar los colores se ingresan en el style de la pagina
       out.write("\n");
-      out.write("    <body>\n");
-      out.write("        \n");
-      out.write("        <header class=\"pb-2\">\n");
+      out.write("                  color:");
+      out.print(FondoLetra);
+      out.write(";}\n");
+      out.write("            </style>\n");
+      out.write("        </head>\n");
+      out.write("\n");
+      out.write("        <body>\n");
+      out.write("\n");
+      out.write("            <header class=\"pb-2\">\n");
       out.write("            <nav class=\"navbar navbar-expand-lg navbar-light fixed-top\">\n");
       out.write("                <a class=\"navbar-brand\" href=\"./index.jsp\" id=\"logo\">\n");
       out.write("                    <img src=\"images/logo.png\" width=\"60\" height=\"60\" class=\"d-inline-block align-top ml-4 mb-0\">\n");
@@ -131,9 +159,12 @@ int numAccesos = 0;
                     
       out.write("\n");
       out.write("                    <a href=\"./carrito.jsp\"><img src=\"images/carrito.png\" class=\"img-fluid mb-3 mr-3\" alt=\"Algo pasa\" width=\"50\"></a>\n");
+      out.write("                    <a href=\"./Nocturno.jsp\"><img src=\"images/night_mode.png\" class=\"img-fluid mb-3 mr-3\" alt=\"Modo Nocturno\" width=\"50\"></a>\n");
+      out.write("                    <a href=\"./Normal.jsp\"><img src=\"images/File_Alt.png\" class=\"img-fluid mb-3 mr-3\" alt=\"Modo Nocturno\" width=\"50\"></a>\n");
+      out.write("                    <a href=\"./Invierno.jsp\"><img src=\"images/snowflake.png\" class=\"img-fluid mb-3 mr-3\" alt=\"Modo Nocturno\" width=\"50\"></a>\n");
+      out.write("                    \n");
       out.write("                    <form class=\"form-inline my-2 my-lg-0\" action=\"Cerrarsesion.jsp\">                       \n");
       out.write("                        <button class=\"btn btn  my-2 my-sm-0\" type=\"submit\" id=\"sesion\">Cerrar Sesión</button>\n");
-      out.write("\n");
       out.write("                        ");
 }
       out.write("\n");
@@ -239,20 +270,20 @@ int numAccesos = 0;
       out.write("        <footer class=\"footer shadow-lg pb-2 mt-5\">\n");
       out.write("            ");
 
-            String query = "select * from farolito.visitas";
+                String query = "select * from farolito.visitas";
                 objConn.Consult(query);
                 objConn.rs.beforeFirst();
-                int contadorVista= 0;
-                while(objConn.rs.next()){
+                int contadorVista = 0;
+                while (objConn.rs.next()) {
                     contadorVista = objConn.rs.getInt(2);
                 }
-               numAccesos = contadorVista;  
+                numAccesos = contadorVista;
             
       out.write("\n");
       out.write("            ");
 numAccesos++;
       out.write("\n");
-      out.write("             <h2>");
+      out.write("            <h2>");
       out.print("La pagina fue visitada " + (contadorVista) + " veces");
       out.write("</h2>\n");
       out.write("            ");
@@ -261,7 +292,7 @@ numAccesos++;
             
       out.write("\n");
       out.write("\n");
-      out.write("            \n");
+      out.write("\n");
       out.write("            <hr>\n");
       out.write("            <div class=\"row container-fluid mt-0\">\n");
       out.write("                <div class=\"col-md-3 text-center\">\n");

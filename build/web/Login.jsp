@@ -6,6 +6,18 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%
+    
+    Cookie[] galleta = request.getCookies();
+    String usuario = "";    
+%>
+<%
+    for (int i = 0; i < galleta.length; i++) {//Busca los colores que el usuario selecciono usando la sesion
+        if (galleta[i].getName().equals("Usuario")) {
+            usuario = galleta[i].getValue();
+        }        
+    }
+%>
 <html lang="es">
 
     <head>
@@ -30,13 +42,13 @@
             <a href="./index.jsp"><img class="mb-4" src="images/logo.png" alt="" width="72" height="72"></a>
             <h1 class="h3 mb-3 font-weight-normal">Iniciar sesión</h1>
             <label for="inputUser" class="sr-only">Usuario</label>
-            <input type="text" id="inputUser" class="form-control mb-1" placeholder="Usuario" name="usr" required autofocus>
+            <input type="text" id="inputUser" class="form-control mb-1" placeholder="Usuario" value="<%=usuario%>" name="usr" required autofocus>
 
             <label for="inputPassword" class="sr-only">Password</label>
             <input type="password" id="inputPassword" class="form-control mb-2" placeholder="Contraseña" name="pass" required>
             <div class="checkbox mb-3">
                 <label>
-                    <input type="checkbox" value="remember-me"> Recuérdame.
+                    <input type="checkbox" value="remember" name="RecordarUsuario"> Recuérdame.
                 </label>
 
 
