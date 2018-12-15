@@ -15,12 +15,7 @@
     <head>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Nota de pago</title>
-        <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Saira" rel="stylesheet">
-        <link rel="icon" type="image/png" href="images/logo.png">
-        <link rel="stylesheet" href="css/index.css">
-        
+        <title>Nota de compra</title>
     </head>
     <body>
 
@@ -42,6 +37,7 @@
             String estado = request.getParameter("estado");
             String cpR = request.getParameter("CP");
             int cp = Integer.parseInt(cpR);
+
             String subtotal = String.valueOf(request.getSession().getAttribute("subtotal"));
 
             int numPedido = (int) (Math.random() * 999999999) + 100000009;
@@ -49,30 +45,17 @@
             String queryUs = "SELECT * FROM farolito.usuarios where Usuario = '" + usuarioSesion + "';";
             String correoUs = "";
 
-            objConn.Consult(queryUs);
+            if (PreciosF != null) {
+                objConn.Consult(queryUs);
 
-            objConn.rs.beforeFirst();
-            while (objConn.rs.next()) {
-                if (usuarioSesion.equals(objConn.rs.getString(2))) {
-                    correoUs = objConn.rs.getString(4);
-                    break;
+                objConn.rs.beforeFirst();
+                while (objConn.rs.next()) {
+                    if (usuarioSesion.equals(objConn.rs.getString(2))) {
+                        correoUs = objConn.rs.getString(4);
+                        break;
+                    }
                 }
-            }
 
-            /*
-            //No obligatorios
-            String correo = request.getParameter("correo");
-            String dir2 = request.getParameter("direccion2");
-             */
-            //opcionales en tarjetas o paypal
-            //Debito y credito
-            String NombTar = request.getParameter("TarjetaNom");
-            String NumTarjR = request.getParameter("TarjetaNum");
-
-            /*
-            //Paypal
-            String CorreoPay = request.getParameter("CorreoPay");
-             */
 
         %>
         
@@ -156,6 +139,7 @@
             <br>
         </div>
 
+            <a href="./index.jsp" onclick="">Seguir Comprando.</a>
 
         <footer class="footer shadow-lg pb-2 mt-5">
             <hr>
@@ -181,7 +165,7 @@
         <%  //Esto va al final
             //Aqui cambian las existencia de los productos
             //Esto reinicia la lista de los precios y la lista del carrito
-            //Aqui va el cambiar existencias
+            //Aqui va el cambiar 
             if (PreciosF.size() == 3) {
                 PreciosF = null;
                 lista_c = null;
@@ -189,7 +173,31 @@
                 request.getSession().setAttribute("listacom", lista_c);
                 request.getSession().setAttribute("lista_precios", PreciosF);
             }
+        } else {
 
+        %>    
+        
+         <div class="container mt-5 pt-5 shadow mb-5">
+            <p class="text-center h3">
+                <a href="./index.jsp"><img src="images/logo.png" width="60" height="60" class="d-inline-block align-top mb-1"></a>
+                <br> <%=nombres%> <%=apellidos%>, gracias por comprar con nosotros.</p>
+            <p class="lead text-center">Tu compra esta siendo procesada.</p>
+
+            <div class="row">
+                <div class="col-md-3 mt-5 lead">
+                    <p class="text-right">Pedido num. </p>
+                </div>
+                <div class="col-md-7 mt-5 lead">
+                    <p class="text-right"><%=numPedido%></p>
+                </div>
+            </div>
+        
+                <br><br><br><br>
+                <a href="./index.jsp" onclick="">Seguir Comprando.</a>
+                
+                
+        <%
+            }
         %>   
 
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

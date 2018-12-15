@@ -223,19 +223,19 @@
 
                         <div class="d-block my-3">
                             <div class="custom-control custom-radio">
-                                <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked required>
+                                <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" onclick="selectPago(1);" checked required>
                                 <label class="custom-control-label" for="credit">Tarjeta de credito</label>
                             </div>
                             <div class="custom-control custom-radio">
-                                <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required>
+                                <input id="debit" name="paymentMethod" type="radio" class="custom-control-input"  onclick="selectPago(1);"  required>
                                 <label class="custom-control-label" for="debit">Tarjeta de debito</label>
                             </div>
-                            <div class="custom-control custom-radio">
-                                <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required>
+                            <div class="custom-control custom-radio">         <!--onclick="alert('hello');" -->
+                                <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" onclick="selectPago(2);" required>
                                 <label class="custom-control-label" for="paypal">PayPal</label>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row" id="TablaPagos">
                             <div class="col-md-6 mb-3">
                                 <label for="cc-name">Nombre en la tarjeta*</label>
                                 <input type="text" class="form-control" id="cc-name" name="TarjetaNom" placeholder="" required>
@@ -251,9 +251,9 @@
                                     Credit card number is required
                                 </div>
                             </div>
-                        </div>
+                      
                         <div class="row">
-                            <div class="col-md-3 mb-3">
+                            <div class="col-md-3 mb-3" style=" margin-left:16px;">
                                 <label for="cc-expiration">Expiración*</label>
                                 <input type="text" class="form-control" id="cc-expiration" name="Exp" placeholder="08/20" required>
                                 <div class="invalid-feedback">
@@ -267,7 +267,9 @@
                                     Security code required
                                 </div>
                             </div>
-                        </div>  
+                        </div>        
+                     </div>    
+                        
                         <hr class="mb-4">
                         <button class="btn btn-primary btn-lg btn-block mb-5" type="submit">Continuar</button>
                     </form>

@@ -6,6 +6,19 @@
 
 var ajax;  //Variable global para el uso de ajax
 
+function LlamadaPagos() {
+    //Comprando la peticion se ha completado en estado y ya termino el contenido (4)
+    if (ajax.readyState == 4) {
+        if (ajax.status == 200) {
+            //escribimos el resultado en la pagina html
+            document.getElementById("TablaPagos").innerHTML = ajax.responseText;
+        }
+    }
+
+
+}
+
+
 function LlamadaTabla() {
     //Comprando la peticion se ha completado en estado y ya termino el contenido (4)
     if (ajax.readyState == 4) {
@@ -137,6 +150,30 @@ function PromoCode(total) {
 
     //Enviamos la peticion 
     ajax.open("post", "CambiarPromo.jsp?Total="+total+"&Codigo="+codigo, true);
+    ajax.send(null);
+        
+        
+}
+
+
+function selectPago(opcion) {
+    
+    //alert(opcion);
+
+
+        if (window.XMLHttpRequest) {
+        //No internet explorer
+        ajax = new XMLHttpRequest();
+    } else {
+        //En internet explorer
+        ajax = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+
+    //Almacenamos en el control la funcion que se invocara cuando la peticion cambie de estado
+    ajax.onreadystatechange = LlamadaPagos;
+
+    //Enviamos la peticion 
+    ajax.open("post", "Cambiarmetodo.jsp?Opcion="+opcion, true);
     ajax.send(null);
         
         
