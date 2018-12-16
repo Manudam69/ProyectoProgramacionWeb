@@ -9,13 +9,26 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.2.4/email.min.js"></script> <!--Libreria necesaria para enviar correos -->
         <title>JSP Page</title>
     </head>
     <body>
         <%
             if (request.getParameter("resBD") != null) {
                 if (request.getParameter("resBD").equals(request.getParameter("res"))) {
-                    out.println("tas bien");
+                    String usuario = String.valueOf(request.getSession().getAttribute("recuperaUsuario"));
+                    String correo = String.valueOf(request.getSession().getAttribute("recuperaCorreo"));
+        %>
+        <script>
+            var nombre = "<%=usuario%>";
+            var correo = "<%=correo%>";
+            
+            emailjs.init("user_9uafhwkJK3GEm5Swrs4jg");
+            emailjs.send("gmail", "plantilla_recuperacion", {"to_mail":correo,"name":nombre})
+            alert('Correo enviado');
+            
+        </script>
+        <%
                 }
             }
 

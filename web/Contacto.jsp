@@ -31,12 +31,8 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
         <link rel="stylesheet" href="css/contacto.css">
+        <script src="./js/CorreoContacto.js"></script> 
         <link rel="icon"  type="image/png" href="images/logo.png">
-         <script src="./js/CorreoContacto.js"></script> 
-         <style> 
-            body{ background-color:<%=Fondo%>;<%//Al recuperar los colores se ingresan en el style de la pagina%>
-                  color:<%=FondoLetra%>;}
-            </style>
     </head>
 
     <body>
@@ -100,74 +96,36 @@
 
         <div class="mt-5 pt-5"></div>
         <div class="container">
+            <form class="form-signin mx-auto text-center mt-5" method="post">
                 <img class="mb-4" src="images/logo.png" alt="" width="72" height="72">
                 <h1 class="h3 mb-3 font-weight-normal text-center">Contacto</h1>
                 <label for="inputUsername" class="sr-only">Usuario</label>
                 <p class="text-left mb-0">Usuario</p>
-                <input type="text" id="inputUsername" class="form-control mb-2" v-model="name" placeholder="Username"autofocus>
+                <input type="text" id="usuario" class="form-control mb-2" placeholder="Username"autofocus>
 
                 <label for="inputEmail" class="sr-only">Correo</label>
                 <p class="text-left mb-0">Correo electrónico*</p>
-                <input type="email" id="inputEmail" class="form-control mb-2" v-model="to_mail" placeholder="alguien@ejemplo.com" required>
+                <input type="email" id="to_mail" class="form-control mb-2" placeholder="alguien@ejemplo.com" required>
 
                 <label for="inputSubject" class="sr-only">Asunto</label>
                 <p class="text-left mb-0">Asunto*</p>
-                <input type="text" id="inputSubject" class="form-control mb-4" v-model="subject" placeholder="Subject" required>
+                <input type="text" id="asunto" class="form-control mb-4" placeholder="Subject" required>
 
                 <div class="form-group" data-for="message">
                     <label class="form-control-label mbr-fonts-style display-7" for="message-form1-2w">Mensaje*</label>
-                    <textarea type="text" class="form-control" id="message" v-model="message" rows="10" data-form-field="Message"></textarea>
+                    <textarea type="text" class="form-control" name="message" rows="10" data-form-field="Message" id="mensaje"></textarea>
                 </div>
 
                 <div class="row text-right">
                     <div class="col-md-9"></div>
                     <div class="col-md-3">
-                        <button @click="enviar" class="btn btn-lg btn-primary btn-block mb-0 w-100" >Enviar</button>
+                        <button class="btn btn-lg btn-primary btn-block mb-0 w-100 " type="submit" onclick="enviar()">Enviar</button>
                         <p class="mb-0 text-left mt-1" style="font-size: 13px;">* Obligatorio</p>
                     </div>
-                </div>   
+                </div> 
+            </form>
         </div>
-        
-        <script src="https://cdn.emailjs.com/dist/email.min.js" type="text/javascript">
-        </script>
-       <script>
-            (function(){
-                emailjs.init("user_9uafhwkJK3GEm5Swrs4jg");
-             })();
-            const vue = new Vue({
-                el: '#app',
-                data(){
-                    return {
-                        to_mail:'',
-                        name: '',
-                        subject: '',
-                        message: '',
-                    }
-                },
-                methods: {
-                    enviar(){
-                        let data = {
-                            to_mail:this.to_mail,
-                            name: this.name,
-                            subject: this.subject,
-                            message: this.message,
-                        };
-                        
-                        emailjs.send("gmail","plantilla_contacto", data)
-                        .then(function(response) {
-                            if(response.text === 'OK'){
-                                alert('El correo se ha enviado de forma exitosa');
-                            }
-                           console.log("SUCCESS. status=%d, text=%s", response.status, response.text);
-                        }, function(err) {
-                            alert('Ocurrió un problema al enviar el correo');
-                           console.log("FAILED. error=", err);
-                        });
-                    }
-                }
-            });
-        </script>
-        
+
         <footer class="footer shadow-lg pb-2 mt-5">
             <hr>
             <div class="row container-fluid mt-0">
@@ -183,7 +141,9 @@
                 </div>
             </div>
         </footer>
-          
+        
+        
+         <script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.2.4/email.min.js"></script> <!--Libreria necesaria para enviar correos -->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>

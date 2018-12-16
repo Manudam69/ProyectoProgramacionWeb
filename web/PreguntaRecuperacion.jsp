@@ -28,7 +28,7 @@
     <body class="text-center">
         <%
             String usuarioBD = "";
-            String usuario = "";
+            String usuario = "", correo = "";
             int numPregunta = 0;
             String respuesta = "";
             String pregunta = "";
@@ -37,7 +37,14 @@
             objConn.rs.beforeFirst();
             if (request.getParameter("usr") != null) {
                 usuario = request.getParameter("usr");
+                request.getSession().setAttribute("recuperaUsuario",usuario);
             }
+            
+            if(request.getParameter("email")!=null){
+                correo = request.getParameter("email");
+                request.getSession().setAttribute("recuperaCorreo",correo);
+            }
+            
             while (objConn.rs.next()) {
                 usuarioBD = objConn.rs.getString(2);
                 if (usuario.equals(usuarioBD)) {
@@ -46,7 +53,6 @@
                 }
             }
 
-            out.println(" ---> " + usuario + " <---- " + numPregunta);
 
             switch (numPregunta) {
                 case 1:
@@ -72,7 +78,7 @@
             <p class="lead"><%out.println(pregunta);%></p>
             <input type="text" placeholder="Respuesta"  name="res" class=" form-control mb-5">
 
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Recuperar mi cuenta</button>
+            <button class="btn btn-lg btn-primary btn-block" type="submit" onclick="">Recuperar mi cuenta</button>
 
             <input type="text" name="resBD" value="<%=respuesta%>" hidden>
             <input type="text" name="usrBD" value="<%=usuario%>" hidden>

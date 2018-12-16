@@ -18,7 +18,7 @@
             if (idPais != null && idPais.equals("MX")) {
         %> 
         <div class="col-md-14" id="PaisOut">
-            <label for="state">Estado</label>
+            <label for="state">Estado*</label>
             <select class="custom-select d-block w-100" id="state" name="estado" onchange="selectGasto();" required>
                 <option value="x">Elegir...</option>
                 <option value="AGS">Aguascalientes</option>
@@ -31,7 +31,7 @@
         </div>
         <%} else if ( idPais != null && idPais.equals("USA")) {%>
         <div class="col-md-14" id="PaisOut">
-            <label for="state">Estado</label>
+            <label for="state">Estado*</label>
             <select class="custom-select d-block w-100" id="state" name="estado" onchange="selectGasto();" required>
                 <option value="x">Elegir...</option>
                 <option value="CA">California</option>
@@ -44,7 +44,7 @@
         </div>
         <%} else if (idPais != null && idPais.equals("x")) {%>
         <div class="col-md-14" id="PaisOut">
-            <label for="state">Estado</label>
+            <label for="state">Estado*</label>
             <select class="custom-select d-block w-100" id="state" name="estado" onchange="selectGasto();" required>
                 <option value="">Elegir...</option>
             </select>

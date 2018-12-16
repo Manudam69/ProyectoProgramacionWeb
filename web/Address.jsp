@@ -37,9 +37,8 @@
         <link rel="icon" type="image/png" href="images/logo.png">
         <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
         <script src="./js/AjaxFunciones.js"></script> 
-        <style>            
-            body{ background-color:<%=Fondo%>;<%//Al recuperar los colores se ingresan en el style de la pagina%>
-                  color:<%=FondoLetra%>;}            
+        <script src="./js/CorreoNota.js"></script> 
+        <style>
             *{
                 font-family: 'Abel', sans-serif;
             }
@@ -228,11 +227,11 @@
                         <hr class="mb-4">
                          <h4 class="mb-3">ENVIO</h4>
                         <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="same-address" name="envio">
+                            <input type="checkbox" class="custom-control-input" id="same-address" name="envio" value="a">
                             <label class="custom-control-label" for="same-address">Standard (3-5 días habiles)</label>
                         </div>
                         <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="save-info" name="envio">
+                            <input type="checkbox" class="custom-control-input" id="save-info" name="envio" value="b">
                             <label class="custom-control-label" for="save-info">Express (1-2 días habiles)</label>
                         </div>
                          
@@ -249,7 +248,7 @@
                                 <input id="debit" name="paymentMethod" type="radio" class="custom-control-input"  onclick="selectPago(1);"  required>
                                 <label class="custom-control-label" for="debit">Tarjeta de debito</label>
                             </div>
-                            <div class="custom-control custom-radio">         <!--onclick="alert('hello');" -->
+                            <div class="custom-control custom-radio">        
                                 <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" onclick="selectPago(2);" required>
                                 <label class="custom-control-label" for="paypal">PayPal</label>
                             </div>
