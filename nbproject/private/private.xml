@@ -3,13 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Ramiro/Desktop/ProyectoProgramacionWeb/web/productos.jsp</file>
-            <file>file:/C:/Users/Ramiro/Desktop/ProyectoProgramacionWeb/web/producto.jsp</file>
-            <file>file:/C:/Users/Ramiro/Desktop/ProyectoProgramacionWeb/web/Address.jsp</file>
-            <file>file:/C:/Users/Ramiro/Desktop/ProyectoProgramacionWeb/web/Login.jsp</file>
-            <file>file:/C:/Users/Ramiro/Desktop/ProyectoProgramacionWeb/web/checklogin.jsp</file>
-            <file>file:/C:/Users/Ramiro/Desktop/ProyectoProgramacionWeb/src/java/mySql/MySqlConn.java</file>
-            <file>file:/C:/Users/Ramiro/Desktop/ProyectoProgramacionWeb/web/pruebasProd.jsp</file>
+            <file>file:/C:/Users/MD/Documents/Programación%20de%20Sistemas%20de%20Web/ProyectoProgramacionWeb/web/Login.jsp</file>
+            <file>file:/C:/Users/MD/Documents/Programación%20de%20Sistemas%20de%20Web/ProyectoProgramacionWeb/web/cambiarPass.jsp</file>
+            <file>file:/C:/Users/MD/Documents/Programación%20de%20Sistemas%20de%20Web/ProyectoProgramacionWeb/web/Bajas_Producto.jsp</file>
         </group>
     </open-files>
 </project-private>

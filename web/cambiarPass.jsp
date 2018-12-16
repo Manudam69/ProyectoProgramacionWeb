@@ -10,20 +10,47 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-        <h1>Bienvenido al cambio de contraseña temporal</h1>
+        <title>Cambio de contraseña</title>
+        <link rel="icon" type="image/png" href="images/logo.png">
+        <style>
+            * {
+                font-family: 'Abel', sans-serif;
+            }
 
-        <p>Por favor llena el siguiente formulario</p>
-        <form action="cambiarPass.jsp" onsubmit="return validarPassword(this)">
-            Ingresa tu usuario: <input type="text" name="usr"><br><br>
-            Ingresa tu contraseña temporal: <input type="text" name="pass"><br><br>
-            Ingresa tu nueva contraseña: <input type="text" name="passNueva"><br><br>
-            Ingresa tu nueva contraseña: <input type="text" name="passNueva2"><br><br>
-            <input type="submit">
+            body {
+                background-color: rgb(248, 249, 250);
+            }
+
+        </style>
+    </head>
+    <body class="text-center">
+           
+        <form class="form-signin mx-auto p-5 mt-5" style="width: 400px;" action="cambiarPass.jsp" onsubmit="return validarPassword(this)">
+            <a href="./index.jsp"><img class="mb-4" src="images/logo.png" alt="" width="72" height="72"></a>
+            <h1 class="h3 mb-3 font-weight-normal">Cambio de contraseña</h1>
+            
+            <label for="inputUser" class="sr-only">Usuario</label>
+            <input type="text" id="inputUser" class="form-control mb-1" placeholder="Usuario" name="usr" required autofocus>
+
+            <label for="inputPassword" class="sr-only">Password</label>
+            <input type="password" id="inputPassword" class="form-control mb-2" placeholder="Contraseña" name="pass" required>
+            
+            <label for="inputPassword2" class="sr-only">Password</label>
+            <input type="password" id="inputPassword2" class="form-control mb-2" placeholder="Nueva contraseña" name="pass" required>
+            
+            <label for="inputPassword3" class="sr-only">Password</label>
+            <input type="password" id="inputPassword3" class="form-control mb-2" placeholder="Repite la nueva contraseña" name="pass" required>
+                  
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Cambiar contraseña</button>
         </form>
+
+
+
+
+
         <%
             String usr = "";
             String passTemp = "";
@@ -44,8 +71,8 @@
                 passN1 = request.getParameter("passNueva2");
             }
             CryptWithMD5 var = new CryptWithMD5();
-            
-           objConn.CambiaUsr(usr, var.cryptWithMD5(passN));
+
+            objConn.CambiaUsr(usr, var.cryptWithMD5(passN));
 
         %>
 
