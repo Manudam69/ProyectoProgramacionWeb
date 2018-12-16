@@ -131,17 +131,12 @@
                                         <button class="btn btn-secondary" onclick="PromoCode(<%=TotalAPagar%>)" disabled>Redeem</button>
                                     </div>
                                 </div>
-
                             </div>
-
                         </div>
                 </div>
-
-
-
                 <div class="col-md-8 order-md-1">
                     <h4 class="mb-3">Dirección de envío</h4>
-                    <form  action="./CheckOut.jsp" method="get" class="needs-validation">
+                    <form  action="./CheckOut.jsp" method="post" class="needs-validation">
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="firstName">Nombre(s)*</label>
@@ -227,11 +222,11 @@
                         <hr class="mb-4">
                         <h4 class="mb-3">ENVIO</h4>
                         <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="same-address" name="envio" value="a">
+                            <input type="radio" class="custom-control-input" id="same-address" name="envio" value="a" checked>
                             <label class="custom-control-label" for="same-address">Standard (3-5 días habiles)</label>
                         </div>
                         <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="save-info" name="envio" value="b">
+                            <input type="radio" class="custom-control-input" id="save-info" name="envio" value="b">
                             <label class="custom-control-label" for="save-info">Express (1-2 días habiles)</label>
                         </div>
 
