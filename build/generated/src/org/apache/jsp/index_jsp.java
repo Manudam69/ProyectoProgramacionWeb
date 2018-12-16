@@ -97,7 +97,6 @@ int numAccesos = 0;
       out.write("        </head>\n");
       out.write("\n");
       out.write("        <body>\n");
-      out.write("\n");
       out.write("            <header class=\"pb-2\">\n");
       out.write("            <nav class=\"navbar navbar-expand-lg navbar-light fixed-top\">\n");
       out.write("                <a class=\"navbar-brand\" href=\"./index.jsp\" id=\"logo\">\n");
@@ -132,6 +131,28 @@ int numAccesos = 0;
       out.write("                        <li class=\"nav-item\">\n");
       out.write("                            <a class=\"nav-link\" href=\"./Ayuda.jsp\">Ayuda</a>\n");
       out.write("                        </li>\n");
+      out.write("                        ");
+  if (session.getAttribute("usuario") == null) {
+                            } else {
+                                if (session.getAttribute("admin").equals("true")) {
+      out.write("\n");
+      out.write("                        <li class=\"nav-item\">\n");
+      out.write("                            <a class=\"nav-link\" href=\"./Ayuda.jsp\">Altas</a>\n");
+      out.write("                        </li>\n");
+      out.write("                        <li class=\"nav-item\">\n");
+      out.write("                            <a class=\"nav-link\" href=\"./Ayuda.jsp\">Bajas</a>\n");
+      out.write("                        </li>\n");
+      out.write("                        <li class=\"nav-item\">\n");
+      out.write("                            <a class=\"nav-link\" href=\"./Ayuda.jsp\">Cambios</a>\n");
+      out.write("                        </li>\n");
+      out.write("                        <li class=\"nav-item\">\n");
+      out.write("                            <a class=\"nav-link\" href=\"./Ayuda.jsp\">Graficas</a>\n");
+      out.write("                        </li>\n");
+      out.write("                        ");
+}
+                            }
+      out.write("\n");
+      out.write("\n");
       out.write("                    </ul>\n");
       out.write("                    ");
 
@@ -146,23 +167,21 @@ int numAccesos = 0;
                     } else if (session.getAttribute("admin").equals("true")) {
                     
       out.write("\n");
-      out.write("                    <a href=\"./carrito.jsp\"><img src=\"images/carrito.png\" class=\"img-fluid mb-3 mr-3\" alt=\"Algo pasa\" width=\"50\"></a>\n");
+      out.write("\n");
       out.write("                    <form class=\"form-inline my-2 my-lg-0\" action=\"Cerrarsesion.jsp\">                       \n");
       out.write("                        <button class=\"btn btn  my-2 my-sm-0\" type=\"submit\" id=\"sesion\">Cerrar Sesión</button>\n");
       out.write("                    </form>\n");
-      out.write("                    <div>\n");
-      out.write("                        <a class=\"nav-link\" href=\"#\">ABC Productos</a>\n");
-      out.write("                        <a class=\"nav-link\" href=\"#\">Graficas</a>\n");
-      out.write("                    </div>\n");
+      out.write("\n");
       out.write("                    ");
 } else {
                     
       out.write("\n");
-      out.write("                    <a href=\"./carrito.jsp\"><img src=\"images/carrito.png\" class=\"img-fluid mb-3 mr-3\" alt=\"Algo pasa\" width=\"50\"></a>\n");
-      out.write("                    <a href=\"./Nocturno.jsp\"><img src=\"images/night_mode.png\" class=\"img-fluid mb-3 mr-3\" alt=\"Modo Nocturno\" width=\"50\"></a>\n");
-      out.write("                    <a href=\"./Normal.jsp\"><img src=\"images/File_Alt.png\" class=\"img-fluid mb-3 mr-3\" alt=\"Modo Nocturno\" width=\"50\"></a>\n");
-      out.write("                    <a href=\"./Invierno.jsp\"><img src=\"images/snowflake.png\" class=\"img-fluid mb-3 mr-3\" alt=\"Modo Nocturno\" width=\"50\"></a>\n");
-      out.write("                    \n");
+      out.write("                    <a href=\"./carrito.jsp\"><img src=\"images/carrito.png\" class=\"img-fluid mb-3 mr-2\" alt=\"Algo pasa\" width=\"50\"></a>\n");
+      out.write("\n");
+      out.write("                    <a href=\"./Nocturno.jsp\"><img src=\"images/night_mode.png\" class=\"img-fluid mb-3 mr-2\" alt=\"Modo Nocturno\" width=\"20\"></a>\n");
+      out.write("                    <a href=\"./Normal.jsp\"><img src=\"images/File_Alt.png\" class=\"img-fluid mb-3 mr-2\" alt=\"Modo Nocturno\" width=\"20\"></a>\n");
+      out.write("                    <a href=\"./Invierno.jsp\"><img src=\"images/snowflake.png\" class=\"img-fluid mb-3 mr-3\" alt=\"Modo Nocturno\" width=\"20\"></a>\n");
+      out.write("\n");
       out.write("                    <form class=\"form-inline my-2 my-lg-0\" action=\"Cerrarsesion.jsp\">                       \n");
       out.write("                        <button class=\"btn btn  my-2 my-sm-0\" type=\"submit\" id=\"sesion\">Cerrar Sesión</button>\n");
       out.write("                        ");
