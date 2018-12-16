@@ -41,7 +41,7 @@
                   color:<%=FondoLetra%>;}
             </style>
     </head>
-    <body onload="enviarCorreo()">
+    <body>
 
         <%
             ArrayList<Float> PreciosF = (ArrayList<Float>) request.getSession().getAttribute("lista_precios"); //Impuesto, gasto y total.

@@ -41,7 +41,6 @@
         </head>
 
         <body>
-
             <header class="pb-2">
             <nav class="navbar navbar-expand-lg navbar-light fixed-top">
                 <a class="navbar-brand" href="./index.jsp" id="logo">
@@ -76,6 +75,24 @@
                         <li class="nav-item">
                             <a class="nav-link" href="./Ayuda.jsp">Ayuda</a>
                         </li>
+                        <%  if (session.getAttribute("usuario") == null) {
+                            } else {
+                                if (session.getAttribute("admin").equals("true")) {%>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./Ayuda.jsp">Altas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./Ayuda.jsp">Bajas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./Ayuda.jsp">Cambios</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./Ayuda.jsp">Graficas</a>
+                        </li>
+                        <%}
+                            }%>
+
                     </ul>
                     <%
                         if (session.getAttribute("usuario") == null) {
@@ -86,21 +103,19 @@
                     <%
                     } else if (session.getAttribute("admin").equals("true")) {
                     %>
-                    <a href="./carrito.jsp"><img src="images/carrito.png" class="img-fluid mb-3 mr-3" alt="Algo pasa" width="50"></a>
+
                     <form class="form-inline my-2 my-lg-0" action="Cerrarsesion.jsp">                       
                         <button class="btn btn  my-2 my-sm-0" type="submit" id="sesion">Cerrar Sesión</button>
                     </form>
-                    <div>
-                        <a class="nav-link" href="#">ABC Productos</a>
-                        <a class="nav-link" href="#">Graficas</a>
-                    </div>
+
                     <%} else {
                     %>
-                    <a href="./carrito.jsp"><img src="images/carrito.png" class="img-fluid mb-3 mr-3" alt="Algo pasa" width="50"></a>
-                    <a href="./Nocturno.jsp"><img src="images/night_mode.png" class="img-fluid mb-3 mr-3" alt="Modo Nocturno" width="50"></a>
-                    <a href="./Normal.jsp"><img src="images/File_Alt.png" class="img-fluid mb-3 mr-3" alt="Modo Nocturno" width="50"></a>
-                    <a href="./Invierno.jsp"><img src="images/snowflake.png" class="img-fluid mb-3 mr-3" alt="Modo Nocturno" width="50"></a>
-                    
+                    <a href="./carrito.jsp"><img src="images/carrito.png" class="img-fluid mb-3 mr-2" alt="Algo pasa" width="50"></a>
+
+                    <a href="./Nocturno.jsp"><img src="images/night_mode.png" class="img-fluid mb-3 mr-2" alt="Modo Nocturno" width="20"></a>
+                    <a href="./Normal.jsp"><img src="images/File_Alt.png" class="img-fluid mb-3 mr-2" alt="Modo Nocturno" width="20"></a>
+                    <a href="./Invierno.jsp"><img src="images/snowflake.png" class="img-fluid mb-3 mr-3" alt="Modo Nocturno" width="20"></a>
+
                     <form class="form-inline my-2 my-lg-0" action="Cerrarsesion.jsp">                       
                         <button class="btn btn  my-2 my-sm-0" type="submit" id="sesion">Cerrar Sesión</button>
                         <%}%>

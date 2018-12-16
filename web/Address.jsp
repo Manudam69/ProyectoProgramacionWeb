@@ -135,7 +135,7 @@
                             </div>
 
                         </div>
-                    </div>
+                </div>
 
 
 
@@ -225,7 +225,7 @@
                             </div>
                         </div>
                         <hr class="mb-4">
-                         <h4 class="mb-3">ENVIO</h4>
+                        <h4 class="mb-3">ENVIO</h4>
                         <div class="custom-control custom-checkbox">
                             <input type="checkbox" class="custom-control-input" id="same-address" name="envio" value="a">
                             <label class="custom-control-label" for="same-address">Standard (3-5 días habiles)</label>
@@ -234,7 +234,7 @@
                             <input type="checkbox" class="custom-control-input" id="save-info" name="envio" value="b">
                             <label class="custom-control-label" for="save-info">Express (1-2 días habiles)</label>
                         </div>
-                         
+
                         <hr class="mb-4">
 
                         <h4 class="mb-3">Pago</h4>
@@ -269,25 +269,25 @@
                                     Credit card number is required
                                 </div>
                             </div>
-                      
-                        <div class="row">
-                            <div class="col-md-3 mb-3" style=" margin-left:16px;">
-                                <label for="cc-expiration">Expiración*</label>
-                                <input type="text" class="form-control" id="cc-expiration" name="Exp" placeholder="08/20" required>
-                                <div class="invalid-feedback">
-                                    Expiration date required
+
+                            <div class="row">
+                                <div class="col-md-3 mb-3" style=" margin-left:16px;">
+                                    <label for="cc-expiration">Expiración*</label>
+                                    <input type="text" class="form-control" id="cc-expiration" name="Exp" placeholder="08/20" required>
+                                    <div class="invalid-feedback">
+                                        Expiration date required
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-3 mb-3">
-                                <label for="cc-cvv">CVV*</label>
-                                <input type="text" class="form-control" id="cc-cvv" name="CVV" placeholder="314" pattern="[0-9]{3}" required>
-                                <div class="invalid-feedback">
-                                    Security code required
+                                <div class="col-md-3 mb-3">
+                                    <label for="cc-cvv">CVV*</label>
+                                    <input type="text" class="form-control" id="cc-cvv" name="CVV" placeholder="314" pattern="[0-9]{3}" required>
+                                    <div class="invalid-feedback">
+                                        Security code required
+                                    </div>
                                 </div>
-                            </div>
-                        </div>        
-                     </div>    
-                        
+                            </div>        
+                        </div>    
+
                         <hr class="mb-4">
                         <button class="btn btn-primary btn-lg btn-block mb-5" type="submit">Continuar</button>
                     </form>

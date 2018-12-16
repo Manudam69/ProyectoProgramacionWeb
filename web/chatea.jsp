@@ -21,45 +21,34 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Chat</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <style> 
             body{ background-color:<%=Fondo%>;<%//Al recuperar los colores se ingresan en el style de la pagina%>
                   color:<%=FondoLetra%>;}
             </style>
-    </head>
-    <body>
-        <h2>Bievenido al chat</h2>
-        <form action="Ingreso" method="post">
-            <table style="margin: auto">
-                <tr>
-                    <td>Nick</td>
-                    <td>
-                        <input type="text" name="nick"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Color</td>
-                    <td>
-                        <select name="color">
-                            <option value="#900">Rojo</option>
-                            <option value="#090">Verde</option>
-                            <option value="#009">Azul</option>
-                            <option value="#ffa500">Naranja</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2"><br></td>
-                </tr>
-                <tr>
-                    <td colspan="2" style="text-align: center">
-                        <input type="submit" value="Enviar Datos"/>
-                    </td>
-                </tr>
-            </table>
-        </form>
-        <a href="index.jsp"><p>Volver al inicio</p></a>
-        <p>El chat consiste en una crear una sesion generica donde puedes interactuar con alguno de nuestros administradores</p>
+
+        </head>
+        <body>
+            <div class="container text-center mt-5 pt-5">
+                <img class="d-block mx-auto mb-0" src="images/logo.png" alt="" width="72" height="72">
+                <h2>Bievenido al chat</h2>
+                <form action="Ingreso" method="post">
+                    <p class=" text-center">Nick <input type="text" name="nick" class="form-control form-control-sm w-50"/></p>
+                Color
+                <select class="custom-select d-block" name="color">
+                    <option value="#900">Rojo</option>
+                    <option value="#090">Verde</option>
+                    <option value="#009">Azul</option>
+                    <option value="#ffa500">Naranja</option>
+                </select>
+                <input type="submit" value="Enviar Datos" class="btn btn-success mt-5"/>                  
+            </form>
+            <p class="text-muted">El chat consiste en una crear una sesion generica donde puedes interactuar con alguno de nuestros administradores</p>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     </body>
 </html>
 

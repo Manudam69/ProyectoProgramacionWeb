@@ -12,7 +12,6 @@
 <%@page import="clases.CryptWithMD5"%>
 <%@page import="java.util.ArrayList"%>
 <!DOCTYPE html>
-<% int conta = 0;%>
 <%
     String usuario = "";
     String pass = "";
@@ -48,16 +47,14 @@
             if (usuario.equals(usuarioBD) && pass.equals(passBD)) {
                 HttpSession sesionOk = request.getSession();
                 sesionOk.setAttribute("usuario", usuario);
-                
                 if ((request.getParameter("RecordarUsuario") != null)) {
-                /*Si se cumple la condicion, entonces el  checkbox esta habilitado y
-crea la cookie para almacenar el nombre de usuario*/
-                Cookie cookieUsuario = new Cookie("Usuario", usuario);
-                cookieUsuario.setPath("/");
-                cookieUsuario.setMaxAge(60 * 60 * 24);
-                response.addCookie(cookieUsuario);
-            }
-                
+                    /*Si se cumple la condicion, entonces el  checkbox esta habilitado y
+                crea la cookie para almacenar el nombre de usuario*/
+                    Cookie cookieUsuario = new Cookie("Usuario", usuario);
+                    cookieUsuario.setPath("/");
+                    cookieUsuario.setMaxAge(60 * 60 * 24);
+                    response.addCookie(cookieUsuario);
+                }
                 if (admin.equals("1")) {
                     sesionOk.setAttribute("admin", "true");
                 } else {
@@ -82,9 +79,9 @@ crea la cookie para almacenar el nombre de usuario*/
                 conta = new Integer(0);
                 request.getSession().setAttribute("cnt", conta);
             }
-            
+
             conta++;
-            
+
             if ((Integer) request.getSession().getAttribute("cnt") >= 3) {
                 conta = 0;
                 request.getSession().setAttribute("cnt", conta);
