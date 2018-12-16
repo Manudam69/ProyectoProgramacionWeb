@@ -203,5 +203,14 @@ public class MySqlConn {
         psmt.close();
     }
     
+     public void CambiaUsr(String usr, String pass) throws SQLException {
+        String query1 = "update farolito.usuarios set Contra=?" + " where Usuario='" + usr + "';";
+        psmt = conn.prepareStatement(query1);
+        psmt.setString(1,pass);
+        psmt.executeUpdate();
+        conn.close();
+        psmt.close();
+
+    }
     
 }

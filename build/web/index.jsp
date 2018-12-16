@@ -79,13 +79,13 @@
                             } else {
                                 if (session.getAttribute("admin").equals("true")) {%>
                         <li class="nav-item">
-                            <a class="nav-link" href="./Ayuda.jsp">Altas</a>
+                            <a class="nav-link" href="Alta_Productos.jsp">Altas</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="./Ayuda.jsp">Bajas</a>
+                            <a class="nav-link" href="Bajas_Producto.jsp">Bajas</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="./Ayuda.jsp">Cambios</a>
+                            <a class="nav-link" href="Cambios_Producto.jsp">Cambios</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="./Ayuda.jsp">Graficas</a>

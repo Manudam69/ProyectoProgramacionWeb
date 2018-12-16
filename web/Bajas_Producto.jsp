@@ -63,7 +63,6 @@
                 
                 <%
                 String borrar = request.getParameter("producto");
-                out.println("<br> ->"+borrar);
                 obj.Bajas(borrar);
                 %>
     </body>
