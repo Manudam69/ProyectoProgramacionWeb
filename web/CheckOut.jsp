@@ -171,7 +171,7 @@
                 </div>
             </div>
             <hr>
-            <p class="text-center"><a href="./ReinicioListas.jsp">Seguir comprando</a></p>
+            <p class="text-center"><a href="./pruebasProd.jsp">Seguir comprando</a></p>
             <p class="text-center text-muted">¿Necesitas asistencia? Contáctanos. Haremos todo lo posible para asegurarnos que disfrutes tu experiencia con nosotros. Llámanos: 123-456-7890
                 <br>Escríbenos un email: StoreFarolito@gmail.com</p>
             <br>

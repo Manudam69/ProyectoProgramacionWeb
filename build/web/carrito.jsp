@@ -108,7 +108,7 @@
             </nav>
         </header>
 
-        <form action="./Address.jsp" method="get">
+        <form action="./Address.jsp" method="post">
             <div class="container mt-5 pt-5" id="TablaAct">
                 <div class="text-center">
                     <img src="images/carrito.png" class="img-fluid mb-3 mr-3 text-center" alt="Algo pasa" width="50">
