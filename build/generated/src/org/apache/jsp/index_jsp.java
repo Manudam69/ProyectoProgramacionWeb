@@ -137,13 +137,13 @@ int numAccesos = 0;
                                 if (session.getAttribute("admin").equals("true")) {
       out.write("\n");
       out.write("                        <li class=\"nav-item\">\n");
-      out.write("                            <a class=\"nav-link\" href=\"./Ayuda.jsp\">Altas</a>\n");
+      out.write("                            <a class=\"nav-link\" href=\"Alta_Productos.jsp\">Altas</a>\n");
       out.write("                        </li>\n");
       out.write("                        <li class=\"nav-item\">\n");
-      out.write("                            <a class=\"nav-link\" href=\"./Ayuda.jsp\">Bajas</a>\n");
+      out.write("                            <a class=\"nav-link\" href=\"Bajas_Producto.jsp\">Bajas</a>\n");
       out.write("                        </li>\n");
       out.write("                        <li class=\"nav-item\">\n");
-      out.write("                            <a class=\"nav-link\" href=\"./Ayuda.jsp\">Cambios</a>\n");
+      out.write("                            <a class=\"nav-link\" href=\"Cambios_Producto.jsp\">Cambios</a>\n");
       out.write("                        </li>\n");
       out.write("                        <li class=\"nav-item\">\n");
       out.write("                            <a class=\"nav-link\" href=\"./Ayuda.jsp\">Graficas</a>\n");

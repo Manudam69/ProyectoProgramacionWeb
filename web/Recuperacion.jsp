@@ -26,7 +26,7 @@
     </head>
     <body class="text-center">
         <form class="form-signin mx-auto p-5 mt-5" style="width: 400px;" action="PreguntaRecuperacion.jsp" method="post">
-           <%  String[] captcha = {"notarobot", "qgphjd", "smwm", "google", "memes"};
+           <%  String[] captcha = {"not a robot", "qGphJD", "smwm", "Google", "Memes"};
                 int aleatorio = ((int) (Math.random() * (4 - 0 + 1) + 0)); //Aleatorio para seleccionar una de las imagenes
                 //Colocar en una string la ruta y nombre del archivo de imagen a utilizar
                 String aux = "./images/" + aleatorio + ".jpg";

@@ -60,6 +60,12 @@
                 }
             }
 
+             if (!usuario.equals(usuarioBD)) {
+             %>
+             <jsp:forward page="Recuperacion.jsp"/>
+             <%
+             }
+            
 
             switch (numPregunta) {
                 case 1:
