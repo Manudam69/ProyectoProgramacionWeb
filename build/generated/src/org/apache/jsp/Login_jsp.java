@@ -84,14 +84,15 @@ public final class Login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("            <div  style=\"color:red;\">\n");
       out.write("                ");
-                    
+
                     if (request.getParameter("error") != null) {
-                        out.println(request.getParameter("error")); 
+                        out.println(request.getParameter("error"));
                     }
                     if (request.getParameter("cnt") != null) {
                         out.println(request.getParameter("cnt"));
-                    }
-                    if (Integer.parseInt(request.getParameter("cnt")) >= 3) {
+                        int num = Integer.parseInt(request.getParameter("cnt"));
+
+                        if (num >= 3) {
                 
       out.write("\n");
       out.write("                ");
@@ -102,6 +103,7 @@ public final class Login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("                ");
 
+                        }
                     }
 
                 

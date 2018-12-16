@@ -49,7 +49,11 @@
                         out.println(request.getParameter("error"));
                     }
                     if (request.getParameter("cnt") != null) {
-                        out.println(request.getParameter("cnt"));
+                        out.println("Te quedan " + (request.getParameter("cnt")));
+                        String n= new String(request.getParameter("usr"));
+                        request.setAttribute("usr", n);
+                        out.println("Checklogin " + request.getSession().getAttribute("user"));
+                        out.println("Input " + request.getParameter("usr"));
                         int num = Integer.parseInt(request.getParameter("cnt"));
 
                         if (num >= 3) {

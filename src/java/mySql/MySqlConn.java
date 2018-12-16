@@ -193,24 +193,22 @@ public class MySqlConn {
     }
 
     public void Contador(int contador) throws SQLException {
-       
+
         //String query = "UPDATE farolito.visitas SET contador=2" + "WHERE idcontador ='" + usr+ "';";
-        String query1 = "update farolito.visitas set contador=?"+" where id=1;";
+        String query1 = "update farolito.visitas set contador=?" + " where id=1;";
         psmt = conn.prepareStatement(query1);
         psmt.setInt(1, contador);
         psmt.executeUpdate();
         conn.close();
         psmt.close();
     }
-    
-    public void Actualiza(int cant, int id) throws SQLException{
-         //String query = "UPDATE farolito.visitas SET contador=2" + "WHERE idcontador ='" + usr+ "';";
-        String query1 = "update farolito.productos set existencias='"+cant+"'"+" where id_p='"+id+"';";
+
+    public void Actualiza(int cant, int id) throws SQLException {
+        String query1 = "update farolito.productos set existencias=?'" + "'" + " where id_p='" + id + "';";
         psmt = conn.prepareStatement(query1);
-        //psmt.setInt(1, cant);
+        psmt.setInt(2, cant);
         psmt.executeUpdate();
         conn.close();
         psmt.close();
-        
     }
 }

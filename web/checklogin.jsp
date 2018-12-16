@@ -12,7 +12,6 @@
 <%@page import="clases.CryptWithMD5"%>
 <%@page import="java.util.ArrayList"%>
 <!DOCTYPE html>
-<%!int conta = 0;%>
 <%
     String usuario = "";
     String pass = "";
@@ -60,15 +59,27 @@
             } else if (usuario.equals(usuarioBD)) {
                 contra = false;
                 usr = true;
-                conta++;
+
                 break;
             }
         }
         if (!contra && usr) {
-            if (conta > 3) {
-                conta = 0;
+            HttpSession temp = request.getSession(true);
+            Integer conta = (Integer) request.getSession().getAttribute("cnt");
+            request.getSession().setAttribute("user", usuario);
+            if (conta == null) {
+                conta = new Integer(0);
+                request.getSession().setAttribute("cnt", conta);
             }
-            request.setAttribute("cnt", conta);
+            
+            conta++;
+            
+            if ((Integer) request.getSession().getAttribute("cnt") >= 3) {
+                conta = 0;
+                request.getSession().setAttribute("cnt", conta);
+                temp.invalidate();
+            }
+            request.getSession().setAttribute("cnt", conta);
     %>   
     <jsp:forward page="Login.jsp">
         <jsp:param name="error" value="Contraseña incorrecta.<br>Vuelve a intentarlo."/>
