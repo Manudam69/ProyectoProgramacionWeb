@@ -12,6 +12,13 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Bienvenido al cambio de contraseña temporarl</h1>
+        
+        <p>Por favor llena el siguiente formulario</p>
+        <form action="cambiarPass.jsp">
+            Ingresa tu usuario: <input type="text" ><br><br>
+            Ingresa tu contraseña temporal: <input type="text"><br><br>
+            Ingresa tu nueva contraseña: <input type="text">
+        </form>
     </body>
 </html>

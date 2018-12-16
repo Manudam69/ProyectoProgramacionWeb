@@ -32,9 +32,16 @@
             int numPregunta = 0;
             String respuesta = "";
             String pregunta = "";
+            String cap = "";
+            String capOK="";
             String query = "select * from farolito.usuarios";
             objConn.Consult(query);
             objConn.rs.beforeFirst();
+
+            cap = request.getParameter("catpcha");
+            capOK = request.getParameter("captchaOk");
+            
+            
             if (request.getParameter("usr") != null) {
                 usuario = request.getParameter("usr");
                 request.getSession().setAttribute("recuperaUsuario",usuario);
@@ -72,6 +79,16 @@
                     break;
             }
         %>
+        <%
+           
+            if(capOK.equals(cap)){
+            }else{
+       %>
+        <jsp:forward page="Recuperacion.jsp">
+        <jsp:param name="error" value="Ingresa de nuevo la captcha.<br>Vuelve a intentarlo."/>
+    </jsp:forward>
+        <%}%>
+        
         <form class="form-signin mx-auto p-5 mt-5" style="width: 400px;" action="CheckRecuperacion.jsp" method="post">
             <a href="./index.jsp"><img class="mb-4" src="images/logo.png" alt="" width="72" height="72"></a>
             <h1 class="h3 mb-3 font-weight-normal">Recuperacion</h1>

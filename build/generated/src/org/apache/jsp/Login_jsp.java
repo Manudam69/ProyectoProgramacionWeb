@@ -91,7 +91,7 @@ public final class Login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            <input type=\"password\" id=\"inputPassword\" class=\"form-control mb-2\" placeholder=\"Contraseña\" name=\"pass\" required>\n");
       out.write("            <div class=\"checkbox mb-3\">\n");
       out.write("                <label>\n");
-      out.write("                    <input type=\"checkbox\" value=\"remember-me\" name=\"RecordarUsuario\"> Recuérdame.\n");
+      out.write("                    <input type=\"checkbox\" value=\"remember\" name=\"RecordarUsuario\"> Recuérdame.\n");
       out.write("                </label>\n");
       out.write("\n");
       out.write("\n");

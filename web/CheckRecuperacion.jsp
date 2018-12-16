@@ -19,19 +19,22 @@
                     String usuario = String.valueOf(request.getSession().getAttribute("recuperaUsuario"));
                     String correo = String.valueOf(request.getSession().getAttribute("recuperaCorreo"));
         %>
+        <h2>Hemos enviado un correo a tu bandeja de entrada, por favor sigue las instrucciones</h2>
         <script>
-            var nombre = "<%=usuario%>";
-            var correo = "<%=correo%>";
+          //  var nombre = "<%=usuario%>";
+         //   var correo = "<%=correo%>";
             
-            emailjs.init("user_9uafhwkJK3GEm5Swrs4jg");
-            emailjs.send("gmail", "plantilla_recuperacion", {"to_mail":correo,"name":nombre})
-            alert('Correo enviado');
+         //   emailjs.init("user_9uafhwkJK3GEm5Swrs4jg");
+         //   emailjs.send("gmail", "plantilla_recuperacion", {"to_mail":correo,"name":nombre})
+          //  alert('Correo enviado');
             
         </script>
         <%
                 }
-            }
+            }else{
 
         %>
+        <h2>No has contestado bien la pregunta de recuperacion</h2>
+        <%}%>
     </body>
 </html>
