@@ -4,6 +4,8 @@
     Author     : MD
 --%>
 
+<%@page import="java.util.Collections"%>
+<%@page import="java.util.Vector"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="clases.ProductoCarrito"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -163,6 +165,7 @@
                 <ol class="carousel-indicators">
                     <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
                     <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+                    <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
                 </ol>
                 <div class="carousel-inner" role="listbox">
                     <div class="carousel-item active">
@@ -179,6 +182,24 @@
                             <p>Linea blanca.</p>
                         </div>
                     </div>
+                    <div class="carousel-item">
+                        <img class="d-block w-100" src="images/slide3.jpg" alt="Second slide">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h3>Desde un 25% de descuento</h3>
+                            <%
+                                Vector v = new Vector();
+                                
+                                v.add("FUTURE");
+                                v.add("FAROLITO-MERCY");
+                                v.add("25-OFF");
+                                Collections.shuffle(v);           
+                                
+                            %>
+                            <p><%=v.elementAt(0)%></p>
+                        </div>
+                    </div>
+                    
+                    
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
