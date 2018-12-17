@@ -4,6 +4,8 @@
     Author     : MD
 --%>
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="clases.ProductoCarrito"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <jsp:useBean id="objConn" class="mySql.MySqlConn"/>
 <%!int numAccesos = 0;%>
@@ -109,13 +111,31 @@
                     </form>
 
                     <%} else {
-                    %>
-                    <a href="./carrito.jsp"><img src="images/carrito.png" class="img-fluid mb-3 mr-2" alt="Algo pasa" width="50"></a>
-                    <%
-                        if(request.getParameter("usr")!=null){
-                            request.getSession().setAttribute("usr", request.getParameter("usr"));
+
+                        ArrayList<ProductoCarrito> lista_c = (ArrayList<ProductoCarrito>) request.getSession().getAttribute("listacom");
+
+                        if (lista_c == null) {
+                            /*Solo se ejecutará una vez esta parte */
+                            lista_c = new ArrayList<ProductoCarrito>();
+                            /* Agrego al arraylist */
+                            request.getSession().setAttribute("listacom", lista_c);
                         }
-                     %>   
+                       %>
+                       
+                       <%
+                        //Cantidad de productos en el carrito
+                        int cantCar = 0;
+                        for (int i = 0; i < lista_c.size(); i++) {
+                            cantCar += lista_c.get(i).getCantidad();
+                        }%> 
+
+                    <span class="badge badge-secondary badge-pill"><%=cantCar%></span>
+                    <a href="./carrito.jsp"><img src="images/carrito.png" class="img-fluid mb-3 mr-2" alt="Algo pasa" width="50"></a>
+                        <%
+                            if (request.getParameter("usr") != null) {
+                                request.getSession().setAttribute("usr", request.getParameter("usr"));
+                            }
+                        %>   
                     <a id="NomUsuario" style="color: black"><%=request.getSession().getAttribute("usr")%></a> &nbsp; &nbsp;
                     <a href="./Nocturno.jsp"><img src="images/night_mode.png" class="img-fluid mb-3 mr-2" alt="Modo Nocturno" width="20"></a>
                     <a href="./Normal.jsp"><img src="images/File_Alt.png" class="img-fluid mb-3 mr-2" alt="Modo Nocturno" width="20"></a>

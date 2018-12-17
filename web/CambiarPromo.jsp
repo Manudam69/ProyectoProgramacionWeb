@@ -17,52 +17,50 @@
         <%
             float TotalAPagar = Float.parseFloat(request.getParameter("Total"));
             String codigo = request.getParameter("Codigo");
-            
+
             //Lista final de precios de envio, impuesto y total
-             ArrayList<Float> PreciosF = (ArrayList<Float>) request.getSession().getAttribute("lista_precios");
-             
-             
-           //Variables de descuento
-                        float porDesc = 0;
-                        ArrayList<Promos> descuentos = new ArrayList<Promos>();
-                        descuentos.add(new Promos("FUTURE", "2018-12-31", 10));
-                        descuentos.add(new Promos("NINTENDO", "2019-2-14", 20));
-                        descuentos.add(new Promos("NUEVO-CLIENTE", "2020-12-10", 15));
-            
-            
+            ArrayList<Float> PreciosF = (ArrayList<Float>) request.getSession().getAttribute("lista_precios");
+
+            //Variables de descuento
+            float porDesc = 0;
+            ArrayList<Promos> descuentos = new ArrayList<Promos>();
+            descuentos.add(new Promos("FUTURE", "2018-12-31", 10));
+            descuentos.add(new Promos("FAROLITO-MERCY", "2019-2-14", 50));
+            descuentos.add(new Promos("25-OFF", "2020-12-10", 25));
+
             if (request.getParameter("Codigo") != null) {
-                                //Codigos de descuento 
-                                boolean find = false;
+                //Codigos de descuento 
+                boolean find = false;
 
-                                for (int i = 0; i < descuentos.size(); i++) {
+                for (int i = 0; i < descuentos.size(); i++) {
 
-                                    if (descuentos.get(i).getCodigo().equals(request.getParameter("Codigo"))) {
-                                        porDesc = descuentos.get(i).getDesc();
-                                        find = true;
-                                        break;
-                                    }
+                    if (descuentos.get(i).getCodigo().equals(request.getParameter("Codigo"))) {
+                        porDesc = descuentos.get(i).getDesc();
+                        find = true;
+                        break;
+                    }
 
-                                }
-                    if (find == true) {
-          %>  
-      <div id="TotalProd">
-          <li class="list-group-item d-flex justify-content-between bg-light">
-                            <div class="text-success">
-                                <h6 class="my-0">Promo code</h6>
-                                <small><%=request.getParameter("Codigo")%></small>
-                            </div>
-                            <span class="text-success">-<%=porDesc%>%</span>
-                        </li>
-                        <%     }
-                            }
-                            porDesc = porDesc / 100;
-                            TotalAPagar = TotalAPagar - (TotalAPagar * porDesc);
-                            TotalAPagar = Math.round(TotalAPagar);
-                            
-                            //El total con descuento 
-                            PreciosF.remove(2);
-                            PreciosF.add(2, TotalAPagar);
-                        %>
+                }
+                if (find == true) {
+        %>  
+        <div id="TotalProd">
+            <li class="list-group-item d-flex justify-content-between bg-light">
+                <div class="text-success">
+                    <h6 class="my-0">Promo code</h6>
+                    <small><%=request.getParameter("Codigo")%></small>
+                </div>
+                <span class="text-success">-<%=porDesc%>%</span>
+            </li>
+            <%     }
+                }
+                porDesc = porDesc / 100;
+                TotalAPagar = TotalAPagar - (TotalAPagar * porDesc);
+                TotalAPagar = Math.round(TotalAPagar);
+
+                //El total con descuento 
+                PreciosF.remove(2);
+                PreciosF.add(2, TotalAPagar);
+            %>
             <li class="list-group-item d-flex justify-content-between">
                 <span>Total NUEVO (MXN)</span>
                 <strong id="total">$<%=TotalAPagar%></strong>
@@ -74,7 +72,7 @@
                     <button class="btn btn-secondary" onclick="PromoCode(<%=TotalAPagar%>)">Redeem</button>
                 </div>
             </div>
-               
+
         </div>
 
     </body>

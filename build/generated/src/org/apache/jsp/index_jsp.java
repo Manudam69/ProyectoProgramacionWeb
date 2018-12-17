@@ -3,6 +3,8 @@ package org.apache.jsp;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
+import java.util.ArrayList;
+import clases.ProductoCarrito;
 
 public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
@@ -42,6 +44,8 @@ int numAccesos = 0;
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
+      out.write("\n");
+      out.write("\n");
       out.write("\n");
       out.write("\n");
       out.write("\n");
@@ -174,15 +178,33 @@ int numAccesos = 0;
       out.write("\n");
       out.write("                    ");
 } else {
-                    
-      out.write("\n");
-      out.write("                    <a href=\"./carrito.jsp\"><img src=\"images/carrito.png\" class=\"img-fluid mb-3 mr-2\" alt=\"Algo pasa\" width=\"50\"></a>\n");
-      out.write("                    ");
 
-                        if(request.getParameter("usr")!=null){
-                            request.getSession().setAttribute("usr", request.getParameter("usr"));
+                        ArrayList<ProductoCarrito> lista_c = (ArrayList<ProductoCarrito>) request.getSession().getAttribute("listacom");
+
+                        if (lista_c == null) {
+                            /*Solo se ejecutará una vez esta parte */
+                            lista_c = new ArrayList<ProductoCarrito>();
+                            /* Agrego al arraylist */
+                            request.getSession().setAttribute("listacom", lista_c);
                         }
-                     
+
+                        //Cantidad de productos en el carrito
+                        int cantCar = 0;
+                        for (int i = 0; i < lista_c.size(); i++) {
+                            cantCar += lista_c.get(i).getCantidad();
+                        }
+      out.write(" \n");
+      out.write("\n");
+      out.write("                    <span class=\"badge badge-secondary badge-pill\">");
+      out.print(cantCar);
+      out.write("</span>\n");
+      out.write("                    <a href=\"./carrito.jsp\"><img src=\"images/carrito.png\" class=\"img-fluid mb-3 mr-2\" alt=\"Algo pasa\" width=\"50\"></a>\n");
+      out.write("                        ");
+
+                            if (request.getParameter("usr") != null) {
+                                request.getSession().setAttribute("usr", request.getParameter("usr"));
+                            }
+                        
       out.write("   \n");
       out.write("                    <a id=\"NomUsuario\" style=\"color: black\">");
       out.print(request.getSession().getAttribute("usr"));

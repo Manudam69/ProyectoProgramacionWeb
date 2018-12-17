@@ -96,6 +96,17 @@
                     <%
                     } else {
                     %>
+                    <%
+                         ArrayList<ProductoCarrito> lista_c = (ArrayList<ProductoCarrito>) request.getSession().getAttribute("listacom");
+                        //Cantidad de productos en el carrito
+                        int cantCar = 0;
+                        for (int i = 0; i < lista_c.size(); i++) {
+                            cantCar += lista_c.get(i).getCantidad();
+                        }%> 
+
+                    <span class="badge badge-secondary badge-pill"><%=cantCar%></span>
+                   
+                    
                     <a href="./carrito.jsp"><img src="images/carrito.png" class="img-fluid mb-3 mr-2" alt="Algo pasa" width="50"></a>
                     <a id="NomUsuario" style="color: black"><%=request.getSession().getAttribute("usr")%></a> &nbsp; &nbsp;
                     <a href="./Nocturno.jsp"><img src="images/night_mode.png" class="img-fluid mb-3 mr-2" alt="Modo Nocturno" width="20"></a>
@@ -113,16 +124,11 @@
         <%
              String numeroProd = "";
         Producto aux = new Producto();
-        ArrayList<ProductoCarrito> lista_c = (ArrayList<ProductoCarrito>) request.getSession().getAttribute("listacom");
         ArrayList<Producto> lista_p = (ArrayList<Producto>) request.getSession().getAttribute("listap");
 
         //Creacion e instanciacion de las listas de compras y mostrar
-        if (lista_c == null) {
-            /*Solo se ejecutará una vez esta parte */
-            lista_c = new ArrayList<ProductoCarrito>();
+        if (lista_p == null) {
             lista_p = new ArrayList<Producto>();
-            /* Agrego al arraylist */
-            request.getSession().setAttribute("listacom", lista_c);
             request.getSession().setAttribute("listap", lista_p);
             /*Se va actualizar la lista */
         }

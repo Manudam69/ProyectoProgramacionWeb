@@ -70,8 +70,6 @@
                         descuentos.add(new Promos("NINTENDO", "2019-2-14", 5));
                         descuentos.add(new Promos("NUEVO-CLIENTE", "2020-12-10", 15));
 
-                        int vectDesc[] = {5, 15, 20};
-
 
                     %>
                     <h4 class="d-flex justify-content-between align-items-center mb-3">
