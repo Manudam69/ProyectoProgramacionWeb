@@ -177,7 +177,16 @@ int numAccesos = 0;
                     
       out.write("\n");
       out.write("                    <a href=\"./carrito.jsp\"><img src=\"images/carrito.png\" class=\"img-fluid mb-3 mr-2\" alt=\"Algo pasa\" width=\"50\"></a>\n");
-      out.write("\n");
+      out.write("                    ");
+
+                        if(request.getParameter("usr")!=null){
+                            request.getSession().setAttribute("usr", request.getParameter("usr"));
+                        }
+                     
+      out.write("   \n");
+      out.write("                    <a id=\"NomUsuario\" style=\"color: black\">");
+      out.print(request.getSession().getAttribute("usr"));
+      out.write("</a> &nbsp; &nbsp;\n");
       out.write("                    <a href=\"./Nocturno.jsp\"><img src=\"images/night_mode.png\" class=\"img-fluid mb-3 mr-2\" alt=\"Modo Nocturno\" width=\"20\"></a>\n");
       out.write("                    <a href=\"./Normal.jsp\"><img src=\"images/File_Alt.png\" class=\"img-fluid mb-3 mr-2\" alt=\"Modo Nocturno\" width=\"20\"></a>\n");
       out.write("                    <a href=\"./Invierno.jsp\"><img src=\"images/snowflake.png\" class=\"img-fluid mb-3 mr-3\" alt=\"Modo Nocturno\" width=\"20\"></a>\n");
