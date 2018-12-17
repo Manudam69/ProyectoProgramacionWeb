@@ -167,7 +167,7 @@
                 <li>
                     <p class="lead"><h1>¿Si tus dudas son diferentes habla con nosotros!</h1></p>
                     <ul>
-                        <li class="text-justify"><a href="chatea.jsp">Ingresar al chat AHORA!</a></li>
+                        <li class="text-justify"><a href="chatea.jsp">¡Ingresar al chat AHORA!</a></li>
                     </ul>
 
                 </li>

@@ -131,7 +131,7 @@
                 </div>
                 <div class="col-md-8 order-md-1">
                     <h4 class="mb-3">Dirección de envío</h4>
-                    <form  action="./CheckOut.jsp" method="get" class="needs-validation">
+                    <form  action="./CheckOut.jsp" method="post" class="needs-validation">
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="firstName">Nombre(s)*</label>

@@ -58,7 +58,7 @@
         <div class="row" id="TablaPagos" style="margin-left: 2px;">
             <div class="col-md-6 mb-3">
                 <label for="cc-name">Correo de la cuenta*</label>
-                <input type="email" class="form-control" id="cc-name" name="TarjetaNom" placeholder="" required>
+                <input type="email" class="form-control" id="cc-name" name="CorreoPago" placeholder="" required>
                 <small class="text-muted">No se guardarán sus datos</small>
                 <div class="invalid-feedback">
                     Name on card is required
@@ -66,7 +66,7 @@
             </div>
             <div class="col-md-6 mb-3">
                 <label for="cc-number">Contraseña de la cuenta*</label>
-                <input type="password" class="form-control" id="cc-number" name="TarjetaNum" placeholder="" minlength="1" maxlength="22" required>
+                <input type="password" class="form-control" id="cc-number" name="ContraPago" placeholder="" minlength="1" maxlength="22" required>
                 <div class="invalid-feedback">
                     Credit card number is required
                 </div>

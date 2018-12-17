@@ -118,8 +118,22 @@
                         Tipo de envío: <%=envio%>
                         <br> Dirección: <%=dir1%> <%=estado%>,<%=pais%>
                         <br> Codigo postal: <%=cp%>
+                        <% 
+                        if(request.getParameter("TarjetaNum")!=null && request.getParameter("CorreoPago")== null){
+                           String tarjeta = (String) request.getParameter("TarjetaNum");
+                           tarjeta = tarjeta.substring(10, 15);
+                        %>
+                        <br> Pagado con tarjeta &nbsp; Terminación: XXXX-<%=tarjeta%>
+                        <%}else  if(request.getParameter("TarjetaNom")==null && request.getParameter("CorreoPago")!= null){  
+                           String correo = (String) request.getParameter("CorreoPago");
+                           String[] correoMostrar = correo.split("@");
+                           String dominio = correoMostrar[1]; //hotmail.com
+                           correo = correo.substring(0, 3);
+                        %>
+                        <br> Pagado con Paypal &nbsp; Correo: <%=correo%>XXXX@<%=dominio%>
+                        <%} %>
                         <br> Correo electrónico: <%=correoUs%>
-                        <% if(request.getParameter("correo")!=null && request.getParameter("correo").isEmpty() == true ){  %>
+                        <% if(request.getParameter("correo")!=null && request.getParameter("correo").isEmpty() == false ){  %>
                         <br> Correo electrónico alternativo: <%=request.getParameter("correo").toString()%>
                         <%} %>
                         

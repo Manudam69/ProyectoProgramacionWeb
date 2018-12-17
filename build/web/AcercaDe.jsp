@@ -135,13 +135,13 @@
                 <div class="col-lg-4">
                     <img class="rounded-circle" src="images/Cesar.jpg" alt="Generic placeholder image" width="140" height="140">
                     <h2>Cesar Arturo Rea Reyes</h2>
-                    <p class="text-justify">Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
+                    <p class="text-justify"></p>
 
                 </div>
                 <div class="col-lg-4">
                     <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
                     <h2>Héctor Fernando Diaz Rosales</h2>
-                    <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur numquam magnam molestias temporibus, eligendi alias veniam necessitatibus architecto voluptate iusto rerum animi dicta officia illo perferendis tenetur distinctio. Est, veritatis.</p>
+                    <p class="text-justify"></p>
 
                 </div>
             </div>
@@ -149,14 +149,14 @@
                 <div class="col-lg-6">
                     <img class="rounded-circle" src="images/Ricardo.jpg" alt="Generic placeholder image" width="140" height="140">
                     <h2>Ricardo Enrique Solis Herrera</h2>
-                    <p class="text-justify">Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
+                    <p class="text-justify"></p>
 
                 </div>
 
                 <div class="col-lg-6">
                     <img class="rounded-circle" src="images/Jafet.jpg" alt="Generic placeholder image" width="140" height="140">
                     <h2>David Jafet Acevedo Jauregui</h2>
-                    <p class="text-justify">Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+                    <p class="text-justify"></p>
                 </div>
             </div>
         </div>
