@@ -150,12 +150,12 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="username">Usuario*</label>
+                            <label for="username">Usuario</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">@</span>
                                 </div>
-                                <input type="text" class="form-control" id="username" placeholder="Usuario"  name="Usuario" pattern="[A-Za-z]{*}"  required>
+                                <input type="text" class="form-control" id="username" placeholder="<%=request.getSession().getAttribute("usr")%>"  name="Usuario" pattern="[A-Za-z]{*}" readonly="readonly" required>
                                 <div class="invalid-feedback" style="width: 100%;">
                                     Your username is required.
                                 </div>

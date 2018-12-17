@@ -107,7 +107,28 @@
                     <%
                     } else if (session.getAttribute("admin").equals("true")) {
                     %>
+                     <%   if(request.getSession().getAttribute("usr")!=null){
+                         ArrayList<ProductoCarrito> lista_c = (ArrayList<ProductoCarrito>) request.getSession().getAttribute("listacom");
+                        //Cantidad de productos en el carrito
+                        int cantCar = 0;
+                        for (int i = 0; i < lista_c.size(); i++) {
+                            cantCar += lista_c.get(i).getCantidad();
+                        }%> 
 
+                    <span class="badge badge-secondary badge-pill"><%=cantCar%></span>
+                    <%}%>
+                    
+                    <%if(request.getSession().getAttribute("usr")==null){%>
+                    <a id="NomUsuario" style="color: black">Admin</a> &nbsp; &nbsp;
+                    <a href="./Nocturno.jsp"><img src="images/night_mode.png" class="img-fluid mb-3 mr-2" alt="Modo Nocturno" width="20"></a>
+                    <a href="./Normal.jsp"><img src="images/File_Alt.png" class="img-fluid mb-3 mr-2" alt="Modo Nocturno" width="20"></a>
+                    <a href="./Invierno.jsp"><img src="images/snowflake.png" class="img-fluid mb-3 mr-3" alt="Modo Nocturno" width="20"></a>
+                    <%}else{%>
+                    <a href="./Nocturno.jsp"><img src="images/night_mode.png" class="img-fluid mb-3 mr-2" alt="Modo Nocturno" width="20"></a>
+                    <a href="./Normal.jsp"><img src="images/File_Alt.png" class="img-fluid mb-3 mr-2" alt="Modo Nocturno" width="20"></a>
+                    <a href="./Invierno.jsp"><img src="images/snowflake.png" class="img-fluid mb-3 mr-3" alt="Modo Nocturno" width="20"></a>
+                    <a id="NomUsuario" style="color: black"><%=request.getSession().getAttribute("usr")%></a> &nbsp; &nbsp;
+                    <%}%>
                     <form class="form-inline my-2 my-lg-0" action="Cerrarsesion.jsp">                       
                         <button class="btn btn  my-2 my-sm-0" type="submit" id="sesion">Cerrar Sesión</button>
                     </form>

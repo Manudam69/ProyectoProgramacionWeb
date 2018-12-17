@@ -3,6 +3,8 @@ package org.apache.jsp;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
+import java.util.Collections;
+import java.util.Vector;
 import java.util.ArrayList;
 import clases.ProductoCarrito;
 
@@ -44,6 +46,8 @@ int numAccesos = 0;
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
+      out.write("\n");
+      out.write("\n");
       out.write("\n");
       out.write("\n");
       out.write("\n");
@@ -171,6 +175,41 @@ int numAccesos = 0;
                     } else if (session.getAttribute("admin").equals("true")) {
                     
       out.write("\n");
+      out.write("                     ");
+   if(request.getSession().getAttribute("usr")!=null){
+                         ArrayList<ProductoCarrito> lista_c = (ArrayList<ProductoCarrito>) request.getSession().getAttribute("listacom");
+                        //Cantidad de productos en el carrito
+                        int cantCar = 0;
+                        for (int i = 0; i < lista_c.size(); i++) {
+                            cantCar += lista_c.get(i).getCantidad();
+                        }
+      out.write(" \n");
+      out.write("\n");
+      out.write("                    <span class=\"badge badge-secondary badge-pill\">");
+      out.print(cantCar);
+      out.write("</span>\n");
+      out.write("                    ");
+}
+      out.write("\n");
+      out.write("                    \n");
+      out.write("                    ");
+if(request.getSession().getAttribute("usr")==null){
+      out.write("\n");
+      out.write("                    <a id=\"NomUsuario\" style=\"color: black\">Admin</a> &nbsp; &nbsp;\n");
+      out.write("                    <a href=\"./Nocturno.jsp\"><img src=\"images/night_mode.png\" class=\"img-fluid mb-3 mr-2\" alt=\"Modo Nocturno\" width=\"20\"></a>\n");
+      out.write("                    <a href=\"./Normal.jsp\"><img src=\"images/File_Alt.png\" class=\"img-fluid mb-3 mr-2\" alt=\"Modo Nocturno\" width=\"20\"></a>\n");
+      out.write("                    <a href=\"./Invierno.jsp\"><img src=\"images/snowflake.png\" class=\"img-fluid mb-3 mr-3\" alt=\"Modo Nocturno\" width=\"20\"></a>\n");
+      out.write("                    ");
+}else{
+      out.write("\n");
+      out.write("                    <a href=\"./Nocturno.jsp\"><img src=\"images/night_mode.png\" class=\"img-fluid mb-3 mr-2\" alt=\"Modo Nocturno\" width=\"20\"></a>\n");
+      out.write("                    <a href=\"./Normal.jsp\"><img src=\"images/File_Alt.png\" class=\"img-fluid mb-3 mr-2\" alt=\"Modo Nocturno\" width=\"20\"></a>\n");
+      out.write("                    <a href=\"./Invierno.jsp\"><img src=\"images/snowflake.png\" class=\"img-fluid mb-3 mr-3\" alt=\"Modo Nocturno\" width=\"20\"></a>\n");
+      out.write("                    <a id=\"NomUsuario\" style=\"color: black\">");
+      out.print(request.getSession().getAttribute("usr"));
+      out.write("</a> &nbsp; &nbsp;\n");
+      out.write("                    ");
+}
       out.write("\n");
       out.write("                    <form class=\"form-inline my-2 my-lg-0\" action=\"Cerrarsesion.jsp\">                       \n");
       out.write("                        <button class=\"btn btn  my-2 my-sm-0\" type=\"submit\" id=\"sesion\">Cerrar Sesión</button>\n");
@@ -245,6 +284,7 @@ int numAccesos = 0;
       out.write("                <ol class=\"carousel-indicators\">\n");
       out.write("                    <li data-target=\"#carouselExampleCaptions\" data-slide-to=\"0\" class=\"active\"></li>\n");
       out.write("                    <li data-target=\"#carouselExampleCaptions\" data-slide-to=\"1\"></li>\n");
+      out.write("                    <li data-target=\"#carouselExampleCaptions\" data-slide-to=\"2\"></li>\n");
       out.write("                </ol>\n");
       out.write("                <div class=\"carousel-inner\" role=\"listbox\">\n");
       out.write("                    <div class=\"carousel-item active\">\n");
@@ -261,6 +301,28 @@ int numAccesos = 0;
       out.write("                            <p>Linea blanca.</p>\n");
       out.write("                        </div>\n");
       out.write("                    </div>\n");
+      out.write("                    <div class=\"carousel-item\">\n");
+      out.write("                        <img class=\"d-block w-100\" src=\"images/slide3.jpg\" alt=\"Second slide\">\n");
+      out.write("                        <div class=\"carousel-caption d-none d-md-block\">\n");
+      out.write("                            <h3>Desde un 25% de descuento</h3>\n");
+      out.write("                            ");
+
+                                Vector v = new Vector();
+                                
+                                v.add("FUTURE");
+                                v.add("FAROLITO-MERCY");
+                                v.add("25-OFF");
+                                Collections.shuffle(v);           
+                                
+                            
+      out.write("\n");
+      out.write("                            <p>");
+      out.print(v.elementAt(0));
+      out.write("</p>\n");
+      out.write("                        </div>\n");
+      out.write("                    </div>\n");
+      out.write("                    \n");
+      out.write("                    \n");
       out.write("                </div>\n");
       out.write("                <a class=\"carousel-control-prev\" href=\"#carouselExampleCaptions\" role=\"button\" data-slide=\"prev\">\n");
       out.write("                    <span class=\"carousel-control-prev-icon\" aria-hidden=\"true\"></span>\n");
