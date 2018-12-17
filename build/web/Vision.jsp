@@ -118,23 +118,23 @@
         <div class="container mt-5" id="contenido">
             <p class="h2">Nuestro objetivo</p>
             <p class="lead text-justify">
-                <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id praesentium cumque ad necessitatibus repudiandae, tempora itaque illo? Iusto fugit, optio dolor vero veritatis repellat,      velit neque sapiente, praesentium, quasi voluptatem.</span>
-                <span>Pariatur sit, quam sapiente repellendus, vero provident quos libero, sequi quidem illum ipsa mollitia incidunt temporibus consequuntur aut doloremque earum voluptatibus eligendi natus a doloribus quas ex culpa numquam. Architecto.</span>
-                <span>Voluptatum minima necessitatibus vero eum animi accusantium nam commodi in amet reprehenderit! Praesentium voluptate aspernatur facere sunt, aliquid officia iusto mollitia? Possimus, quis unde dicta nobis sunt, minus? Ut, nulla.</span>
+                <span>El objetivo que tenemos en ElFarolito.com es ofrecer los mejores electronicos a nuestros clientes al mejor precio, siendo nosotros la mejor opción de todo el mercado  que puedas encontrar en la actualidad</span>
+                <span>Queremos ofrecerte a ti y a tu familia los mejores productos de calidad, estamos comprometidos con todos nuestros clientes a ofrecerles productos 100% funcionales y sin ninguna falla de fabrica.</span>
+                <span> Queremos ser la mejor opcion para nuestros clientes y estamos comprometidos con darte las mejores facilidades.</span>
             </p>
             <hr>
             <p class="h2">Nuestra visión</p>
             <p class="lead text-justify">
-                <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id praesentium cumque ad necessitatibus repudiandae, tempora itaque illo? Iusto fugit, optio dolor vero veritatis repellat,      velit neque sapiente, praesentium, quasi voluptatem.</span>
-                <span>Pariatur sit, quam sapiente repellendus, vero provident quos libero, sequi quidem illum ipsa mollitia incidunt temporibus consequuntur aut doloremque earum voluptatibus eligendi natus a doloribus quas ex culpa numquam. Architecto.</span>
-                <span>Voluptatum minima necessitatibus vero eum animi accusantium nam commodi in amet reprehenderit! Praesentium voluptate aspernatur facere sunt, aliquid officia iusto mollitia? Possimus, quis unde dicta nobis sunt, minus? Ut, nulla.</span>
+                <span>La vision que tenemos es que cada usuario del ElFarolito.com pueda satisfacer las tareas basicas en su hogar y en la vida cotidana gracias a los dispositivos electronicos basicos y electrodomesticos.</span>
+                <span>Queremos ofrecer precios accesibles a todas las personas, sabemos que no todos pueden hacerse con ciertos dispositivos, ElFarolito.com tenemos bien en claro las necesidades de nuestros clietnes, </span>
+                <span>Aqui encontraras el dispositivo de acuerdo con tus necesidades al precio mas accesible para ti.</span>
             </p>
             <hr>
-            <p class="h2">Nuestro misión</p>
+            <p class="h2">Nuestra misión</p>
             <p class="lead text-justify">
-                <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id praesentium cumque ad necessitatibus repudiandae, tempora itaque illo? Iusto fugit, optio dolor vero veritatis repellat,      velit neque sapiente, praesentium, quasi voluptatem.</span>
-                <span>Pariatur sit, quam sapiente repellendus, vero provident quos libero, sequi quidem illum ipsa mollitia incidunt temporibus consequuntur aut doloremque earum voluptatibus eligendi natus a doloribus quas ex culpa numquam. Architecto.</span>
-                <span>Voluptatum minima necessitatibus vero eum animi accusantium nam commodi in amet reprehenderit! Praesentium voluptate aspernatur facere sunt, aliquid officia iusto mollitia? Possimus, quis unde dicta nobis sunt, minus? Ut, nulla.</span>
+                <span>1.- Queremos ser la unica opcion de nuestros clientes como fuente confiable para adquirir sus dispositivos a le mejor precio.<br></span>
+                <span>2.- Solo ofrecer articulos de calidad y al mejor precio.<br></span>
+                <span>3.- Tener una buena relacion con nuestros clientes atendiendo sus dudas y preocupaciones antes de adquirir cualquier producto de nuestra tienda.</span>
             </p>
         </div>
         <footer class="footer shadow-lg pb-2 mt-5">

@@ -114,63 +114,56 @@
                     <br> PREGUNTAS FRECUENTES
                 </p>
                 <li>
-                    <p class="lead">¿Como se puede comprar en la pagina?</p>
+                    <p class="lead">¿Cómo se puede comprar en la pagina?</p>
                     <ul>
-                        <li class="text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam velit recusandae minus, perspiciatis voluptate labore deserunt. Impedit ducimus, ab expedita eum sit, voluptatibus obcaecati blanditiis nobis voluptas mollitia quos reiciendis!</li>
+                        <li class="text-justify">Para comprar en nuestra pagina es tan facil como entrar al apartado de "Tienda" y elegir el departamento deseado, agregar los productos al carrito de compras y finalizar el pago desde el carrito de compras!.</li>
                     </ul>
 
                 </li>
 
                 <li>
-                    <p class="lead">¿Como se puede comprar en la pagina?</p>
+                    <p class="lead">¿Cómo me puedo registrar en la pagina?</p>
                     <ul>
-                        <li class="text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam velit recusandae minus, perspiciatis voluptate labore deserunt. Impedit ducimus, ab expedita eum sit, voluptatibus obcaecati blanditiis nobis voluptas mollitia quos reiciendis!</li>
+                        <li class="text-justify">Para poder realizar tus compras debes de estar registrado, para tener una cuenta en ElFarolito.com necesitas ir al boton de "Iniciar Sesion". y seguir el formulario de registro!</li>
                     </ul>
 
                 </li>
                 <li>
-                    <p class="lead">¿Como se puede comprar en la pagina?</p>
+                    <p class="lead">¿Qué pasa si olvido mi contraseña?</p>
                     <ul>
-                        <li class="text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam velit recusandae minus, perspiciatis voluptate labore deserunt. Impedit ducimus, ab expedita eum sit, voluptatibus obcaecati blanditiis nobis voluptas mollitia quos reiciendis!</li>
+                        <li class="text-justify">Necesitas solicitar un cambio de contraseña, será enviado un correo a tu bandeja de entrada donde seguiras los pasos de recuperación</li>
                     </ul>
 
                 </li>
                 <li>
-                    <p class="lead">¿Como se puede comprar en la pagina?</p>
+                    <p class="lead">¿Por qué mi cuenta fue bloqueada?</p>
                     <ul>
-                        <li class="text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam velit recusandae minus, perspiciatis voluptate labore deserunt. Impedit ducimus, ab expedita eum sit, voluptatibus obcaecati blanditiis nobis voluptas mollitia quos reiciendis!</li>
+                        <li class="text-justify">Para evitar posibles ataques ciberneticos o suplatancion ed indentidad, despues de tres intentos fallidos invalidamos la cuenta del usuario</li>
                     </ul>
 
                 </li>
                 <li>
-                    <p class="lead">¿Como se puede comprar en la pagina?</p>
+                    <p class="lead">¿Qué hacer cuando se invalida mi contraseña?</p>
                     <ul>
-                        <li class="text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam velit recusandae minus, perspiciatis voluptate labore deserunt. Impedit ducimus, ab expedita eum sit, voluptatibus obcaecati blanditiis nobis voluptas mollitia quos reiciendis!</li>
+                        <li class="text-justify">Necesitas solicitar un cambio de contraseña inmediatamente despues de ser invalidada tu contrasñea, para esto tienes que seguir el proceso de recuperación que ofrecemos en la página.</li>
                     </ul>
 
                 </li>
                 <li>
-                    <p class="lead">¿Como se puede comprar en la pagina?</p>
+                    <p class="lead">¿Dónde puedo encontrar los cupones?</p>
                     <ul>
-                        <li class="text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam velit recusandae minus, perspiciatis voluptate labore deserunt. Impedit ducimus, ab expedita eum sit, voluptatibus obcaecati blanditiis nobis voluptas mollitia quos reiciendis!</li>
+                        <li class="text-justify">Seran distribuidos en los correos despues de realizar una compra</li>
                     </ul>
 
                 </li>
                 <li>
-                    <p class="lead">¿Como se puede comprar en la pagina?</p>
+                    <p class="lead">¿Dónde puedo contactar a los miembros?</p>
                     <ul>
-                        <li class="text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam velit recusandae minus, perspiciatis voluptate labore deserunt. Impedit ducimus, ab expedita eum sit, voluptatibus obcaecati blanditiis nobis voluptas mollitia quos reiciendis!</li>
+                        <li class="text-justify">Podras hablar con nosotros desde el apartado de contacto</li>
                     </ul>
 
                 </li>
-                <li>
-                    <p class="lead">¿Como se puede comprar en la pagina?</p>
-                    <ul>
-                        <li class="text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam velit recusandae minus, perspiciatis voluptate labore deserunt. Impedit ducimus, ab expedita eum sit, voluptatibus obcaecati blanditiis nobis voluptas mollitia quos reiciendis!</li>
-                    </ul>
-
-                </li>
-
+            
                 <li>
                     <p class="lead"><h1>¿Si tus dudas son diferentes habla con nosotros!</h1></p>
                     <ul>

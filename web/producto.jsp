@@ -14,16 +14,14 @@
     ArrayList<ProductoCarrito> lista_c = (ArrayList<ProductoCarrito>) request.getSession().getAttribute("listacom");
     ArrayList<Producto> lista_p = (ArrayList<Producto>) request.getSession().getAttribute("listap");
     String valorP = "";
-    
-   if(request.getSession().getAttribute("IdProd")==null){
-       valorP = (String) request.getParameter("producto");
-   }else{
-       valorP = (String) request.getSession().getAttribute("IdProd");
-       request.getSession().setAttribute("IdProd",null);
-   } 
-    
-    
-    
+
+    if (request.getSession().getAttribute("IdProd") == null) {
+        valorP = (String) request.getParameter("producto");
+    } else {
+        valorP = (String) request.getSession().getAttribute("IdProd");
+        request.getSession().setAttribute("IdProd", null);
+    }
+
     String usuario1 = (String) session.getAttribute("usuario");//Usuario y Galleta
     Cookie[] galleta = request.getCookies();
     String Fondo = "";
@@ -92,14 +90,14 @@
                     </ul>
                     <%
                         if (session.getAttribute("usuario") == null) {
-                          request.getSession().setAttribute("IdProd", valorP);
+                            request.getSession().setAttribute("IdProd", valorP);
                     %>
                     <form class="form-inline my-2 my-lg-0" action="Login.jsp" method="post">                       
                         <button class="btn btn  my-2 my-sm-0" type="submit" id="sesion">Iniciar Sesión</button>
                     </form>
                     <%
                     } else {
-                   
+
                         //Cantidad de productos en el carrito
                         int cantCar = 0;
                         for (int i = 0; i < lista_c.size(); i++) {
@@ -170,28 +168,30 @@
 
                         <button class="btn btn-lg btn-primary btn-block mb-0 w-75 mt-5" type="submit">Agregar al carrito</button>
                     </form>
-
+                        
+                    <div class="row">
+                        <div class="col-lg-12 mt-3 p-3">
+                            <p class="h3">DESCRIPCIÓN DEL PRODUCTO</p>
+                            <p class="lead text-justify">
+                                <span>
+                                    <%=descrip%>
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                                
                     <ul class="mt-5">     
-                        <p class="h4">Especificaciones</p>
-                        <li class="text-justify lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</li>
-                        <li class="text-justify lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</li>
-                        <li class="text-justify lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</li>
-                        <li class="text-justify lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</li>
+                        <p class="h4">Aclaraciones de nuestros productos</p>
+                        <li class="text-justify lead">Este es un producto totalmente nuevo con garantia de 1 año.</li>
+                        <li class="text-justify lead">Se deben de seguir todas las reglas incluidas del manual del producto.</li>
+                        <li class="text-justify lead">No nos hacemos responsables del mal uso que se de a nuestros articulos.</li>
+                        <li class="text-justify lead">El precio es final ElFarolito.com no es una pagina de reventa.</li>
 
                     </ul>
                 </div>
             </div>
             <hr>
-            <div class="row">
-                <div class="col-lg-12 mt-3 p-3">
-                    <p class="h3">DESCRIPCIÓN DEL PRODUCTO</p>
-                    <p class="lead text-justify">
-                        <span>
-                            <%=descrip%>
-                        </span>
-                    </p>
-                </div>
-            </div>
+
         </div>
 
         <footer class="footer shadow-lg pb-2 mt-5">

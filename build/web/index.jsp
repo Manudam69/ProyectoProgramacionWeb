@@ -198,14 +198,14 @@
                 <div class="col-lg-6">
                     <img class="rounded-circle" src="images/Refrigeradores.jpg" alt="Generic placeholder image" width="140" height="140">
                     <h2>Linea Blanca</h2>
-                    <p class="text-justify">Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
+                    <p class="text-justify">Dentro de la linea blanca encontraras los mejores aparatos para tu hogar y tu familia al mejor precio, ofrecemos una amplia varidad en nuestro catalogo para todos los gustos y necesidades.</p>
                     <p><a class="btn btn-secondary" href="./LineaBlanca.jsp" role="button">Ver más &raquo;</a></p>
                 </div>
 
                 <div class="col-lg-6">
                     <img class="rounded-circle" src="images/celular.jpg" alt="Generic placeholder image" width="140" height="140">
                     <h2>Electrónicos</h2>
-                    <p class="text-justify">Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
+                    <p class="text-justify">Actualiza tus aparatos del diario vivir con los modelos mas actualizados de la actualidad, renueva tu SmarthPhone con los mejores modelos y con los sistemas operativos mas actualizado del momento.</p>
                     <p><a class="btn btn-secondary" href="./Electronicos.jsp" role="button">Ver más &raquo;</a></p>
                 </div>
             </div>
