@@ -187,6 +187,10 @@ int numAccesos = 0;
                             /* Agrego al arraylist */
                             request.getSession().setAttribute("listacom", lista_c);
                         }
+                    
+      out.write("\n");
+      out.write("\n");
+      out.write("                    ");
 
                         //Cantidad de productos en el carrito
                         int cantCar = 0;
@@ -212,6 +216,20 @@ int numAccesos = 0;
       out.write("                    <a href=\"./Nocturno.jsp\"><img src=\"images/night_mode.png\" class=\"img-fluid mb-3 mr-2\" alt=\"Modo Nocturno\" width=\"20\"></a>\n");
       out.write("                    <a href=\"./Normal.jsp\"><img src=\"images/File_Alt.png\" class=\"img-fluid mb-3 mr-2\" alt=\"Modo Nocturno\" width=\"20\"></a>\n");
       out.write("                    <a href=\"./Invierno.jsp\"><img src=\"images/snowflake.png\" class=\"img-fluid mb-3 mr-3\" alt=\"Modo Nocturno\" width=\"20\"></a>\n");
+      out.write("\n");
+      out.write("                    ");
+
+                        if (request.getSession().getAttribute("Mueve") != null) {
+                            request.getSession().setAttribute("Mueve",null);
+                    
+      out.write("\n");
+      out.write("                    <script>\n");
+      out.write("                        window.location.href = \"producto.jsp\";\n");
+      out.write("                    </script>\n");
+      out.write("                    ");
+   }
+                    
+      out.write(" \n");
       out.write("\n");
       out.write("                    <form class=\"form-inline my-2 my-lg-0\" action=\"Cerrarsesion.jsp\">                       \n");
       out.write("                        <button class=\"btn btn  my-2 my-sm-0\" type=\"submit\" id=\"sesion\">Cerrar Sesión</button>\n");

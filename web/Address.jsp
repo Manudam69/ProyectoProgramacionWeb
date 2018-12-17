@@ -65,10 +65,7 @@
                         String nombre_P = "", descrip = "";
                         int cantidad_p = 0;
 
-                        ArrayList<Promos> descuentos = new ArrayList<Promos>();
-                        descuentos.add(new Promos("FUTURE", "2018-12-31", 10));
-                        descuentos.add(new Promos("NINTENDO", "2019-2-14", 5));
-                        descuentos.add(new Promos("NUEVO-CLIENTE", "2020-12-10", 15));
+                        
 
 
                     %>
@@ -134,7 +131,7 @@
                 </div>
                 <div class="col-md-8 order-md-1">
                     <h4 class="mb-3">Dirección de envío</h4>
-                    <form  action="./CheckOut.jsp" method="post" class="needs-validation">
+                    <form  action="./CheckOut.jsp" method="get" class="needs-validation">
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="firstName">Nombre(s)*</label>

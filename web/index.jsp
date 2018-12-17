@@ -120,9 +120,9 @@
                             /* Agrego al arraylist */
                             request.getSession().setAttribute("listacom", lista_c);
                         }
-                       %>
-                       
-                       <%
+                    %>
+
+                    <%
                         //Cantidad de productos en el carrito
                         int cantCar = 0;
                         for (int i = 0; i < lista_c.size(); i++) {
@@ -140,6 +140,16 @@
                     <a href="./Nocturno.jsp"><img src="images/night_mode.png" class="img-fluid mb-3 mr-2" alt="Modo Nocturno" width="20"></a>
                     <a href="./Normal.jsp"><img src="images/File_Alt.png" class="img-fluid mb-3 mr-2" alt="Modo Nocturno" width="20"></a>
                     <a href="./Invierno.jsp"><img src="images/snowflake.png" class="img-fluid mb-3 mr-3" alt="Modo Nocturno" width="20"></a>
+
+                    <%
+                        if (request.getSession().getAttribute("Mueve") != null) {
+                            request.getSession().setAttribute("Mueve",null);
+                    %>
+                    <script>
+                        window.location.href = "producto.jsp";
+                    </script>
+                    <%   }
+                    %> 
 
                     <form class="form-inline my-2 my-lg-0" action="Cerrarsesion.jsp">                       
                         <button class="btn btn  my-2 my-sm-0" type="submit" id="sesion">Cerrar Sesión</button>

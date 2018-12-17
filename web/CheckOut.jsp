@@ -36,6 +36,7 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Nota de compra</title>
+        <link rel="icon" type="image/png" href="images/logo.png">
         <style> 
             body{ background-color:<%=Fondo%>;<%//Al recuperar los colores se ingresan en el style de la pagina%>
                   color:<%=FondoLetra%>;}
@@ -118,9 +119,8 @@
                         <br> Dirección: <%=dir1%> <%=estado%>,<%=pais%>
                         <br> Codigo postal: <%=cp%>
                         <br> Correo electrónico: <%=correoUs%>
-                        <% if(request.getParameter("correo")!=null){  %>
+                        <% if(request.getParameter("correo")!=null && request.getParameter("correo").isEmpty() == true ){  %>
                         <br> Correo electrónico alternativo: <%=request.getParameter("correo").toString()%>
-                        
                         <%} %>
                         
                     </p>

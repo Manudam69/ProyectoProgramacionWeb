@@ -52,8 +52,19 @@
 
 
             </div>
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Iniciar sesión</button>
-
+            <%
+               if(request.getParameter("id_producto")==null){
+             %>   
+            <button class="btn btn-lg btn-primary btn-block" type="submit" onclick="">Iniciar sesión</button>
+            <%
+              }else{  
+               request.getSession().setAttribute("Mueve", 1);
+            %>
+             
+            <button class="btn btn-lg btn-primary btn-block" type="submit" onclick="">Iniciar sesión</button>
+            <%
+              }  
+            %>
             <div  style="color:red;">
                 <%
                     if (request.getParameter("error") != null) {

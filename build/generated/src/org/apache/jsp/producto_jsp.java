@@ -51,7 +51,10 @@ public final class producto_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("\n");
       out.write("<!DOCTYPE html>\n");
+      out.write("\n");
 
+    ArrayList<ProductoCarrito> lista_c = (ArrayList<ProductoCarrito>) request.getSession().getAttribute("listacom");
+    ArrayList<Producto> lista_p = (ArrayList<Producto>) request.getSession().getAttribute("listap");
     String usuario1 = (String) session.getAttribute("usuario");//Usuario y Galleta
     Cookie[] galleta = request.getCookies();
     String Fondo = "";
@@ -89,9 +92,9 @@ public final class producto_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.print(FondoLetra);
       out.write(";}\n");
       out.write("            </style>\n");
-      out.write("    </head>\n");
-      out.write("    <body>\n");
-      out.write("        <header class=\"pb-2\">\n");
+      out.write("        </head>\n");
+      out.write("        <body>\n");
+      out.write("            <header class=\"pb-2\">\n");
       out.write("            <nav class=\"navbar navbar-expand-lg navbar-light fixed-top\">\n");
       out.write("                <a class=\"navbar-brand\" href=\"./index.jsp\" id=\"logo\">\n");
       out.write("                    <img src=\"images/logo.png\" width=\"60\" height=\"60\" class=\"d-inline-block align-top ml-4 mb-0\">\n");
@@ -131,24 +134,35 @@ public final class producto_jsp extends org.apache.jasper.runtime.HttpJspBase
                         if (session.getAttribute("usuario") == null) {
                     
       out.write("\n");
-      out.write("                    <form class=\"form-inline my-2 my-lg-0\" action=\"Login.jsp\">                       \n");
+      out.write("                    <form class=\"form-inline my-2 my-lg-0\" action=\"Login.jsp\" method=\"get\">                       \n");
       out.write("                        <button class=\"btn btn  my-2 my-sm-0\" type=\"submit\" id=\"sesion\">Iniciar Sesión</button>\n");
       out.write("                    </form>\n");
       out.write("                    ");
 
                     } else {
-                    
+                   
+                        //Cantidad de productos en el carrito
+                        int cantCar = 0;
+                        for (int i = 0; i < lista_c.size(); i++) {
+                            cantCar += lista_c.get(i).getCantidad();
+                        }
+      out.write(" \n");
       out.write("\n");
-      out.write("                    \n");
-      out.write("                    <a href=\"./carrito.jsp\"><img src=\"images/carrito.png\" class=\"img-fluid mb-3 mr-3\" alt=\"Algo pasa\" width=\"50\"></a>\n");
-      out.write("                    <a href=\"./Nocturno.jsp\"><img src=\"images/night_mode.png\" class=\"img-fluid mb-3 mr-3\" alt=\"Modo Nocturno\" width=\"50\"></a>\n");
-      out.write("                    <a href=\"./Normal.jsp\"><img src=\"images/File_Alt.png\" class=\"img-fluid mb-3 mr-3\" alt=\"Modo Nocturno\" width=\"50\"></a>\n");
-      out.write("                    <a href=\"./Invierno.jsp\"><img src=\"images/snowflake.png\" class=\"img-fluid mb-3 mr-3\" alt=\"Modo Nocturno\" width=\"50\"></a>\n");
-      out.write("                    \n");
+      out.write("                    <span class=\"badge badge-secondary badge-pill\">");
+      out.print(cantCar);
+      out.write("</span>\n");
+      out.write("                    <a href=\"./carrito.jsp\"><img src=\"images/carrito.png\" class=\"img-fluid mb-3 mr-2\" alt=\"Algo pasa\" width=\"50\"></a>\n");
+      out.write("                    <a id=\"NomUsuario\" style=\"color: black\">");
+      out.print(request.getSession().getAttribute("usr"));
+      out.write("</a> &nbsp; &nbsp;\n");
+      out.write("                    <a href=\"./Nocturno.jsp\"><img src=\"images/night_mode.png\" class=\"img-fluid mb-3 mr-2\" alt=\"Modo Nocturno\" width=\"20\"></a>\n");
+      out.write("                    <a href=\"./Normal.jsp\"><img src=\"images/File_Alt.png\" class=\"img-fluid mb-3 mr-2\" alt=\"Modo Nocturno\" width=\"20\"></a>\n");
+      out.write("                    <a href=\"./Invierno.jsp\"><img src=\"images/snowflake.png\" class=\"img-fluid mb-3 mr-3\" alt=\"Modo Nocturno\" width=\"20\"></a>\n");
+      out.write("\n");
       out.write("                    <form class=\"form-inline my-2 my-lg-0\" action=\"Cerrarsesion.jsp\">                       \n");
       out.write("                        <button class=\"btn btn  my-2 my-sm-0\" type=\"submit\" id=\"sesion\">Cerrar Sesión</button>\n");
       out.write("                    </form>\n");
-      out.write("                    \n");
+      out.write("\n");
       out.write("                    ");
 }
       out.write("\n");
@@ -158,30 +172,27 @@ public final class producto_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("        <div class=\"container mt-5 pt-5\">\n");
       out.write("\n");
-      out.write("         ");
+      out.write("            ");
 
-           ArrayList<ProductoCarrito> lista_c = (ArrayList<ProductoCarrito>) request.getSession().getAttribute("listacom");
-           ArrayList<Producto> lista_p = (ArrayList<Producto>) request.getSession().getAttribute("listap");
-           
-          String valorP = (String) request.getParameter("producto");
-          int id_P = Integer.parseInt(valorP);
-          
-          String nombre="", descrip="";
-          int precio=0;
-          int existenciaAct=0;
-             
-          for (int i = 0; i < lista_p.size(); i++) {
-             if(id_P  == lista_p.get(i).getId()){
-                 nombre = lista_p.get(i).getNombre();
-                 descrip = lista_p.get(i).getDescrip();
-                 precio = lista_p.get(i).getPrecio();
-                 existenciaAct = lista_p.get(i).getExistencia();
-                 lista_p = null;
-                 break;
-              }
-           }
+                String valorP = (String) request.getParameter("producto");
+                int id_P = Integer.parseInt(valorP);
 
-         
+                String nombre = "", descrip = "";
+                int precio = 0;
+                int existenciaAct = 0;
+
+                for (int i = 0; i < lista_p.size(); i++) {
+                    if (id_P == lista_p.get(i).getId()) {
+                        nombre = lista_p.get(i).getNombre();
+                        descrip = lista_p.get(i).getDescrip();
+                        precio = lista_p.get(i).getPrecio();
+                        existenciaAct = lista_p.get(i).getExistencia();
+                        lista_p = null;
+                        break;
+                    }
+                }
+
+            
       out.write("             \n");
       out.write("            <div class=\"row mt-3\">\n");
       out.write("                <div class=\"col-lg-6 px-5\">\n");
@@ -194,9 +205,9 @@ public final class producto_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                    </figure>                    \n");
       out.write("                    <!--<img src=\"images/prueba.jpg\" class=\"img-fluid mt-5 pt-5\" alt=\"Responsive image\" id=\"producto\">-->\n");
       out.write("                </div>\n");
-      out.write("      \n");
+      out.write("\n");
       out.write("                <div class=\"col-lg-6 mt-2\">\n");
-      out.write("                   \n");
+      out.write("\n");
       out.write("                    <p class=\"h2 text-left mt-1\">");
       out.print(nombre);
       out.write("</p>\n");
@@ -206,7 +217,7 @@ public final class producto_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                    <form class=\"form-signin mx-auto mt-2\" action=\"carrito.jsp\" method=\"get\">\n");
       out.write("                        <label for=\"cantidad\" class=\"lead \">Cantidad: </label>\n");
       out.write("                        <select class=\"custom-select w-25 mb-1\" name=\"cantidad\"> \n");
-      out.write("                            \n");
+      out.write("\n");
       out.write("                            <option value=\"1\">1</option>\n");
       out.write("                            <option value=\"2\">2</option>\n");
       out.write("                            <option value=\"3\">3</option>\n");
@@ -217,7 +228,7 @@ public final class producto_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.print(id_P);
       out.write("\">  <!--Manda el id del producto escondido --> \n");
       out.write("                        <br>\n");
-      out.write("                        \n");
+      out.write("\n");
       out.write("                        <button class=\"btn btn-lg btn-primary btn-block mb-0 w-75 mt-5\" type=\"submit\">Agregar al carrito</button>\n");
       out.write("                    </form>\n");
       out.write("\n");
@@ -227,7 +238,7 @@ public final class producto_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                        <li class=\"text-justify lead\">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</li>\n");
       out.write("                        <li class=\"text-justify lead\">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</li>\n");
       out.write("                        <li class=\"text-justify lead\">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</li>\n");
-      out.write("                        \n");
+      out.write("\n");
       out.write("                    </ul>\n");
       out.write("                </div>\n");
       out.write("            </div>\n");
@@ -237,7 +248,7 @@ public final class producto_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                    <p class=\"h3\">DESCRIPCIÓN DEL PRODUCTO</p>\n");
       out.write("                    <p class=\"lead text-justify\">\n");
       out.write("                        <span>\n");
-      out.write("                           ");
+      out.write("                            ");
       out.print(descrip);
       out.write("\n");
       out.write("                        </span>\n");

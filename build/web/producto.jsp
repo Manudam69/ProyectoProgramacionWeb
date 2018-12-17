@@ -9,7 +9,21 @@
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+
 <%
+    ArrayList<ProductoCarrito> lista_c = (ArrayList<ProductoCarrito>) request.getSession().getAttribute("listacom");
+    ArrayList<Producto> lista_p = (ArrayList<Producto>) request.getSession().getAttribute("listap");
+    String valorP = "";
+    
+   if(request.getSession().getAttribute("IdProd")==null){
+       valorP = (String) request.getParameter("producto");
+   }else{
+       valorP = (String) request.getSession().getAttribute("IdProd");
+       request.getSession().setAttribute("IdProd",null);
+   } 
+    
+    
+    
     String usuario1 = (String) session.getAttribute("usuario");//Usuario y Galleta
     Cookie[] galleta = request.getCookies();
     String Fondo = "";
@@ -39,9 +53,9 @@
             body{ background-color:<%=Fondo%>;<%//Al recuperar los colores se ingresan en el style de la pagina%>
                   color:<%=FondoLetra%>;}
             </style>
-    </head>
-    <body>
-        <header class="pb-2">
+        </head>
+        <body>
+            <header class="pb-2">
             <nav class="navbar navbar-expand-lg navbar-light fixed-top">
                 <a class="navbar-brand" href="./index.jsp" id="logo">
                     <img src="images/logo.png" width="60" height="60" class="d-inline-block align-top ml-4 mb-0">
@@ -78,15 +92,14 @@
                     </ul>
                     <%
                         if (session.getAttribute("usuario") == null) {
+                          request.getSession().setAttribute("IdProd", valorP);
                     %>
-                    <form class="form-inline my-2 my-lg-0" action="Login.jsp">                       
+                    <form class="form-inline my-2 my-lg-0" action="Login.jsp" method="post">                       
                         <button class="btn btn  my-2 my-sm-0" type="submit" id="sesion">Iniciar Sesión</button>
                     </form>
                     <%
                     } else {
-                    %>
-                     <%
-                         ArrayList<ProductoCarrito> lista_c = (ArrayList<ProductoCarrito>) request.getSession().getAttribute("listacom");
+                   
                         //Cantidad de productos en el carrito
                         int cantCar = 0;
                         for (int i = 0; i < lista_c.size(); i++) {
@@ -99,11 +112,11 @@
                     <a href="./Nocturno.jsp"><img src="images/night_mode.png" class="img-fluid mb-3 mr-2" alt="Modo Nocturno" width="20"></a>
                     <a href="./Normal.jsp"><img src="images/File_Alt.png" class="img-fluid mb-3 mr-2" alt="Modo Nocturno" width="20"></a>
                     <a href="./Invierno.jsp"><img src="images/snowflake.png" class="img-fluid mb-3 mr-3" alt="Modo Nocturno" width="20"></a>
-                    
+
                     <form class="form-inline my-2 my-lg-0" action="Cerrarsesion.jsp">                       
                         <button class="btn btn  my-2 my-sm-0" type="submit" id="sesion">Cerrar Sesión</button>
                     </form>
-                    
+
                     <%}%>
                 </div>
             </nav>
@@ -111,29 +124,25 @@
 
         <div class="container mt-5 pt-5">
 
-         <%
-           ArrayList<ProductoCarrito> lista_c = (ArrayList<ProductoCarrito>) request.getSession().getAttribute("listacom");
-           ArrayList<Producto> lista_p = (ArrayList<Producto>) request.getSession().getAttribute("listap");
-           
-          String valorP = (String) request.getParameter("producto");
-          int id_P = Integer.parseInt(valorP);
-          
-          String nombre="", descrip="";
-          int precio=0;
-          int existenciaAct=0;
-             
-          for (int i = 0; i < lista_p.size(); i++) {
-             if(id_P  == lista_p.get(i).getId()){
-                 nombre = lista_p.get(i).getNombre();
-                 descrip = lista_p.get(i).getDescrip();
-                 precio = lista_p.get(i).getPrecio();
-                 existenciaAct = lista_p.get(i).getExistencia();
-                 lista_p = null;
-                 break;
-              }
-           }
+            <%
+                int id_P = Integer.parseInt(valorP);
 
-         %>             
+                String nombre = "", descrip = "";
+                int precio = 0;
+                int existenciaAct = 0;
+
+                for (int i = 0; i < lista_p.size(); i++) {
+                    if (id_P == lista_p.get(i).getId()) {
+                        nombre = lista_p.get(i).getNombre();
+                        descrip = lista_p.get(i).getDescrip();
+                        precio = lista_p.get(i).getPrecio();
+                        existenciaAct = lista_p.get(i).getExistencia();
+                        lista_p = null;
+                        break;
+                    }
+                }
+
+            %>             
             <div class="row mt-3">
                 <div class="col-lg-6 px-5">
                     <figure class="zoom img-fluid" onmousemove="zoom(event)" style="background-image: url(imagen.jsp?id=<%=id_P%>)">
@@ -141,15 +150,15 @@
                     </figure>                    
                     <!--<img src="images/prueba.jpg" class="img-fluid mt-5 pt-5" alt="Responsive image" id="producto">-->
                 </div>
-      
+
                 <div class="col-lg-6 mt-2">
-                   
+
                     <p class="h2 text-left mt-1"><%=nombre%></p>
                     <p class="lead mt-3">Precio: $<%=precio%> MXN</p>
-                    <form class="form-signin mx-auto mt-2" action="carrito.jsp" method="get">
+                    <form class="form-signin mx-auto mt-2" action="carrito.jsp" method="post">
                         <label for="cantidad" class="lead ">Cantidad: </label>
                         <select class="custom-select w-25 mb-1" name="cantidad"> 
-                            
+
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -158,7 +167,7 @@
                         </select>
                         <input type="hidden" name="id_producto" value="<%=id_P%>">  <!--Manda el id del producto escondido --> 
                         <br>
-                        
+
                         <button class="btn btn-lg btn-primary btn-block mb-0 w-75 mt-5" type="submit">Agregar al carrito</button>
                     </form>
 
@@ -168,7 +177,7 @@
                         <li class="text-justify lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</li>
                         <li class="text-justify lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</li>
                         <li class="text-justify lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</li>
-                        
+
                     </ul>
                 </div>
             </div>
@@ -178,7 +187,7 @@
                     <p class="h3">DESCRIPCIÓN DEL PRODUCTO</p>
                     <p class="lead text-justify">
                         <span>
-                           <%=descrip%>
+                            <%=descrip%>
                         </span>
                     </p>
                 </div>
