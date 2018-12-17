@@ -20,6 +20,7 @@
     <head>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
+         <link rel="icon" type="image/png" href="images/logo.png">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Chat</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -31,10 +32,10 @@
         </head>
         <body>
             <div class="container text-center mt-5 pt-5">
-                <img class="d-block mx-auto mb-0" src="images/logo.png" alt="" width="72" height="72">
+               <a href="./index.jsp"><img class="mb-4" src="images/logo.png" alt="" width="72" height="72"></a>
                 <h2>Bievenido al chat</h2>
                 <form action="Ingreso" method="post">
-                    <p class=" text-center">Nick <input type="text" name="nick" class="form-control form-control-sm w-50"/></p>
+                    <p class=" text-center">Nick <input type="text" name="nick" class="form-control form-control-sm"/></p>
                 Color
                 <select class="custom-select d-block" name="color">
                     <option value="#900">Rojo</option>

@@ -50,7 +50,7 @@
     }
 </style>
 
-<body class="bg-light">
+<body>
     <header class="pb-2">
         <nav class="navbar navbar-expand-lg navbar-light fixed-top">
             <a class="navbar-brand" href="./index.jsp" id="logo">
@@ -145,7 +145,7 @@
                         <a class="collapsed text-muted" data-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">PRODUCTOS</a>
                     </h5>
                 </div>
-                <div id="collapseTwo" class="collapse bg-light" role="tabpanel" aria-labelledby="headingTwo">
+                <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
                     <div class="card-body text-muted">
                         <div class="list-group">
                         </div>

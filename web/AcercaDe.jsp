@@ -139,7 +139,7 @@
 
                 </div>
                 <div class="col-lg-4">
-                    <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+                    <img class="rounded-circle" src="images/hector.png" alt="Generic placeholder image" width="140" height="140">
                     <h2>Héctor Fernando Diaz Rosales</h2>
                     <p class="text-justify"></p>
 

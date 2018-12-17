@@ -26,6 +26,7 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="icon" type="image/png" href="images/logo.png">
         <meta http-equiv="refresh" content="20"/>
         <title>Chat</title>
         
@@ -49,12 +50,14 @@
         </script>
     </head>
     <body onload="load">
-         <div class="container text-center">
-        <h1>Bienvenido</h1>
+        
+         <div class="container text-center p-5 mb-5">
+             <a href="./index.jsp"><img class="mb-4" src="images/logo.png" alt="" width="72" height="72"></a>
+        <h1>Chat</h1>
         <div id="sala" class="form-control text-left"><%=sala%></div><br>
        
         <form action="Chat" method="post" style="text-align: center">
-            Mensaje: <input type="text" name="msg" id="msg" class="form-control text-center mb-3 w-50"/>
+            Mensaje: <input type="text" name="msg" id="msg" class="form-control text-center mb-3"/>
             <input type="submit" value="Enviar" class="btn btn-primary"/>
         </form>
             </div>
