@@ -4,6 +4,7 @@
     Author     : MD
 --%>
 
+<%@page import="clases.Promos"%>
 <%@page import="clases.Producto"%>
 <%@page import="java.util.Collections"%>
 <%@page import="java.util.Vector"%>
@@ -49,11 +50,11 @@
             td{
                 color: black;
             }
-            </style>
-        </head>
+        </style>
+    </head>
 
-        <body>
-            <header class="pb-2">
+    <body>
+        <header class="pb-2">
             <nav class="navbar navbar-expand-lg navbar-light fixed-top">
                 <a class="navbar-brand" href="./index.jsp" id="logo">
                     <img src="images/logo.png" width="60" height="60" class="d-inline-block align-top ml-4 mb-0">
@@ -115,23 +116,23 @@
                     <%
                     } else if (session.getAttribute("admin").equals("true")) {
                     %>
-                     <%   if(request.getSession().getAttribute("usr")!=null){
-                         ArrayList<ProductoCarrito> lista_c = (ArrayList<ProductoCarrito>) request.getSession().getAttribute("listacom");
-                        //Cantidad de productos en el carrito
-                        int cantCar = 0;
-                        for (int i = 0; i < lista_c.size(); i++) {
-                            cantCar += lista_c.get(i).getCantidad();
-                        }%> 
+                    <%   if (request.getSession().getAttribute("usr") != null) {
+                            ArrayList<ProductoCarrito> lista_c = (ArrayList<ProductoCarrito>) request.getSession().getAttribute("listacom");
+                            //Cantidad de productos en el carrito
+                            int cantCar = 0;
+                            for (int i = 0; i < lista_c.size(); i++) {
+                                cantCar += lista_c.get(i).getCantidad();
+                            }%> 
 
                     <span class="badge badge-secondary badge-pill"><%=cantCar%></span>
                     <%}%>
-                    
-                    <%if(request.getSession().getAttribute("usr")==null){%>
+
+                    <%if (request.getSession().getAttribute("usr") == null) {%>
                     <a id="NomUsuario" style="color: black">Admin</a> &nbsp; &nbsp;
                     <a href="./Nocturno.jsp"><img src="images/night_mode.png" class="img-fluid mb-3 mr-2" alt="Modo Nocturno" width="20"></a>
                     <a href="./Normal.jsp"><img src="images/File_Alt.png" class="img-fluid mb-3 mr-2" alt="Modo Nocturno" width="20"></a>
                     <a href="./Invierno.jsp"><img src="images/snowflake.png" class="img-fluid mb-3 mr-3" alt="Modo Nocturno" width="20"></a>
-                    <%}else{%>
+                        <%} else {%>
                     <a href="./Nocturno.jsp"><img src="images/night_mode.png" class="img-fluid mb-3 mr-2" alt="Modo Nocturno" width="20"></a>
                     <a href="./Normal.jsp"><img src="images/File_Alt.png" class="img-fluid mb-3 mr-2" alt="Modo Nocturno" width="20"></a>
                     <a href="./Invierno.jsp"><img src="images/snowflake.png" class="img-fluid mb-3 mr-3" alt="Modo Nocturno" width="20"></a>
@@ -144,12 +145,21 @@
                     <%} else {
 
                         ArrayList<ProductoCarrito> lista_c = (ArrayList<ProductoCarrito>) request.getSession().getAttribute("listacom");
+                        ArrayList<Promos> descuentos = (ArrayList<Promos>) request.getSession().getAttribute("listapromos");
 
                         if (lista_c == null) {
                             /*Solo se ejecutará una vez esta parte */
                             lista_c = new ArrayList<ProductoCarrito>();
+                            descuentos = new ArrayList<Promos>();
                             /* Agrego al arraylist */
+
                             request.getSession().setAttribute("listacom", lista_c);
+
+                            descuentos.add(new Promos("FUTURE", "2018-12-31", 10));
+                            descuentos.add(new Promos("FAROLITO-MERCY", "2019-2-14", 25));
+                            descuentos.add(new Promos("25-OFF", "2020-12-10", 25));
+                            descuentos.add(new Promos("LA-SEGUNDA", "2020-12-10", 25));
+                            request.getSession().setAttribute("listapromos", descuentos);
                         }
                     %>
 
@@ -174,7 +184,7 @@
 
                     <%
                         if (request.getSession().getAttribute("Mueve") != null) {
-                            request.getSession().setAttribute("Mueve",null);
+                            request.getSession().setAttribute("Mueve", null);
                     %>
                     <script>
                         window.location.href = "producto.jsp";
@@ -185,7 +195,7 @@
                     <form class="form-inline my-2 my-lg-0" action="Cerrarsesion.jsp">                       
                         <button class="btn btn  my-2 my-sm-0" type="submit" id="sesion">Cerrar Sesión</button>
                     </form>
-                        <%}%>
+                    <%}%>
                 </div>
             </nav>
         </header>
@@ -218,18 +228,18 @@
                             <h3>Desde un 25% de descuento</h3>
                             <%
                                 Vector v = new Vector();
-                                
+
                                 v.add("FUTURE");
                                 v.add("FAROLITO-MERCY");
                                 v.add("25-OFF");
-                                Collections.shuffle(v);           
-                                
+                                Collections.shuffle(v);
+
                             %>
                             <p><%=v.elementAt(0)%></p>
                         </div>
                     </div>
-                    
-                    
+
+
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -303,8 +313,8 @@
                 </div>
             </div>
         </div>
-        
-        
+
+
         <div class="container" style=" background-color:<%=Fondo%>; color:<%=FondoLetra%>; border-radius: 0px; border: transparent 1px solid;">
             <%
                 String numeroProd = "";
@@ -340,24 +350,24 @@
                     </div>
                     <form action="producto.jsp" method="post">
                         <table><%
-                                objConn.rs.beforeFirst();
-                                int random = (int) (Math.random() * (12 - 9) + 9);
-                                for (int i = 0; i < random; i++) {
-                                    objConn.rs.next();
-                                }
+                            objConn.rs.beforeFirst();
+                            int random = (int) (Math.random() * (12 - 9) + 9);
+                            for (int i = 0; i < random; i++) {
+                                objConn.rs.next();
+                            }
 
-                                id = objConn.rs.getInt(1);
-                                precio = objConn.rs.getInt(2);
-                                existencias = objConn.rs.getInt(3);
-                                nombre = objConn.rs.getString(4);
-                                descrip = objConn.rs.getString(5);
-                                tipo = objConn.rs.getString(7);
-                                numeroProd = Integer.toString(numP);
-                                numP++;
-                                aux = new Producto(id, precio, existencias, nombre, descrip);
+                            id = objConn.rs.getInt(1);
+                            precio = objConn.rs.getInt(2);
+                            existencias = objConn.rs.getInt(3);
+                            nombre = objConn.rs.getString(4);
+                            descrip = objConn.rs.getString(5);
+                            tipo = objConn.rs.getString(7);
+                            numeroProd = Integer.toString(numP);
+                            numP++;
+                            aux = new Producto(id, precio, existencias, nombre, descrip);
 
-                                if (tipo.equals("Oferta") && existencias != 0) {
-                                    lista_p.add(aux);
+                            if (tipo.equals("Oferta") && existencias != 0) {
+                                lista_p.add(aux);
                             %>
                             <tr>
                                 <td style="width: 25%;color:<%=FondoLetra%>;"><button style="background-color: transparent; border: solid transparent 1px;" name="producto" value="<%=id%>"><img src="imagen.jsp?id=<%=id%>" alt="<%=nombre%>.jpg" class="img-fluid"></button></td>
@@ -377,8 +387,7 @@
         </div>
 
         <footer class="footer shadow-lg pb-2 mt-5">
-            <%
-                String query = "select * from farolito.visitas";
+            <%                String query = "select * from farolito.visitas";
                 objConn.Consult(query);
                 objConn.rs.beforeFirst();
                 int contadorVista = 0;
@@ -388,29 +397,29 @@
                 numAccesos = contadorVista;
             %>
             <%numAccesos++;%>
-           
-           
+
+
 
 
             <hr>
             <div class="row container-fluid mt-0">
                 <div class="col-md-3 text-center">
-                
+
                     <img src="images/logo.png" width="60" height="60" class="mb-0 mp-0 mt-0">
-                       
-                    
+
+
                 </div>
                 <div class="col-md-6 text-center">
                     <p><span class="badge badge-info"> 
-                        Contador de visitas: <br>
-                        <%=contadorVista%></span></p>
+                            Contador de visitas: <br>
+                            <%=contadorVista%></span></p>
                     <a href="https://github.com/Manudam69" target="_blank"><img src="images/github.png" width="35" height="35" class="mb-0 mp-0  mr-2 mt-2 text-right" style="filter: invert(100)"></a>
                     <a href="https://twitter.com/farolitooficial?lang=es" target="_blank"><img src="images/twitter.png" width="35" height="35" class="mb-0 mp-0 mt-2 text-right" style="filter: invert(100)"></a>
-                    
+
                 </div>
-                         <%
-                objConn.Contador(numAccesos);
-            %>
+                <%
+                    objConn.Contador(numAccesos);
+                %>
                 <div class="col-md-3 text-center mt-3">
                     <span class="text-muted">El farolito &copy; 2018. Todos los derechos reservados.</span>
                 </div>

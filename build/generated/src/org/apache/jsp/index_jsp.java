@@ -3,6 +3,7 @@ package org.apache.jsp;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
+import clases.Promos;
 import clases.Producto;
 import java.util.Collections;
 import java.util.Vector;
@@ -47,6 +48,7 @@ int numAccesos = 0;
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
+      out.write("\n");
       out.write("\n");
       out.write("\n");
       out.write("\n");
@@ -110,11 +112,11 @@ int numAccesos = 0;
       out.write("            td{\n");
       out.write("                color: black;\n");
       out.write("            }\n");
-      out.write("            </style>\n");
-      out.write("        </head>\n");
+      out.write("        </style>\n");
+      out.write("    </head>\n");
       out.write("\n");
-      out.write("        <body>\n");
-      out.write("            <header class=\"pb-2\">\n");
+      out.write("    <body>\n");
+      out.write("        <header class=\"pb-2\">\n");
       out.write("            <nav class=\"navbar navbar-expand-lg navbar-light fixed-top\">\n");
       out.write("                <a class=\"navbar-brand\" href=\"./index.jsp\" id=\"logo\">\n");
       out.write("                    <img src=\"images/logo.png\" width=\"60\" height=\"60\" class=\"d-inline-block align-top ml-4 mb-0\">\n");
@@ -184,14 +186,14 @@ int numAccesos = 0;
                     } else if (session.getAttribute("admin").equals("true")) {
                     
       out.write("\n");
-      out.write("                     ");
-   if(request.getSession().getAttribute("usr")!=null){
-                         ArrayList<ProductoCarrito> lista_c = (ArrayList<ProductoCarrito>) request.getSession().getAttribute("listacom");
-                        //Cantidad de productos en el carrito
-                        int cantCar = 0;
-                        for (int i = 0; i < lista_c.size(); i++) {
-                            cantCar += lista_c.get(i).getCantidad();
-                        }
+      out.write("                    ");
+   if (request.getSession().getAttribute("usr") != null) {
+                            ArrayList<ProductoCarrito> lista_c = (ArrayList<ProductoCarrito>) request.getSession().getAttribute("listacom");
+                            //Cantidad de productos en el carrito
+                            int cantCar = 0;
+                            for (int i = 0; i < lista_c.size(); i++) {
+                                cantCar += lista_c.get(i).getCantidad();
+                            }
       out.write(" \n");
       out.write("\n");
       out.write("                    <span class=\"badge badge-secondary badge-pill\">");
@@ -200,16 +202,16 @@ int numAccesos = 0;
       out.write("                    ");
 }
       out.write("\n");
-      out.write("                    \n");
+      out.write("\n");
       out.write("                    ");
-if(request.getSession().getAttribute("usr")==null){
+if (request.getSession().getAttribute("usr") == null) {
       out.write("\n");
       out.write("                    <a id=\"NomUsuario\" style=\"color: black\">Admin</a> &nbsp; &nbsp;\n");
       out.write("                    <a href=\"./Nocturno.jsp\"><img src=\"images/night_mode.png\" class=\"img-fluid mb-3 mr-2\" alt=\"Modo Nocturno\" width=\"20\"></a>\n");
       out.write("                    <a href=\"./Normal.jsp\"><img src=\"images/File_Alt.png\" class=\"img-fluid mb-3 mr-2\" alt=\"Modo Nocturno\" width=\"20\"></a>\n");
       out.write("                    <a href=\"./Invierno.jsp\"><img src=\"images/snowflake.png\" class=\"img-fluid mb-3 mr-3\" alt=\"Modo Nocturno\" width=\"20\"></a>\n");
-      out.write("                    ");
-}else{
+      out.write("                        ");
+} else {
       out.write("\n");
       out.write("                    <a href=\"./Nocturno.jsp\"><img src=\"images/night_mode.png\" class=\"img-fluid mb-3 mr-2\" alt=\"Modo Nocturno\" width=\"20\"></a>\n");
       out.write("                    <a href=\"./Normal.jsp\"><img src=\"images/File_Alt.png\" class=\"img-fluid mb-3 mr-2\" alt=\"Modo Nocturno\" width=\"20\"></a>\n");
@@ -228,12 +230,21 @@ if(request.getSession().getAttribute("usr")==null){
 } else {
 
                         ArrayList<ProductoCarrito> lista_c = (ArrayList<ProductoCarrito>) request.getSession().getAttribute("listacom");
+                        ArrayList<Promos> descuentos = (ArrayList<Promos>) request.getSession().getAttribute("listapromos");
 
                         if (lista_c == null) {
                             /*Solo se ejecutará una vez esta parte */
                             lista_c = new ArrayList<ProductoCarrito>();
+                            descuentos = new ArrayList<Promos>();
                             /* Agrego al arraylist */
+
                             request.getSession().setAttribute("listacom", lista_c);
+
+                            descuentos.add(new Promos("FUTURE", "2018-12-31", 10));
+                            descuentos.add(new Promos("FAROLITO-MERCY", "2019-2-14", 25));
+                            descuentos.add(new Promos("25-OFF", "2020-12-10", 25));
+                            descuentos.add(new Promos("LA-SEGUNDA", "2020-12-10", 25));
+                            request.getSession().setAttribute("listapromos", descuentos);
                         }
                     
       out.write("\n");
@@ -268,7 +279,7 @@ if(request.getSession().getAttribute("usr")==null){
       out.write("                    ");
 
                         if (request.getSession().getAttribute("Mueve") != null) {
-                            request.getSession().setAttribute("Mueve",null);
+                            request.getSession().setAttribute("Mueve", null);
                     
       out.write("\n");
       out.write("                    <script>\n");
@@ -282,7 +293,7 @@ if(request.getSession().getAttribute("usr")==null){
       out.write("                    <form class=\"form-inline my-2 my-lg-0\" action=\"Cerrarsesion.jsp\">                       \n");
       out.write("                        <button class=\"btn btn  my-2 my-sm-0\" type=\"submit\" id=\"sesion\">Cerrar Sesión</button>\n");
       out.write("                    </form>\n");
-      out.write("                        ");
+      out.write("                    ");
 }
       out.write("\n");
       out.write("                </div>\n");
@@ -318,12 +329,12 @@ if(request.getSession().getAttribute("usr")==null){
       out.write("                            ");
 
                                 Vector v = new Vector();
-                                
+
                                 v.add("FUTURE");
                                 v.add("FAROLITO-MERCY");
                                 v.add("25-OFF");
-                                Collections.shuffle(v);           
-                                
+                                Collections.shuffle(v);
+
                             
       out.write("\n");
       out.write("                            <p>");
@@ -331,8 +342,8 @@ if(request.getSession().getAttribute("usr")==null){
       out.write("</p>\n");
       out.write("                        </div>\n");
       out.write("                    </div>\n");
-      out.write("                    \n");
-      out.write("                    \n");
+      out.write("\n");
+      out.write("\n");
       out.write("                </div>\n");
       out.write("                <a class=\"carousel-control-prev\" href=\"#carouselExampleCaptions\" role=\"button\" data-slide=\"prev\">\n");
       out.write("                    <span class=\"carousel-control-prev-icon\" aria-hidden=\"true\"></span>\n");
@@ -406,8 +417,8 @@ if(request.getSession().getAttribute("usr")==null){
       out.write("                </div>\n");
       out.write("            </div>\n");
       out.write("        </div>\n");
-      out.write("        \n");
-      out.write("        \n");
+      out.write("\n");
+      out.write("\n");
       out.write("        <div class=\"container\" style=\" background-color:");
       out.print(Fondo);
       out.write("; color:");
@@ -454,24 +465,24 @@ if(request.getSession().getAttribute("usr")==null){
       out.write("                    <form action=\"producto.jsp\" method=\"post\">\n");
       out.write("                        <table>");
 
-                                objConn.rs.beforeFirst();
-                                int random = (int) (Math.random() * (12 - 9) + 9);
-                                for (int i = 0; i < random; i++) {
-                                    objConn.rs.next();
-                                }
+                            objConn.rs.beforeFirst();
+                            int random = (int) (Math.random() * (12 - 9) + 9);
+                            for (int i = 0; i < random; i++) {
+                                objConn.rs.next();
+                            }
 
-                                id = objConn.rs.getInt(1);
-                                precio = objConn.rs.getInt(2);
-                                existencias = objConn.rs.getInt(3);
-                                nombre = objConn.rs.getString(4);
-                                descrip = objConn.rs.getString(5);
-                                tipo = objConn.rs.getString(7);
-                                numeroProd = Integer.toString(numP);
-                                numP++;
-                                aux = new Producto(id, precio, existencias, nombre, descrip);
+                            id = objConn.rs.getInt(1);
+                            precio = objConn.rs.getInt(2);
+                            existencias = objConn.rs.getInt(3);
+                            nombre = objConn.rs.getString(4);
+                            descrip = objConn.rs.getString(5);
+                            tipo = objConn.rs.getString(7);
+                            numeroProd = Integer.toString(numP);
+                            numP++;
+                            aux = new Producto(id, precio, existencias, nombre, descrip);
 
-                                if (tipo.equals("Oferta") && existencias != 0) {
-                                    lista_p.add(aux);
+                            if (tipo.equals("Oferta") && existencias != 0) {
+                                lista_p.add(aux);
                             
       out.write("\n");
       out.write("                            <tr>\n");
@@ -515,7 +526,6 @@ if(request.getSession().getAttribute("usr")==null){
       out.write("\n");
       out.write("        <footer class=\"footer shadow-lg pb-2 mt-5\">\n");
       out.write("            ");
-
                 String query = "select * from farolito.visitas";
                 objConn.Consult(query);
                 objConn.rs.beforeFirst();
@@ -529,32 +539,32 @@ if(request.getSession().getAttribute("usr")==null){
       out.write("            ");
 numAccesos++;
       out.write("\n");
-      out.write("           \n");
-      out.write("           \n");
+      out.write("\n");
+      out.write("\n");
       out.write("\n");
       out.write("\n");
       out.write("            <hr>\n");
       out.write("            <div class=\"row container-fluid mt-0\">\n");
       out.write("                <div class=\"col-md-3 text-center\">\n");
-      out.write("                \n");
+      out.write("\n");
       out.write("                    <img src=\"images/logo.png\" width=\"60\" height=\"60\" class=\"mb-0 mp-0 mt-0\">\n");
-      out.write("                       \n");
-      out.write("                    \n");
+      out.write("\n");
+      out.write("\n");
       out.write("                </div>\n");
       out.write("                <div class=\"col-md-6 text-center\">\n");
       out.write("                    <p><span class=\"badge badge-info\"> \n");
-      out.write("                        Contador de visitas: <br>\n");
-      out.write("                        ");
+      out.write("                            Contador de visitas: <br>\n");
+      out.write("                            ");
       out.print(contadorVista);
       out.write("</span></p>\n");
       out.write("                    <a href=\"https://github.com/Manudam69\" target=\"_blank\"><img src=\"images/github.png\" width=\"35\" height=\"35\" class=\"mb-0 mp-0  mr-2 mt-2 text-right\" style=\"filter: invert(100)\"></a>\n");
       out.write("                    <a href=\"https://twitter.com/farolitooficial?lang=es\" target=\"_blank\"><img src=\"images/twitter.png\" width=\"35\" height=\"35\" class=\"mb-0 mp-0 mt-2 text-right\" style=\"filter: invert(100)\"></a>\n");
-      out.write("                    \n");
+      out.write("\n");
       out.write("                </div>\n");
-      out.write("                         ");
+      out.write("                ");
 
-                objConn.Contador(numAccesos);
-            
+                    objConn.Contador(numAccesos);
+                
       out.write("\n");
       out.write("                <div class=\"col-md-3 text-center mt-3\">\n");
       out.write("                    <span class=\"text-muted\">El farolito &copy; 2018. Todos los derechos reservados.</span>\n");
