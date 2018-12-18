@@ -4,6 +4,7 @@
     Author     : MD
 --%>
 
+<%@page import="clases.Producto"%>
 <%@page import="java.util.Collections"%>
 <%@page import="java.util.Vector"%>
 <%@page import="java.util.ArrayList"%>
@@ -41,6 +42,13 @@
         <style> 
             body{ background-color:<%=Fondo%>;<%//Al recuperar los colores se ingresan en el style de la pagina%>
                   color:<%=FondoLetra%>;}
+            .imagen{
+                width: 213px;
+                height: 300px;
+            }
+            td{
+                color: black;
+            }
             </style>
         </head>
 
@@ -176,6 +184,7 @@
 
                     <form class="form-inline my-2 my-lg-0" action="Cerrarsesion.jsp">                       
                         <button class="btn btn  my-2 my-sm-0" type="submit" id="sesion">Cerrar Sesión</button>
+                    </form>
                         <%}%>
                 </div>
             </nav>
@@ -294,6 +303,78 @@
                 </div>
             </div>
         </div>
+        
+        
+        <div class="container" style=" background-color:<%=Fondo%>; color:<%=FondoLetra%>; border-radius: 0px; border: transparent 1px solid;">
+            <%
+                String numeroProd = "";
+                Producto aux = new Producto();
+                ArrayList<Producto> lista_p = (ArrayList<Producto>) request.getSession().getAttribute("listap");
+
+                //Creacion e instanciacion de las listas de compras y mostrar
+                if (lista_p == null) {
+                    lista_p = new ArrayList<Producto>();
+                    request.getSession().setAttribute("listap", lista_p);
+                    /*Se va actualizar la lista */
+                }
+                int id = 0, precio = 0, existencias = 0;
+                String nombre = "", descrip = "", tipo = "";
+                int numP = 0;
+                String query1 = "select * from farolito.productos";
+                objConn.Consult(query1);
+
+            %>
+            <div class="mt-5 mb-5 row container-fluid"></div>
+            <div class="bg mt-0 mb-0">
+                <div id="accordion" role="tablist">
+
+                    <div class="card" style=" background-color:<%=Fondo%>; color:<%=FondoLetra%>; border-radius: 0px; border: transparent 1px solid;">
+                        <p class="h2 text-center " style=" color:red;">¡Oferta!</p>
+                        <div id="collapseTwo" class="collapse bg-light" role="tabpanel" aria-labelledby="headingTwo">
+                            <div class="card-body text-muted">
+                                <div class="list-group">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <form action="producto.jsp" method="post">
+                        <table><%
+                                objConn.rs.beforeFirst();
+                                int random = (int) (Math.random() * (12 - 9) + 9);
+                                for (int i = 0; i < random; i++) {
+                                    objConn.rs.next();
+                                }
+
+                                id = objConn.rs.getInt(1);
+                                precio = objConn.rs.getInt(2);
+                                existencias = objConn.rs.getInt(3);
+                                nombre = objConn.rs.getString(4);
+                                descrip = objConn.rs.getString(5);
+                                tipo = objConn.rs.getString(7);
+                                numeroProd = Integer.toString(numP);
+                                numP++;
+                                aux = new Producto(id, precio, existencias, nombre, descrip);
+
+                                if (tipo.equals("Oferta") && existencias != 0) {
+                                    lista_p.add(aux);
+                            %>
+                            <tr>
+                                <td style="width: 25%;color:<%=FondoLetra%>;"><button style="background-color: transparent; border: solid transparent 1px;" name="producto" value="<%=id%>"><img src="imagen.jsp?id=<%=id%>" alt="<%=nombre%>.jpg" class="img-fluid"></button></td>
+                                <td style="width: 5%;color:<%=FondoLetra%>;"><%=nombre%></td>
+                                <td style="width: 40%;color:<%=FondoLetra%>;"><%=descrip%></td>
+                                <td align="center" style="width: 10%; color: green;">$ <%=precio%></td>
+                                <td align="center" style="width: 5%;color: red;">Solo quedan: <%=existencias%> disponibles</td>
+                            </tr>
+                            <%
+                                }
+
+                            %>
+                        </table>
+                    </form>
+                </div> 
+            </div>  
+        </div>
 
         <footer class="footer shadow-lg pb-2 mt-5">
             <%
@@ -307,21 +388,29 @@
                 numAccesos = contadorVista;
             %>
             <%numAccesos++;%>
-            <h2><%="La pagina fue visitada " + (contadorVista) + " veces"%></h2>
-            <%
-                objConn.Contador(numAccesos);
-            %>
+           
+           
 
 
             <hr>
             <div class="row container-fluid mt-0">
                 <div class="col-md-3 text-center">
+                
                     <img src="images/logo.png" width="60" height="60" class="mb-0 mp-0 mt-0">
+                       
+                    
                 </div>
                 <div class="col-md-6 text-center">
+                    <p><span class="badge badge-info"> 
+                        Contador de visitas: <br>
+                        <%=contadorVista%></span></p>
                     <a href="https://github.com/Manudam69" target="_blank"><img src="images/github.png" width="35" height="35" class="mb-0 mp-0  mr-2 mt-2 text-right" style="filter: invert(100)"></a>
                     <a href="https://twitter.com/farolitooficial?lang=es" target="_blank"><img src="images/twitter.png" width="35" height="35" class="mb-0 mp-0 mt-2 text-right" style="filter: invert(100)"></a>
+                    
                 </div>
+                         <%
+                objConn.Contador(numAccesos);
+            %>
                 <div class="col-md-3 text-center mt-3">
                     <span class="text-muted">El farolito &copy; 2018. Todos los derechos reservados.</span>
                 </div>

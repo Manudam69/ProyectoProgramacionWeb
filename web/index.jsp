@@ -303,7 +303,9 @@
                 </div>
             </div>
         </div>
-        <div>
+        
+        
+        <div class="container" style=" background-color:<%=Fondo%>; color:<%=FondoLetra%>; border-radius: 0px; border: transparent 1px solid;">
             <%
                 String numeroProd = "";
                 Producto aux = new Producto();
@@ -327,11 +329,7 @@
                 <div id="accordion" role="tablist">
 
                     <div class="card" style=" background-color:<%=Fondo%>; color:<%=FondoLetra%>; border-radius: 0px; border: transparent 1px solid;">
-                        <div class="card-header" role="tab" id="headingTwo">
-                            <h5 class="mb-0">
-                                Oferta Flash.
-                            </h5>
-                        </div>
+                        <p class="h2 text-center " style=" color:red;">¡Oferta!</p>
                         <div id="collapseTwo" class="collapse bg-light" role="tabpanel" aria-labelledby="headingTwo">
                             <div class="card-body text-muted">
                                 <div class="list-group">
@@ -362,7 +360,7 @@
                                     lista_p.add(aux);
                             %>
                             <tr>
-                                <td style="width: 25%;color:<%=FondoLetra%>;"><button style="background-color: transparent; border: solid transparent 1px;" name="producto" value="<%=id%>"><img src="imagen.jsp?id=<%=id%>" alt="<%=nombre%>.jpg" class="imagen"></button></td>
+                                <td style="width: 25%;color:<%=FondoLetra%>;"><button style="background-color: transparent; border: solid transparent 1px;" name="producto" value="<%=id%>"><img src="imagen.jsp?id=<%=id%>" alt="<%=nombre%>.jpg" class="img-fluid"></button></td>
                                 <td style="width: 5%;color:<%=FondoLetra%>;"><%=nombre%></td>
                                 <td style="width: 40%;color:<%=FondoLetra%>;"><%=descrip%></td>
                                 <td align="center" style="width: 10%; color: green;">$ <%=precio%></td>
@@ -390,21 +388,29 @@
                 numAccesos = contadorVista;
             %>
             <%numAccesos++;%>
-            <h2><%="La pagina fue visitada " + (contadorVista) + " veces"%></h2>
-            <%
-                objConn.Contador(numAccesos);
-            %>
+           
+           
 
 
             <hr>
             <div class="row container-fluid mt-0">
                 <div class="col-md-3 text-center">
+                
                     <img src="images/logo.png" width="60" height="60" class="mb-0 mp-0 mt-0">
+                       
+                    
                 </div>
                 <div class="col-md-6 text-center">
+                    <p><span class="badge badge-info"> 
+                        Contador de visitas: <br>
+                        <%=contadorVista%></span></p>
                     <a href="https://github.com/Manudam69" target="_blank"><img src="images/github.png" width="35" height="35" class="mb-0 mp-0  mr-2 mt-2 text-right" style="filter: invert(100)"></a>
                     <a href="https://twitter.com/farolitooficial?lang=es" target="_blank"><img src="images/twitter.png" width="35" height="35" class="mb-0 mp-0 mt-2 text-right" style="filter: invert(100)"></a>
+                    
                 </div>
+                         <%
+                objConn.Contador(numAccesos);
+            %>
                 <div class="col-md-3 text-center mt-3">
                     <span class="text-muted">El farolito &copy; 2018. Todos los derechos reservados.</span>
                 </div>
