@@ -187,7 +187,7 @@
                             request.getSession().setAttribute("Mueve", null);
                     %>
                     <script>
-                        window.location.href = "producto.jsp";
+                        window.location.href = "index.jsp";
                     </script>
                     <%   }
                     %> 

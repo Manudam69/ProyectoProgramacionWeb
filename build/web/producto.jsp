@@ -90,7 +90,7 @@
                     </ul>
                     <%
                         if (session.getAttribute("usuario") == null) {
-                            request.getSession().setAttribute("IdProd", valorP);
+ 
                     %>
                     <form class="form-inline my-2 my-lg-0" action="Login.jsp" method="post">                       
                         <button class="btn btn  my-2 my-sm-0" type="submit" id="sesion">Iniciar Sesión</button>

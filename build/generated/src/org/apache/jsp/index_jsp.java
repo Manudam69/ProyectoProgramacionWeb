@@ -283,7 +283,7 @@ if (request.getSession().getAttribute("usr") == null) {
                     
       out.write("\n");
       out.write("                    <script>\n");
-      out.write("                        window.location.href = \"producto.jsp\";\n");
+      out.write("                        window.location.href = \"index.jsp\";\n");
       out.write("                    </script>\n");
       out.write("                    ");
    }
