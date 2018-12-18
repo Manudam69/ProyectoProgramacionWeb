@@ -158,7 +158,7 @@
                     String descrip = Norm.getDescrip();
                     int cantidad = lista_c.get(i).getCantidad();
                   
-                    producto+="|-|-||||"+nombre+" Precio: "+precio_p+" Cantidad: "+cantidad+".||||-|-|  ";
+                    producto+="|-|-||||"+nombre+" Precio: "+precio_p+". Cantidad: "+cantidad+".||||-|-|  ";
             %>
 
             <div class="row">

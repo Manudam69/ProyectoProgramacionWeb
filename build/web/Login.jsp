@@ -17,6 +17,7 @@
             usuario = galleta[i].getValue();
         }        
     }
+     
 %>
 <html lang="es">
     <head>

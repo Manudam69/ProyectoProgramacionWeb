@@ -25,8 +25,9 @@
             float porDesc = 0;
             ArrayList<Promos> descuentos = new ArrayList<Promos>();
             descuentos.add(new Promos("FUTURE", "2018-12-31", 10));
-            descuentos.add(new Promos("FAROLITO-MERCY", "2019-2-14", 50));
+            descuentos.add(new Promos("FAROLITO-MERCY", "2019-2-14", 25));
             descuentos.add(new Promos("25-OFF", "2020-12-10", 25));
+            descuentos.add(new Promos("LA-SEGUNDA", "2020-12-10", 25));
 
             if (request.getParameter("Codigo") != null) {
                 //Codigos de descuento 
@@ -36,6 +37,7 @@
 
                     if (descuentos.get(i).getCodigo().equals(request.getParameter("Codigo"))) {
                         porDesc = descuentos.get(i).getDesc();
+                        descuentos.remove(i);
                         find = true;
                         break;
                     }
@@ -52,6 +54,7 @@
                 <span class="text-success">-<%=porDesc%>%</span>
             </li>
             <%     }
+                  
                 }
                 porDesc = porDesc / 100;
                 TotalAPagar = TotalAPagar - (TotalAPagar * porDesc);

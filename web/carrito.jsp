@@ -41,16 +41,16 @@
             body{ background-color:<%=Fondo%>;<%//Al recuperar los colores se ingresan en el style de la pagina%>
                   color:<%=FondoLetra%>;}
             </style>
-    </head>
-    <body>
-        <%
-            if (session.getAttribute("usuario") == null) {
-        %>
-        <jsp:forward page="Login.jsp">
-            <jsp:param name="error" value="Necesitas estar con una sesion activa para comprar"/>
-        </jsp:forward>
-        <%}%>
-        <header class="pb-2">
+        </head>
+        <body>
+            <%
+                if (session.getAttribute("usuario") == null) {
+            %>
+            <jsp:forward page="Login.jsp">
+                <jsp:param name="error" value="Necesitas estar con una sesion activa para comprar"/>
+            </jsp:forward>
+            <%}%>
+            <header class="pb-2">
             <nav class="navbar navbar-expand-lg navbar-light fixed-top">
                 <a class="navbar-brand" href="./index.jsp" id="logo">
                     <img src="images/logo.png" width="60" height="60" class="d-inline-block align-top ml-4 mb-0">
@@ -94,28 +94,29 @@
                     <%
                     } else {
                     %>
-                   <%   if(request.getSession().getAttribute("usr")!=null){
-                         ArrayList<ProductoCarrito> lista_c = (ArrayList<ProductoCarrito>) request.getSession().getAttribute("listacom");
-                        //Cantidad de productos en el carrito
-                        int cantCar = 0;
-                        for (int i = 0; i < lista_c.size(); i++) {
-                            cantCar += lista_c.get(i).getCantidad();
-                        }%> 
+                    <%   if (request.getSession().getAttribute("usr") != null) {
+                            ArrayList<ProductoCarrito> lista_c = (ArrayList<ProductoCarrito>) request.getSession().getAttribute("listacom");
+                            //Cantidad de productos en el carrito
+                            int cantCar = 0;
+                            for (int i = 0; i < lista_c.size(); i++) {
+                                cantCar += lista_c.get(i).getCantidad();
+                           }%> 
 
                     <span class="badge badge-secondary badge-pill"><%=cantCar%></span>
                     <%}%>
-                    
-                    <%if(request.getSession().getAttribute("usr")==null){%>
+
+                    <%if (request.getSession().getAttribute("usr") == null) {%>
                     <a id="NomUsuario" style="color: black">Admin</a> &nbsp; &nbsp;
                     <a href="./Nocturno.jsp"><img src="images/night_mode.png" class="img-fluid mb-3 mr-2" alt="Modo Nocturno" width="20"></a>
                     <a href="./Normal.jsp"><img src="images/File_Alt.png" class="img-fluid mb-3 mr-2" alt="Modo Nocturno" width="20"></a>
                     <a href="./Invierno.jsp"><img src="images/snowflake.png" class="img-fluid mb-3 mr-3" alt="Modo Nocturno" width="20"></a>
-                    <%}else{%>
+                        <%} else {%>
+                    <a href="./carrito.jsp"><img src="images/carrito.png" class="img-fluid mb-3 mr-2" alt="Algo pasa" width="50"></a>
+                    <a id="NomUsuario" style="color: black"><%=request.getSession().getAttribute("usr")%></a> &nbsp; &nbsp;
                     <a href="./Nocturno.jsp"><img src="images/night_mode.png" class="img-fluid mb-3 mr-2" alt="Modo Nocturno" width="20"></a>
                     <a href="./Normal.jsp"><img src="images/File_Alt.png" class="img-fluid mb-3 mr-2" alt="Modo Nocturno" width="20"></a>
                     <a href="./Invierno.jsp"><img src="images/snowflake.png" class="img-fluid mb-3 mr-3" alt="Modo Nocturno" width="20"></a>
-                    <a id="NomUsuario" style="color: black"><%=request.getSession().getAttribute("usr")%></a> &nbsp; &nbsp;
-                    <%}%>  
+                        <%}%>  
                     <form class="form-inline my-2 my-lg-0" action="Cerrarsesion.jsp" method="post">                       
                         <button class="btn btn  my-2 my-sm-0" type="submit" id="sesion">Cerrar Sesión</button>
                     </form>
@@ -163,7 +164,7 @@
                             objConn.Consult(query);
 
                             precio_p = objConn.rs.getInt(2);
-                        //Si se cambia a float el precio sería cambiar a objConn.rs.getFloat(2)
+                            //Si se cambia a float el precio sería cambiar a objConn.rs.getFloat(2)
                             //Tambien se tendría que redondear con math.round(subtotal a pagar)
                             existencias = objConn.rs.getInt(3);
                             nombre_P = objConn.rs.getString(4);
@@ -195,8 +196,7 @@
                 %>  
 
 
-                <%                    
-                        if (lista_c.size() > 0) {
+                <%                    if (lista_c.size() > 0) {
                         for (int i = 0; i < lista_c.size(); i++) {
                             ProductoCarrito aux = lista_c.get(i);
                             Producto Norm = aux.getP();
@@ -245,24 +245,26 @@
                 <div class="row mb-5">
                     <div class="col-md-12 text-right"><p class="lead">Cantidad de productos: <%=cantCar%> </p></div>
                     <div class="col-md-12 text-right"><p class="lead">Subtotal: $ <%=Math.round(subtotalAPagar * 100) / 100%> MXN</p></div>
-                    <% 
+                    <%
                         String subtotal = Integer.toString(subtotalAPagar);
-                        request.getSession().setAttribute("subtotal",subtotal);
-                     %> <!--Variable de sesion para el subtotal -->
+                        request.getSession().setAttribute("subtotal", subtotal);
+                    %> <!--Variable de sesion para el subtotal -->
                     <div class="col-md-12 text-right"><button type="submit" class="btn btn-success">Proceder al pago</button></div>              
                 </div>   
-                    <%}
-                    } else{ %>
-                     <p class="h2 text-center mt-5 pt-5">TU CARRITO ESTA VACÍO</p>
-                     <!--Regresa a la pagina anterior -->
-                     <p class="lead text-center mb-5"><a href="./index.jsp">Comprar ahora.</a></p>
-                  <%} %>
+                <%}
+                    } else { %>
+                <p class="h2 text-center mt-5 pt-5">TU CARRITO ESTA VACÍO</p>
+                <!--Regresa a la pagina anterior -->
+                <p class="lead text-center mb-5"><a href="./index.jsp">Comprar ahora.</a></p>
+                <%} %>
             </div>
 
         </form>
-
-
-
+        <%
+            if (request.getSession().getAttribute("IdProd") != null) {
+                request.getSession().setAttribute("IdProd", null);
+            }
+        %>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

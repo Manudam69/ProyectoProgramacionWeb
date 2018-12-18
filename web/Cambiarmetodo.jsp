@@ -56,7 +56,7 @@
         %>    
         
         <div class="row" id="TablaPagos" style="margin-left: 2px;">
-            <div class="col-md-6 mb-3">
+            <div class="col-md-6 mb-10">
                 <label for="cc-name">Correo de la cuenta*</label>
                 <input type="email" class="form-control" id="cc-name" name="CorreoPago" placeholder="" required>
                 <small class="text-muted">No se guardarán sus datos</small>
